@@ -15,30 +15,23 @@
            STYLES DU SITE (THÈME URBAN LOFT)
            ========================================= */
         :root {
-            --fond-global: #000000;      /* Noir pur */
-            --fond-encadre: #464646;     /* Gris foncé industriel */
-            --accent-lime: #A35E47;      /* Rouge brique */
+            --fond-global: #000000;      
+            --fond-encadre: #464646;     
+            --accent-lime: #A35E47;      
             
-            --fond-carte: #121212;       /* Noir légèrement plus clair pour les cartes */
-            --texte-principal: #FFFFFF;  /* Blanc pour les titres */
-            --texte-secondaire: #9C9A9A; /* Gris béton clair pour le texte */
+            --fond-carte: #121212;       
+            --texte-principal: #FFFFFF;  
+            --texte-secondaire: #9C9A9A; 
             
-            --bouton-bg: #A35E47;        /* Rouge brique */
+            --bouton-bg: #A35E47;        
             --bouton-texte: #FFFFFF;     
             --bouton-hover: #8A4E39;     
-            --bordure: #333333;          /* Gris foncé pour les bordures */
+            --bordure: #333333;          
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         html { overflow-x: hidden; overflow-y: scroll; }
-
-        body {
-            width: 100%; 
-            background-color: var(--fond-global); 
-            color: var(--texte-principal);
-            font-family: 'Inter', sans-serif; 
-        }
+        body { width: 100%; background-color: var(--fond-global); color: var(--texte-principal); font-family: 'Inter', sans-serif; }
 
         /* --- TYPOGRAPHIE --- */
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 500; color: var(--texte-principal); }
@@ -50,184 +43,121 @@
         ul.project-list { margin-left: 20px; margin-bottom: 30px; color: var(--texte-secondaire); font-size: 1.1rem; line-height: 1.9; font-weight: 300; }
         ul.project-list li { margin-bottom: 10px; }
 
-        /* --- BOUTONS --- */
         .btn-pill {
             display: inline-flex; align-items: center; padding: 14px 32px;
             background-color: var(--bouton-bg); color: var(--bouton-texte);
-            text-decoration: none; font-size: 0.95rem;
-            font-weight: 500; transition: all 0.4s ease; border: none; cursor: pointer;
-            border-radius: 0; 
+            text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: all 0.4s ease; border: none; cursor: pointer;
         }
         .btn-pill:hover { background-color: var(--bouton-hover); transform: translateY(-2px); }
 
-        /* --- BANDEAU DE NAVIGATION --- */
+        /* --- BANDEAU DE NAVIGATION & MENUS DÉROULANTS --- */
         #top-nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             display: flex; justify-content: center; align-items: center;
-            background: rgba(0, 0, 0, 0.95); 
-            height: 80px; transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.95); height: 80px; transition: all 0.3s ease;
             border-bottom: 1px solid var(--bordure);
         }
         #top-nav.scrolled { box-shadow: 0 4px 20px rgba(255,255,255,0.05); }
         
-        .nav-links { display: flex; gap: 50px; }
+        .nav-links { display: flex; gap: 50px; align-items: center; }
         .nav-links a { 
             text-decoration: none; color: var(--texte-secondaire); 
             font-size: 1rem; font-weight: 400; transition: color 0.3s ease; cursor: pointer; 
         }
         .nav-links a:hover, .nav-links a.active { color: var(--accent-lime); font-weight: 600; }
 
-        /* --- STRUCTURE DES PAGES ISOLÉES --- */
-        .page-section {
-            display: none; 
-            min-height: 100vh;
-            flex-direction: column;
-            animation: fadeIn 0.6s ease-in-out;
-            padding-top: 80px; 
+        /* Menus déroulants */
+        .dropdown { position: relative; display: inline-block; height: 100%; display: flex; align-items: center; }
+        .dropdown-content {
+            display: none; position: absolute; background-color: var(--fond-carte);
+            min-width: 180px; top: 60px; left: 50%; transform: translateX(-50%);
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8); z-index: 1001;
+            border: 1px solid var(--bordure); border-top: 3px solid var(--accent-lime);
         }
-        .page-section.active { display: flex; }
+        .dropdown-content a {
+            color: var(--texte-secondaire) !important; padding: 12px 16px;
+            text-decoration: none; display: block; text-align: center;
+            font-weight: 400 !important; font-size: 0.9rem !important; border-bottom: 1px solid var(--bordure);
+        }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: #222; color: var(--accent-lime) !important; }
+        .dropdown:hover .dropdown-content { display: block; }
 
+        /* --- STRUCTURE DES PAGES ISOLÉES --- */
+        .page-section { display: none; min-height: 100vh; flex-direction: column; animation: fadeIn 0.6s ease-in-out; padding-top: 80px; }
+        .page-section.active { display: flex; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* =========================================
-           LE CONTENEUR ÉLARGI (Remplissage de l'écran)
-           ========================================= */
         .content-container { width: 100%; max-width: 1600px; margin: 0 auto; padding: 100px 4%; }
-
-        .full-width-bg {
-            width: 100%; background-color: var(--fond-encadre); padding: 100px 0;
-            border-top: 1px solid var(--bordure); border-bottom: 1px solid var(--bordure);
-        }
-        .full-width-bg h2 { color: var(--texte-principal); }
+        .full-width-bg { width: 100%; background-color: var(--fond-encadre); padding: 70px 0; border-top: 1px solid var(--bordure); border-bottom: 1px solid var(--bordure); }
 
         /* --- PAGE 1: À PROPOS DE MOI --- */
         .video-container { width: 100%; height: 65vh; background: #000; overflow: hidden; }
-        /* Vidéo conservée en cover pour remplir tout l'écran d'accueil */
         .bg-video { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
-
         .about-top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: flex-start; }
-        .about-text { padding-right: 20px; text-align: left; }
         .about-photos { display: flex; flex-direction: column; gap: 40px; }
-        
-        /* FIX IMAGES : On passe en mode Contain pour ne jamais rogner les bords */
-        .photo-box {
-            width: 100%; height: 380px; background-color: transparent;
-            border: none; border-radius: 0;
-            background-size: contain; background-repeat: no-repeat; background-position: center;
-        }
-        
+        .photo-box { width: 100%; height: 380px; background-color: transparent; background-size: contain; background-repeat: no-repeat; background-position: center; }
         .img-p1 { background-image: url('photo/a-propos-1.jpg'); }
         .img-p2 { background-image: url('photo/a-propos-2.jpg'); }
 
-        /* --- LIGNE 2 : FRISE CHRONOLOGIQUE CENTRÉE --- */
+        /* --- FRISE CHRONOLOGIQUE (Réduite) --- */
         .timeline-centered { position: relative; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; }
-        .timeline-centered::after {
-            content: ''; position: absolute; width: 2px; background-color: rgba(255, 255, 255, 0.1); 
-            top: 0; bottom: 0; left: 50%; transform: translateX(-50%);
-        }
-        .tc-item { width: 50%; position: relative; padding: 30px 0; cursor: pointer; z-index: 2; }
+        .timeline-centered::after { content: ''; position: absolute; width: 2px; background-color: rgba(255, 255, 255, 0.1); top: 0; bottom: 0; left: 50%; transform: translateX(-50%); }
+        /* Réduction de l'échelle : padding 15px (au lieu de 30) */
+        .tc-item { width: 50%; position: relative; padding: 15px 0; cursor: pointer; z-index: 2; }
         .tc-item:nth-child(odd) { align-self: flex-start; text-align: right; padding-right: 60px; }
         .tc-item:nth-child(even) { align-self: flex-end; text-align: left; padding-left: 60px; }
-
-        .tc-dot {
-            position: absolute; width: 20px; height: 20px;
-            background-color: var(--fond-encadre); border: 3px solid var(--accent-lime); 
-            border-radius: 50%; top: 35px; transition: all 0.3s ease;
-        }
+        .tc-dot { position: absolute; width: 20px; height: 20px; background-color: var(--fond-encadre); border: 3px solid var(--accent-lime); border-radius: 50%; top: 20px; transition: all 0.3s ease; }
         .tc-item:nth-child(odd) .tc-dot { right: -10px; }
         .tc-item:nth-child(even) .tc-dot { left: -10px; }
-
-        .tc-date { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 500; color: var(--texte-principal); }
-        
-        .tc-content { 
-            opacity: 1; font-size: 1.05rem; color: var(--texte-secondaire); 
-            line-height: 1.6; margin-top: 20px; text-align: inherit;
-        }
-        
+        .tc-date { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 500; color: var(--texte-principal); }
+        .tc-content { opacity: 1; font-size: 1rem; color: var(--texte-secondaire); line-height: 1.5; margin-top: 15px; text-align: inherit; }
         .tc-item:hover .tc-dot { background-color: var(--accent-lime); transform: scale(1.3); }
         
-        /* FIX IMAGES FRISE : Affichage complet de l'image (ex: Lycée, Eaton) */
-        .tc-image-placeholder {
-            width: 100%; height: 250px; background-color: transparent; border: none;
-            margin-top: 20px; 
-            background-size: contain; background-repeat: no-repeat;
-        }
-        /* Alignement des images selon le côté de la frise */
+        /* Réduction de la hauteur des images de la frise */
+        .tc-image-placeholder { width: 100%; height: 180px; background-color: transparent; border: none; margin-top: 15px; background-size: contain; background-repeat: no-repeat; }
         .tc-item:nth-child(odd) .tc-image-placeholder { background-position: center right; }
         .tc-item:nth-child(even) .tc-image-placeholder { background-position: center left; }
         
         .img-frise-1 { background-image: url('photo/lycée.png'); }
-        .img-frise-2 { background-image: url('photo/frise-entree-iut.jpg'); }
+        .img-frise-2 { background-image: url('photo/etablissementiut.png'); }
         .img-frise-3 { background-image: url('photo/siteeatoncoignière.png'); }
-        .img-frise-4 { background-image: url('photo/frise-alternance-eaton.jpg'); }
+        .img-frise-4 { background-image: url('photo/signaturecontrateaton.png'); }
 
-        /* --- LIGNE 3 : CV et Vidéo de présentation --- */
+        /* --- LIGNE 3 : CV et Vidéo --- */
         .bottom-media-row { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; }
         .media-column { display: flex; flex-direction: column; }
-        .media-box {
-            position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: var(--fond-carte); 
-            overflow: hidden; border: 1px solid var(--bordure); border-radius: 0; box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
+        .media-box { position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: var(--fond-carte); overflow: hidden; border: 1px solid var(--bordure); }
         .cv-column .media-box { aspect-ratio: 16 / 10; background-color: #000; } 
-        /* FIX CV : on affiche le CV en entier dans sa boîte sans le couper */
         .media-box video { width: 100%; height: 100%; object-fit: cover; outline: none; }
         .media-box img.cv-thumbnail { width: 100%; height: 100%; object-fit: contain; opacity: 0.8; transition: transform 0.4s ease; cursor: pointer; }
         
-        .cv-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); 
-            color: var(--accent-lime); display: flex; justify-content: center; align-items: center;
-            opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.2rem; font-weight: 500; font-family: 'Playfair Display', serif;
-        }
+        .cv-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.2rem; font-weight: 500; font-family: 'Playfair Display', serif; }
         .media-box:hover img.cv-thumbnail { transform: scale(1.03); opacity: 1; }
         .media-box:hover .cv-overlay { opacity: 1; }
 
         /* MODAL CV */
-        .fullscreen-modal {
-            display: none; position: fixed; z-index: 10001; padding-top: 50px; padding-bottom: 50px;
-            left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); overflow-y: auto;
-        }
-        .modal-content-img { margin: auto; display: block; max-width: 90%; max-height: 85vh; object-fit: contain; border-radius: 0; animation: modalZoom 0.3s ease; }
+        .fullscreen-modal { display: none; position: fixed; z-index: 10001; padding-top: 50px; padding-bottom: 50px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); overflow-y: auto; }
+        .modal-content-img { margin: auto; display: block; max-width: 90%; max-height: 85vh; object-fit: contain; animation: modalZoom 0.3s ease; }
         .modal-close { position: fixed; top: 25px; right: 40px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; z-index: 10002; }
         .modal-close:hover { color: var(--accent-lime); }
         @keyframes modalZoom { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-        /* FIX BANDEAUX LARGES (Rafale, etc.) : L'image est affichée en entier (contain), sur fond noir, assombrie pour lire le texte */
-        .full-width-header-image { 
-            width: 100vw; height: 450px; background-color: #000000; 
-            overflow: hidden; position: relative; 
-            display: flex; justify-content: center; align-items: center;
-        }
-        .full-width-header-image video, .full-width-header-image img { 
-            width: 100%; height: 100%; object-fit: contain; opacity: 0.45; /* Opacité réduite pour mieux lire */
-        }
-        .header-title-overlay {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: #FFFFFF; text-align: center; width: 100%; z-index: 10;
-        }
-        .header-title-overlay h1 { font-size: 5rem; margin: 0; text-shadow: 0px 4px 20px rgba(0, 0, 0, 1); }
+        /* --- BANDEAU FORMATIONS (LOGO IUT) --- */
+        .banner-iut { width: 100vw; max-height: 250px; background-color: #FFFFFF; display: flex; justify-content: center; align-items: center; overflow: hidden; border-bottom: 1px solid var(--bordure); }
+        .banner-iut img { width: 100%; max-height: 250px; object-fit: contain; padding: 20px; }
+
+        /* --- BANDEAU EXPÉRIENCES (RAFALE) - Bord à Bord sans zoom --- */
+        .banner-experience { width: 100vw; display: flex; background-color: #000; overflow: hidden; border-bottom: 1px solid var(--bordure); }
+        .banner-experience img { width: 100%; height: auto; display: block; }
 
         /* --- MISE EN PAGE : FORMATION + ENCADRÉ COMPÉTENCES --- */
-        .formation-layout {
-            display: grid; grid-template-columns: 2fr 1fr; gap: 60px; margin-bottom: 100px; align-items: stretch;
-        }
-
-        .formation-intro { 
-            background-color: var(--fond-carte); padding: 60px; border: 1px solid var(--bordure); height: 100%; 
-        }
-
-        .competences-box {
-            background-color: var(--fond-carte); padding: 60px; border: 1px solid var(--bordure);
-            border-bottom: 5px solid var(--accent-lime); cursor: pointer; transition: transform 0.3s ease;
-            display: flex; flex-direction: column; justify-content: center;
-        }
+        .formation-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; margin-bottom: 100px; align-items: stretch; }
+        .formation-intro { background-color: var(--fond-carte); padding: 60px; border: 1px solid var(--bordure); height: 100%; }
+        .competences-box { background-color: var(--fond-carte); padding: 60px; border: 1px solid var(--bordure); border-bottom: 5px solid var(--accent-lime); cursor: pointer; transition: transform 0.3s ease; display: flex; flex-direction: column; justify-content: center; }
         .competences-box:hover { transform: translateY(-8px); }
         .competences-box h3 { color: var(--accent-lime); margin-bottom: 20px; font-size: 2.2rem; }
-
-        .link-underline {
-            margin-top: 30px; color: var(--texte-principal); text-decoration: underline;
-            text-decoration-color: var(--accent-lime); text-underline-offset: 8px; font-weight: 500; font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
+        .link-underline { margin-top: 30px; color: var(--texte-principal); text-decoration: underline; text-decoration-color: var(--accent-lime); text-underline-offset: 8px; font-weight: 500; font-size: 1.1rem; transition: color 0.3s ease; }
         .competences-box:hover .link-underline { color: var(--accent-lime); }
 
         /* --- GRILLE DES PROJETS --- */
@@ -236,60 +166,27 @@
         .portfolio-card:hover { transform: translateY(-5px); }
         .portfolio-card:hover h3 { color: var(--accent-lime); }
         
-        .portfolio-img-container {
-            position: relative; width: 100%; height: 280px; margin-bottom: 30px; border: 1px solid var(--bordure);
-            background-color: var(--fond-carte); overflow: hidden; border-radius: 0;
-        }
-        /* FIX IMAGES CARTES PROJETS : Affichage sans rognage */
-        .portfolio-img { 
-            width: 100%; height: 100%; 
-            background-size: contain; background-repeat: no-repeat; background-position: center; 
-            transition: transform 0.5s ease; opacity: 0.9; 
-        }
-        
-        .project-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); 
-            color: var(--accent-lime); display: flex; justify-content: center; align-items: center;
-            opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.4rem; font-weight: 500; font-family: 'Playfair Display', serif;
-        }
+        .portfolio-img-container { position: relative; width: 100%; height: 280px; margin-bottom: 30px; border: 1px solid var(--bordure); background-color: var(--fond-carte); overflow: hidden; }
+        .portfolio-img { width: 100%; height: 100%; background-size: contain; background-repeat: no-repeat; background-position: center; transition: transform 0.5s ease; opacity: 0.9; }
+        .project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.4rem; font-weight: 500; font-family: 'Playfair Display', serif; }
         .portfolio-card:hover .portfolio-img { transform: scale(1.05); opacity: 1; } 
         .portfolio-card:hover .project-overlay { opacity: 1; } 
         
-        .img-outillage { background-image: url('photo/projet-outillage.jpg'); }
+        .img-outillage { background-image: url('photo/piecemontageph20.png'); }
         .img-oeuf { background-image: url('photo/projet-oeuf.jpg'); }
-        .img-fonderie { background-image: url('photo/projet-fonderie.jpg'); }
+        .img-fonderie { background-image: url('photo/piècealluparinject3D.png'); }
         
-        /* FIX IMAGE DÉTAIL PROJET : Affichage sans rognage */
-        .project-detail-img { 
-            width: 100%; height: 500px; margin-bottom: 50px; 
-            border: 1px solid var(--bordure); background-color: var(--fond-carte); opacity: 0.9; 
-            background-size: contain; background-repeat: no-repeat; background-position: center; 
-        }
+        .project-detail-img { width: 100%; height: 500px; margin-bottom: 50px; border: 1px solid var(--bordure); background-color: var(--fond-carte); opacity: 0.9; background-size: contain; background-repeat: no-repeat; background-position: center; }
 
-        /* EXPÉRIENCES */
+        /* EXPÉRIENCES - NOUVELLE GRILLE EATON */
+        .parcours-eaton { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; background-color: var(--fond-carte); padding: 50px; border: 1px solid var(--bordure); margin-bottom: 100px; }
+        
         .experience-item { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 120px; align-items: center; width: 100%; }
         .experience-item:nth-child(even) { direction: rtl; }
         .experience-item:nth-child(even) > * { direction: ltr; }
-        
-        /* FIX IMAGES EXPÉRIENCES : Affichage sans rognage, fond propre */
-        .exp-image { 
-            width: 100%; height: 400px; background-color: transparent; border: none;
-            background-size: contain; background-repeat: no-repeat; background-position: center; 
-            border-radius: 0; opacity: 0.9;
-        }
-        
+        .exp-image { width: 100%; height: 400px; background-color: transparent; border: none; background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0.9; }
         .img-astronics { background-image: url('photo/exp-astronics.jpg'); }
         .img-linamar { background-image: url('photo/exp-linamar.jpg'); }
-
-        .formation-images-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
-        /* FIX PETITES IMAGES PARCOURS : Affichage sans rognage */
-        .form-img-box {
-            width: 100%; height: 250px; background-color: transparent; border: none;
-            background-size: contain; background-repeat: no-repeat; background-position: center;
-        }
-        
-        .img-parcours-1 { background-image: url('photo/parcours-1.jpg'); }
-        .img-parcours-2 { background-image: url('photo/parcours-2.jpg'); }
 
         .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 0.9s cubic-bezier(0.25, 1, 0.5, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -298,26 +195,19 @@
 
         @media (max-width: 1000px) {
             .nav-links { gap: 20px; flex-wrap: wrap; justify-content: center; }
+            .dropdown-content { top: 40px; }
             .about-top-row { grid-template-columns: 1fr; gap: 50px; }
             .timeline-centered::after { left: 20px; transform: none; }
             .tc-item { width: 100%; text-align: left !important; padding-left: 60px !important; padding-right: 0 !important; }
             .tc-item:nth-child(even) { align-self: flex-start; }
             .tc-item:nth-child(odd) .tc-dot, .tc-item:nth-child(even) .tc-dot { left: 10px; right: auto; }
-            .tc-content { margin-top: 15px; } 
-            
-            /* Recentrage des images sur mobile */
-            .tc-item:nth-child(odd) .tc-image-placeholder, .tc-item:nth-child(even) .tc-image-placeholder { background-position: center; height: 200px; }
-            
-            .bottom-media-row { grid-template-columns: 1fr; gap: 60px; }
+            .tc-image-placeholder { background-position: center !important; height: 180px; }
+            .bottom-media-row, .formation-layout, .parcours-eaton { grid-template-columns: 1fr; }
             .portfolio-grid, .experience-item { grid-template-columns: 1fr; gap: 40px;}
             .experience-item:nth-child(even) { direction: ltr; }
             h1 { font-size: 3.5rem; }
             h2 { font-size: 2.5rem; }
             .project-detail-img { height: 300px; }
-            .full-width-header-image { height: 300px; }
-            .header-title-overlay h1 { font-size: 3rem; }
-            .formation-images-row { grid-template-columns: 1fr; }
-            .formation-layout { grid-template-columns: 1fr; }
             .content-container { padding: 60px 5%; }
         }
     </style>
@@ -326,8 +216,21 @@
 
     <nav id="top-nav">
         <div class="nav-links">
-            <a onclick="showPage('a-propos')" class="active">À propos de moi</a>
-            <a onclick="showPage('formations')">Formations</a>
+            <div class="dropdown">
+                <a onclick="showPage('a-propos')" class="active">À propos de moi</a>
+                <div class="dropdown-content">
+                    <a onclick="goToSection('a-propos', 'section-cv')">mon CV vidéo</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <a onclick="showPage('formations')">Formations</a>
+                <div class="dropdown-content">
+                    <a onclick="goToSection('formations', 'section-projets')">projets</a>
+                    <a onclick="showPage('competences-iut')">compétences</a>
+                </div>
+            </div>
+
             <a onclick="showPage('experiences')">Expériences professionnelles</a>
             <a onclick="showPage('contact')">Contact</a>
         </div>
@@ -357,10 +260,10 @@
             </div>
         </section>
 
-        <!-- FRISES -->
+        <!-- FRISES CHRONOLOGIQUES -->
         <section class="full-width-bg reveal">
             <div class="content-container" style="padding-top: 0; padding-bottom: 0;">
-                <h2 style="text-align: center; margin-bottom: 60px;">Les dates clés de mon parcours</h2>
+                <h2 style="text-align: center; margin-bottom: 50px;">Les dates clés de mon parcours</h2>
                 <div class="timeline-centered">
                     
                     <div class="tc-item">
@@ -392,9 +295,9 @@
 
                     <div class="tc-item">
                         <div class="tc-dot"></div>
-                        <div class="tc-date">Sept. 2026</div>
+                        <div class="tc-date">Juin 2026</div>
                         <div class="tc-content">
-                            Début de mon alternance chez EATON en tant que technicien methode.
+                            signature de mon contrat d’alternance pour la 3 -ème années d’alternance.
                             <div class="tc-image-placeholder img-frise-4"></div>
                         </div>
                     </div>
@@ -403,21 +306,19 @@
             </div>
         </section>
 
-        <section class="content-container reveal">
+        <!-- SECTION CV & VIDÉO (Cible du menu déroulant) -->
+        <section id="section-cv" class="content-container reveal" style="padding-top: 80px;">
             <div class="bottom-media-row">
                 
                 <div class="media-column">
                     <h3>Présentation Vidéo</h3>
                     <div class="media-box">
                         <iframe 
-                            width="100%" 
-                            height="100%" 
+                            width="100%" height="100%" 
                             src="https://www.youtube.com/embed/VOTRE_ID_VIDEO?rel=0" 
-                            title="Présentation Tristan Bobard" 
-                            frameborder="0" 
+                            title="Présentation Tristan Bobard" frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                            style="position: absolute; top: 0; left: 0;">
+                            allowfullscreen style="position: absolute; top: 0; left: 0;">
                         </iframe>
                     </div>
                 </div>
@@ -437,14 +338,14 @@
     <!-- PAGE 2 : FORMATIONS ET PROJETS -->
     <div id="formations" class="page-section" style="padding-top: 80px;">
         
-        <div class="full-width-header-image reveal">
-            <img src="photo/bandeau-formations.jpg" alt="Bandeau Formations">
+        <!-- Nouveau Bandeau IUT -->
+        <div class="banner-iut reveal">
+            <img src="photo/logoiut.png" alt="IUT Orléans">
         </div>
 
         <section class="content-container" style="padding-top: 80px;">
             
             <div class="formation-layout">
-                
                 <div class="formation-intro reveal">
                     <h3>Le BUT Génie Mécanique et Productique (GMP)</h3>
                     <p>Le Bachelor Universitaire de Technologie en Génie Mécanique et Productique est une formation de trois ans qui prépare aux métiers de la conception, de l'industrialisation et de l'organisation industrielle. Cette formation généraliste vise à développer des compétences reconnues et recherchées par le milieu industriel, réparties en quatre grands axes :</p>
@@ -462,10 +363,10 @@
                     <p>Découvrez en détail les outils, logiciels et méthodes que j'ai pu maîtriser au cours de ma formation.</p>
                     <span class="link-underline">Voir mes compétences &rarr;</span>
                 </div>
-                
             </div>
 
-            <div class="reveal" style="text-align: center; margin-bottom: 60px;">
+            <!-- SECTION PROJETS (Cible du menu déroulant) -->
+            <div id="section-projets" class="reveal" style="text-align: center; margin-bottom: 60px; padding-top: 40px;">
                 <h2>Mes projets réalisés à l'IUT</h2>
             </div>
 
@@ -503,11 +404,9 @@
          SOUS-PAGES DES PROJETS & COMPÉTENCES
          ======================================================== -->
 
-    <!-- SOUS-PAGE : COMPÉTENCES IUT -->
     <div id="competences-iut" class="page-section">
         <section class="content-container">
             <button class="btn-pill" onclick="showPage('formations')" style="margin-bottom: 40px;">&larr; Retour</button>
-            
             <div class="reveal">
                 <h2>Mes Compétences acquises à l'IUT</h2>
                 <div class="project-detail-img" style="background-image: url('photo/image-competences.jpg');"></div>
@@ -522,11 +421,9 @@
         </section>
     </div>
 
-    <!-- SOUS-PAGE PROJET 1 -->
     <div id="projet-1" class="page-section">
         <section class="content-container">
             <button class="btn-pill" onclick="showPage('formations')" style="margin-bottom: 40px;">&larr; Retour aux projets</button>
-            
             <div class="reveal">
                 <h2>Fabrication d'un outillage</h2>
                 <div class="project-detail-img img-outillage"></div>
@@ -540,111 +437,69 @@
         </section>
     </div>
 
-    <!-- SOUS-PAGE PROJET 2 (OEUF SURPRISE) -->
     <div id="projet-2" class="page-section">
         <section class="content-container">
             <button class="btn-pill" onclick="showPage('formations')" style="margin-bottom: 40px;">&larr; Retour aux projets</button>
-            
             <div class="reveal">
                 <h2>Oeuf surprise : De la théorie au thermoformage</h2>
                 <div class="project-detail-img img-oeuf"></div>
                 
                 <h3 style="margin-top: 30px;">1. Dimensionnement et calculs d'un œuf en fibre de carbone</h3>
                 <p>Dans un premier temps, le projet a été étudié pour une fabrication en fibre de carbone sur un grand moule (325 mm x 245 mm). Voici la méthodologie employée pour le dimensionnement théorique :</p>
-                
                 <ul class="project-list">
-                    <li style="margin-bottom: 15px;">
-                        <strong style="color: var(--accent-lime);">Matériaux :</strong> Sélection d'un tissu de fibre de carbone en sergé (193 g/m²). La souplesse de ce type de tissage permet d'épouser les courbes du moule de manière optimale sans provoquer de plis.
-                    </li>
-                    <li style="margin-bottom: 15px;">
-                        <strong style="color: var(--accent-lime);">Calcul du nombre de plis :</strong> La conception exigeait une paroi de 3 mm d'épaisseur (pour loger d'éventuelles fixations de charnières ou de vis). À partir de l'épaisseur ciblée et d'un taux de fibre défini à 45 %, le calcul théorique a permis de déterminer qu'il fallait utiliser exactement 14 plis de tissu. Ce ratio de 45 % constitue le compromis idéal pour éviter une pièce trop sèche ou fragilisée par un excès de résine.
-                    </li>
-                    <li style="margin-bottom: 15px;">
-                        <strong style="color: var(--accent-lime);">Calcul des masses requises :</strong> Suivant les équations de conception, la masse de fibre a été calculée à 215,14 g. Ensuite, le calcul de la matrice nécessaire indiquait un total de 285,89 g. Ce mélange de matrice se compose avec précision de 157,04 g de résine et de 128,65 g de catalyseur.
-                    </li>
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--accent-lime);">Matériaux :</strong> Sélection d'un tissu de fibre de carbone en sergé (193 g/m²). La souplesse de ce type de tissage permet d'épouser les courbes du moule de manière optimale sans provoquer de plis.</li>
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--accent-lime);">Calcul du nombre de plis :</strong> La conception exigeait une paroi de 3 mm d'épaisseur. À partir de l'épaisseur ciblée et d'un taux de fibre défini à 45 %, le calcul théorique a permis de déterminer qu'il fallait utiliser exactement 14 plis de tissu.</li>
+                    <li style="margin-bottom: 15px;"><strong style="color: var(--accent-lime);">Calcul des masses requises :</strong> Suivant les équations de conception, la masse de fibre a été calculée à 215,14 g. Ensuite, le calcul de la matrice nécessaire indiquait un total de 285,89 g.</li>
                 </ul>
 
                 <h3 style="margin-top: 50px;">2. Procédure de fabrication finale en thermoformage (Plastique PET)</h3>
                 <p>Suite aux retours techniques et pour des raisons d'adaptation, la fabrication de la coque a finalement été réorientée et réalisée avec succès via la technique du thermoformage. Voici la procédure de réalisation :</p>
-                
                 <ul class="project-list">
-                    <li style="margin-bottom: 25px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 1 : Chauffage de la matière</strong><br>
-                        La première étape consiste à placer une plaque de plastique PET dans la thermoformeuse. Il a été déterminé expérimentalement que la plaque nécessitait un temps de chauffe précis de 50 secondes. C'est le temps optimal pour rendre le matériau malléable face à l'envergure importante du moule.
-                    </li>
-                    <li style="margin-bottom: 25px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 2 : Moulage par le vide</strong><br>
-                        Une fois la plaque ramollie, l'aspiration de la machine est activée. L'air entre le moule et la plaque est évacué hermétiquement, forçant le plastique à épouser instantanément la géométrie de la forme ovoïde du moule. 
-                    </li>
-                    <li style="margin-bottom: 25px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Ébavurage et finitions</strong><br>
-                        Après le refroidissement et la rigidification du plastique, la pièce est retirée. L'étape suivante consiste à ébavurer la coque thermoformée afin d'enlever tout l'excédent de PET autour du pourtour de l'œuf. Pour la finition esthétique, les pièces sont poncées pour garantir une bonne adhérence, puis peintes uniformément à la bombe.
-                    </li>
-                    <li style="margin-bottom: 25px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 4 : Assemblage et mécanisme de fermeture</strong><br>
-                        Le design intègre un épaulement périphérique, permettant un assemblage mécanique de maintien des deux moitiés. À l'arrière, des charnières sont vissées sur des supports modélisés et imprimés en 3D (PLA), puis fixés aux coques grâce à de la colle néoprène. À l'avant, la fermeture est sécurisée par l'ajout rapide et efficace d'un scratch.
-                    </li>
+                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 1 : Chauffage de la matière</strong><br>La première étape consiste à placer une plaque de plastique PET dans la thermoformeuse. Il a été déterminé expérimentalement que la plaque nécessitait un temps de chauffe précis de 50 secondes.</li>
+                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 2 : Moulage par le vide</strong><br>Une fois la plaque ramollie, l'aspiration de la machine est activée. L'air entre le moule et la plaque est évacué hermétiquement, forçant le plastique à épouser instantanément la géométrie du moule. </li>
+                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Ébavurage et finitions</strong><br>Après le refroidissement, la pièce est retirée et ébavurée pour enlever l'excédent de PET. Pour la finition esthétique, les pièces sont poncées puis peintes uniformément à la bombe.</li>
+                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 4 : Assemblage et mécanisme de fermeture</strong><br>À l'arrière, des charnières sont vissées sur des supports modélisés et imprimés en 3D (PLA), puis fixés aux coques grâce à de la colle néoprène. À l'avant, la fermeture est sécurisée par un scratch.</li>
                 </ul>
             </div>
         </section>
     </div>
 
-    <!-- SOUS-PAGE PROJET 3 (FONDERIE) -->
     <div id="projet-3" class="page-section">
         <section class="content-container">
             <button class="btn-pill" onclick="showPage('formations')" style="margin-bottom: 40px;">&larr; Retour aux projets</button>
-            
             <div class="reveal">
                 <h2>Fonderie</h2>
                 <div class="project-detail-img img-fonderie"></div>
-                
                 <h3>Processus de création d’une pièce de fonderie : de la CAO à la coulée</h3>
-                
-                <p>Lors d’un projet au sein du département GMP de l’IUT d’Orléans, j’ai mené de bout en bout la réalisation d'une pièce de fonderie. Voici la méthodologie appliquée pour mener à bien cette conception :</p>
-                
+                <p>Lors d’un projet au sein du département GMP de l’IUT d’Orléans, j’ai mené de bout en bout la réalisation d'une pièce de fonderie. Voici la méthodologie appliquée :</p>
                 <ul class="project-list">
-                    <li style="margin-bottom: 25px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 1 : Analyser et définir la stratégie de fabrication</strong><br>
-                        Avant toute manipulation logicielle, il est essentiel de décortiquer le cahier des charges. L'objectif est de comprendre les contraintes de la pièce pour définir la meilleure méthode de travail. Cela se traduit par la création de schémas préalables et la rédaction de gammes de fabrication détaillées qui serviront de fil conducteur.
-                    </li>
-                    <li style="margin-bottom: 25px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 2 : Modéliser la pièce en 3D (Logiciel de CAO)</strong><br>
-                        L'instruction principale ici est de concevoir l'outillage virtuellement sur le logiciel Créo Paramétric. On commence par modéliser le brut de fonderie en y ajoutant des "surépaisseurs" d'usinage et des angles de dépouille (indispensables pour faciliter le futur démoulage). On intègre ensuite virtuellement le noyau. L'association de ces éléments par des fonctions booléennes permet de générer informatiquement les plaques de demi-modèles.
-                    </li>
-                    <li style="margin-bottom: 25px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Programmer et lancer l'usinage (Logiciel de FAO)</strong><br>
-                        Une fois la modélisation convertie au format STL, l'objectif est de paramétrer la machine d'usinage via le logiciel SRP Player. Il s'agit de renseigner les dimensions du bloc brut, de sélectionner les bons outils de coupe et de programmer les trajectoires d'usinage. Une fois la simulation validée, on passe à la fabrication physique en usinant les plaques sur des fraiseuses à commande numérique (machines Roland).
-                    </li>
-                    <li style="margin-bottom: 25px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 4 : Préparer le moule en sable et procéder à la coulée</strong><br>
-                        C'est l'étape de réalisation finale. On place la première plaque usinée dans un châssis (demi-moule), on la saupoudre de talc pour éviter que le sable n'adhère, puis on vient y tasser fermement du sable de moulage. On retourne ensuite l'ensemble pour répéter l'opération avec le second demi-moule. La consigne la plus critique lors de cette étape est de s'assurer de l'alignement parfait et de la symétrie des deux moitiés au niveau du plan de joint, juste avant d'y couler le métal en fusion.
-                    </li>
+                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 1 : Analyser et définir la stratégie de fabrication</strong><br>L'objectif est de comprendre les contraintes de la pièce pour définir la meilleure méthode de travail via la rédaction de gammes de fabrication détaillées.</li>
+                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 2 : Modéliser la pièce en 3D (Logiciel de CAO)</strong><br>L'instruction principale ici est de concevoir l'outillage virtuellement sur le logiciel Créo Paramétric. On modélise le brut en y ajoutant des surépaisseurs d'usinage et des angles de dépouille.</li>
+                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Programmer et lancer l'usinage (Logiciel de FAO)</strong><br>Une fois convertie au format STL, on paramètre la machine d'usinage via SRP Player et on usine les plaques sur des fraiseuses à commande numérique.</li>
+                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 4 : Préparer le moule en sable et procéder à la coulée</strong><br>On place la plaque usinée dans un châssis, on la saupoudre de talc, puis on vient y tasser fermement du sable de moulage. La consigne la plus critique est de s'assurer de l'alignement parfait des deux moitiés juste avant d'y couler le métal en fusion.</li>
                 </ul>
             </div>
         </section>
     </div>
-
 
     <!-- PAGE 3: EXPÉRIENCES PROFESSIONNELLES -->
     <div id="experiences" class="page-section" style="padding-top: 80px;">
         
-        <div class="full-width-header-image reveal">
-            <img src="photo/avionnraphale.png" alt="Bandeau Expériences">
-            
-            <div class="header-title-overlay">
-                <h1>Mes Expériences professionnelles</h1>
-            </div>
+        <!-- Bandeau Rafale Modifié : Pas de zoom, sans titre, image bord à bord -->
+        <div class="banner-experience reveal">
+            <img src="photo/avionnraphale.png" alt="Avion Rafale">
         </div>
 
         <section class="content-container" style="padding-top: 80px;">
             
-            <div class="formation-intro reveal" style="margin-bottom: 100px;">
-                <h3>Mon Parcours en Entreprise</h3>
-                <p>J'ai eu l'opportunité de mettre en pratique mes connaissances académiques lors de plusieurs expériences en entreprise. Ces immersions dans le monde industriel m'ont permis de développer mon autonomie, ma rigueur et ma compréhension des enjeux concrets liés à la conception et à la production.</p>
-                
-                <div class="formation-images-row">
-                    <div class="form-img-box img-parcours-1"></div>
-                    <div class="form-img-box img-parcours-2"></div>
+            <!-- Nouveau Bloc Eaton -->
+            <div class="parcours-eaton reveal">
+                <div class="text-left">
+                    <h3 style="border-bottom: 3px solid var(--accent-lime);">mon parcours chez Eaton</h3>
+                    <p style="margin-top: 20px;">J'ai eu l'opportunité de mettre en pratique mes connaissances académiques lors de plusieurs expériences en entreprise. Ces immersions dans le monde industriel m'ont permis de développer mon autonomie, ma rigueur et ma compréhension des enjeux concrets liés à la conception et à la production.</p>
+                </div>
+                <div class="image-right">
+                    <img src="photo/logoEaton.png" alt="Logo Eaton" style="width: 100%; height: auto; object-fit: contain;">
                 </div>
             </div>
 
@@ -655,6 +510,7 @@
                 </div>
                 <div class="exp-image img-astronics"></div>
             </div>
+            
             <div class="experience-item reveal">
                 <div>
                     <h3>Linamar Light Metals</h3>
@@ -662,6 +518,7 @@
                 </div>
                 <div class="exp-image img-linamar"></div>
             </div>
+            
         </section>
     </div>
 
@@ -687,13 +544,13 @@
          SCRIPTS 
          ========================================== -->
     <script>
+        // Fonction classique pour afficher la page
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => { page.classList.remove('active'); });
-            
             document.getElementById(pageId).classList.add('active');
 
-            const links = document.querySelectorAll('.nav-links a');
+            const links = document.querySelectorAll('.nav-links > a, .nav-links > .dropdown > a');
             links.forEach(link => { link.classList.remove('active'); });
             
             let linkToHighlight = pageId;
@@ -701,11 +558,25 @@
                 linkToHighlight = 'formations';
             }
             
-            const activeLink = document.querySelector(`.nav-links a[onclick="showPage('${linkToHighlight}')"]`);
+            const activeLink = document.querySelector(`.nav-links a[onclick*="'${linkToHighlight}'"]`);
             if(activeLink) activeLink.classList.add('active');
 
             window.scrollTo({ top: 0, behavior: 'instant' });
             resetAnimations();
+        }
+
+        // Fonction pour les sous-menus (Changer de page et scroller jusqu'à la section)
+        function goToSection(pageId, sectionId) {
+            showPage(pageId);
+            setTimeout(() => {
+                const target = document.getElementById(sectionId);
+                if(target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                }
+            }, 100); 
         }
 
         function resetAnimations() {
@@ -714,27 +585,18 @@
             setTimeout(() => {
                 revealElements.forEach(el => {
                     const rect = el.getBoundingClientRect();
-                    if(rect.top < window.innerHeight) {
-                        el.classList.add('active');
-                    }
+                    if(rect.top < window.innerHeight) { el.classList.add('active'); }
                 });
             }, 50);
         }
 
-        function openCvModal() { 
-            document.getElementById("cv-modal").style.display = "block"; 
-            document.body.style.overflow = "hidden"; 
-        }
-        function closeCvModal() { 
-            document.getElementById("cv-modal").style.display = "none"; 
-            document.body.style.overflow = "auto"; 
-        }
+        function openCvModal() { document.getElementById("cv-modal").style.display = "block"; document.body.style.overflow = "hidden"; }
+        function closeCvModal() { document.getElementById("cv-modal").style.display = "none"; document.body.style.overflow = "auto"; }
         
         window.onclick = function(event) {
             const cvModal = document.getElementById("cv-modal");
             if (event.target == cvModal) {
-                cvModal.style.display = "none";
-                document.body.style.overflow = "auto";
+                cvModal.style.display = "none"; document.body.style.overflow = "auto";
             }
         }
 
@@ -757,6 +619,5 @@
             resetAnimations(); 
         });
     </script>
-
 </body>
 </html>
