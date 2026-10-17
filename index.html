@@ -12,21 +12,21 @@
     
     <style>
         /* =========================================
-           NOUVEAU THÈME DE COULEURS
+           NOUVEAU THÈME : BLEU COBALT & GRIS CLAIR
            ========================================= */
         :root {
-            --fond-global: #FFFAFA;      /* Blanc Neige */
-            --fond-encadre: #ADD8E6;     /* Bleu Ciel (fonds larges) */
-            --accent-lime: #000080;      /* Bleu Marine (titres, accents, boutons) */
+            --fond-global: #FFFFFF;      /* Blanc pur pour la rigueur absolue */
+            --fond-encadre: #F3F4F6;     /* Gris très clair / Argent pour structurer */
+            --accent-lime: #2563EB;      /* Bleu cobalt vif pour attirer l'œil */
             
-            --fond-carte: #FFFFFF;       /* Blanc pur (cartes, menus) */
-            --texte-principal: #000080;  /* Bleu Marine (titres) */
-            --texte-secondaire: #6D8196; /* Gris-Bleu (paragraphes) */
+            --fond-carte: #FFFFFF;       /* Blanc pour les encadrés */
+            --texte-principal: #000000;  /* Noir pur pour les titres (Rigueur) */
+            --texte-secondaire: #333333; /* Gris très foncé pour le texte (Lisibilité) */
             
-            --bouton-bg: #000080;        /* Bleu Marine */
-            --bouton-texte: #FFFAFA;     /* Blanc Neige */
-            --bouton-hover: #6D8196;     /* Gris-Bleu */
-            --bordure: #ADD8E6;          /* Bleu Ciel */
+            --bouton-bg: #2563EB;        /* Bleu cobalt vif */
+            --bouton-texte: #FFFFFF;     /* Texte blanc sur fond bleu */
+            --bouton-hover: #1D4ED8;     /* Bleu cobalt foncé au survol */
+            --bordure: #E5E7EB;          /* Bordures gris très clair */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,10 +34,10 @@
         body { width: 100%; background-color: var(--fond-global); color: var(--texte-principal); font-family: 'Inter', sans-serif; }
 
         /* --- TYPOGRAPHIE --- */
-        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 500; color: var(--texte-principal); }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--texte-principal); }
         h1 { font-size: 5rem; margin-bottom: 20px; line-height: 1.1; }
         h2 { font-size: 3.2rem; margin-bottom: 30px; line-height: 1.2; }
-        h3 { font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--bordure); padding-bottom: 10px; display: inline-block;}
+        h3 { font-size: 1.8rem; margin-bottom: 20px; border-bottom: 2px solid var(--accent-lime); padding-bottom: 10px; display: inline-block;}
         p { color: var(--texte-secondaire); font-size: 1.1rem; line-height: 1.9; margin-bottom: 20px; font-weight: 400; }
 
         ul.project-list { margin-left: 20px; margin-bottom: 30px; color: var(--texte-secondaire); font-size: 1.1rem; line-height: 1.9; font-weight: 400; }
@@ -54,10 +54,10 @@
         #top-nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             display: flex; justify-content: center; align-items: center;
-            background: rgba(255, 250, 250, 0.95); height: 80px; transition: all 0.3s ease;
-            border-bottom: 2px solid var(--bordure);
+            background: rgba(255, 255, 255, 0.98); height: 80px; transition: all 0.3s ease;
+            border-bottom: 1px solid var(--bordure);
         }
-        #top-nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        #top-nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         
         .nav-links { display: flex; gap: 50px; align-items: center; height: 100%; }
         .nav-links a { 
@@ -88,15 +88,13 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .content-container { width: 100%; max-width: 1600px; margin: 0 auto; padding: 80px 4%; }
-        /* La couleur Bleu Ciel est appliquée au grand encadré de la frise */
         .full-width-bg { width: 100%; background-color: var(--fond-encadre); padding: 70px 0; border-top: 1px solid var(--bordure); border-bottom: 1px solid var(--bordure); }
 
         /* --- PAGE 1: À PROPOS DE MOI --- */
-        .video-container { width: 100%; height: 65vh; background: #000; overflow: hidden; border-bottom: 2px solid var(--bordure); }
-        .bg-video { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+        .video-container { width: 100%; height: 65vh; background: #000; overflow: hidden; border-bottom: 1px solid var(--bordure); }
+        .bg-video { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
         .about-top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: flex-start; }
         .about-photos { display: flex; flex-direction: column; gap: 40px; }
-        /* Images A propos : Taille naturelle, pas de cadre */
         .photo-box { width: 100%; height: 300px; background-color: transparent; background-size: contain; background-repeat: no-repeat; background-position: center; border: none; }
         .img-p1 { background-image: url('photo/a-propos-1.jpg'); }
         .img-p2 { background-image: url('photo/a-propos-2.jpg'); }
@@ -111,10 +109,9 @@
         .tc-item:nth-child(odd) .tc-dot { right: -10px; }
         .tc-item:nth-child(even) .tc-dot { left: -10px; }
         .tc-date { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; color: var(--texte-principal); }
-        .tc-content { opacity: 1; font-size: 1.05rem; color: var(--texte-principal); line-height: 1.5; margin-top: 15px; text-align: inherit; }
+        .tc-content { opacity: 1; font-size: 1.05rem; color: var(--texte-secondaire); line-height: 1.5; margin-top: 15px; text-align: inherit; }
         .tc-item:hover .tc-dot { transform: scale(1.3); background-color: var(--accent-lime); }
         
-        /* CORRECTION IMAGES FRISE : Hauteur réduite, pas de bordure, pas de fond, pas de zoom (contain) */
         .tc-image-placeholder { 
             width: 100%; height: 120px; 
             background-color: transparent; border: none; 
@@ -132,12 +129,12 @@
         /* --- LIGNE 3 : CV et Vidéo --- */
         .bottom-media-row { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; }
         .media-column { display: flex; flex-direction: column; }
-        .media-box { position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: var(--fond-carte); overflow: hidden; border: 1px solid var(--bordure); }
+        .media-box { position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: var(--fond-encadre); overflow: hidden; border: 1px solid var(--bordure); }
         .cv-column .media-box { aspect-ratio: 16 / 10; background-color: transparent; border: none; } 
         .media-box video { width: 100%; height: 100%; object-fit: cover; outline: none; }
         .media-box img.cv-thumbnail { width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s ease; cursor: pointer; }
         
-        .cv-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 250, 250, 0.9); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.2rem; font-weight: 600; font-family: 'Playfair Display', serif; }
+        .cv-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.2rem; font-weight: 600; font-family: 'Playfair Display', serif; }
         .media-box:hover img.cv-thumbnail { transform: scale(1.03); }
         .media-box:hover .cv-overlay { opacity: 1; }
 
@@ -149,7 +146,7 @@
         @keyframes modalZoom { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
         /* --- BANDEAU FORMATIONS (LOGO IUT) --- */
-        .banner-iut { width: 100vw; max-height: 250px; background-color: #FFFFFF; display: flex; justify-content: center; align-items: center; overflow: hidden; border-bottom: 2px solid var(--bordure); }
+        .banner-iut { width: 100vw; max-height: 250px; background-color: #FFFFFF; display: flex; justify-content: center; align-items: center; overflow: hidden; border-bottom: 1px solid var(--bordure); }
         .banner-iut img { width: 100%; max-height: 250px; object-fit: contain; padding: 20px; }
 
         /* --- MISE EN PAGE : FORMATION + ENCADRÉ COMPÉTENCES --- */
@@ -157,29 +154,42 @@
         .formation-intro { background-color: var(--fond-carte); padding: 60px; border: 1px solid var(--bordure); height: 100%; }
         .competences-box { background-color: var(--fond-carte); padding: 60px; border: 1px solid var(--bordure); border-bottom: 5px solid var(--accent-lime); cursor: pointer; transition: transform 0.3s ease; display: flex; flex-direction: column; justify-content: center; }
         .competences-box:hover { transform: translateY(-8px); background-color: var(--fond-encadre); }
-        .competences-box h3 { color: var(--accent-lime); margin-bottom: 20px; font-size: 2.2rem; }
+        .competences-box h3 { color: var(--accent-lime); margin-bottom: 20px; font-size: 2.2rem; border: none; }
         .link-underline { margin-top: 30px; color: var(--texte-principal); text-decoration: underline; text-decoration-color: var(--accent-lime); text-underline-offset: 8px; font-weight: 500; font-size: 1.1rem; transition: color 0.3s ease; }
 
         /* --- GRILLE DES PROJETS --- */
         .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; width: 100%; } 
-        .portfolio-card { display: flex; flex-direction: column; align-items: flex-start; text-align: left; cursor: pointer; transition: transform 0.3s ease; }
+        
+        /* ALIGNEMENT CENTRÉ POUR LES PROJETS */
+        .portfolio-card { 
+            display: flex; flex-direction: column; 
+            align-items: center; /* Centre l'image et le titre */
+            text-align: center; /* Centre le texte du titre */
+            cursor: pointer; transition: transform 0.3s ease; 
+        }
+        
+        .portfolio-card h3 { 
+            border-bottom: 1px solid var(--bordure); 
+            display: inline-block; 
+            margin-top: 10px;
+        }
+
         .portfolio-card:hover { transform: translateY(-5px); }
         
-        /* CORRECTION IMAGES PROJETS : Hauteur réduite, pas de cadre, pas de fond, affichage naturel (contain) */
         .portfolio-img-container { 
-            position: relative; width: 100%; height: 200px; margin-bottom: 30px; 
+            position: relative; width: 100%; height: 200px; margin-bottom: 20px; 
             border: none; background-color: transparent; overflow: hidden; 
         }
         
         .portfolio-img { position: relative; width: 100%; height: 100%; transition: transform 0.5s ease; }
-        .project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 250, 250, 0.9); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.4rem; font-weight: 600; font-family: 'Playfair Display', serif; z-index: 5; }
+        .project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.4rem; font-weight: 600; font-family: 'Playfair Display', serif; z-index: 5; }
         
         .portfolio-card:hover .portfolio-img { transform: scale(1.05); } 
         .portfolio-card:hover .project-overlay { opacity: 1; } 
         
         .portfolio-img.img-oeuf { 
             background-image: url('photo/projet-oeuf.jpg'); 
-            background-size: contain; background-repeat: no-repeat; background-position: left center; 
+            background-size: contain; background-repeat: no-repeat; background-position: center; 
         }
         
         .project-detail-img { 
@@ -188,10 +198,10 @@
         }
         .project-detail-img.img-oeuf {
             background-image: url('photo/projet-oeuf.jpg');
-            background-size: contain; background-repeat: no-repeat; background-position: left center;
+            background-size: contain; background-repeat: no-repeat; background-position: center;
         }
 
-        /* ROTATION -90° (Taille adaptée pour éviter le rognage) */
+        /* ROTATION -90° POUR OUTILLAGE ET FONDERIE */
         .portfolio-img.img-outillage::before, .project-detail-img.img-outillage::before {
             content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('photo/piecemontageph20.png');
@@ -210,12 +220,9 @@
             width: 100vw; 
             margin-top: -80px; 
             background-color: #FFFFFF; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            border-bottom: 2px solid var(--bordure); 
-            line-height: 0; 
-            padding: 100px 0; 
+            display: flex; justify-content: center; align-items: center;
+            border-bottom: 1px solid var(--bordure); 
+            line-height: 0; padding: 100px 0; 
         }
         .banner-experience img { width: auto; max-width: 80%; height: auto; display: block; }
 
@@ -227,7 +234,6 @@
         .experience-item:nth-child(even) { direction: rtl; }
         .experience-item:nth-child(even) > * { direction: ltr; }
         
-        /* Images expériences : naturelles sans cadres */
         .exp-image { width: 100%; height: 300px; background-color: transparent; border: none; background-size: contain; background-repeat: no-repeat; background-position: center; }
         .img-astronics { background-image: url('photo/exp-astronics.jpg'); }
         .img-linamar { background-image: url('photo/exp-linamar.jpg'); }
@@ -578,88 +584,4 @@
         </section>
     </div>
 
-    <!-- BOÎTE MODALE DU CV -->
-    <div id="cv-modal" class="fullscreen-modal">
-        <span class="modal-close" onclick="closeCvModal()">&times;</span>
-        <img class="modal-content-img" src="photo/mon-cv.jpg" alt="Curriculum Vitae HD">
-    </div>
-
-    <!-- ==========================================
-         SCRIPTS 
-         ========================================== -->
-    <script>
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page-section');
-            pages.forEach(page => { page.classList.remove('active'); });
-            document.getElementById(pageId).classList.add('active');
-
-            const links = document.querySelectorAll('.nav-links > a, .nav-links > .dropdown > a');
-            links.forEach(link => { link.classList.remove('active'); });
-            
-            let linkToHighlight = pageId;
-            if (pageId.startsWith('projet-') || pageId === 'competences-iut') {
-                linkToHighlight = 'formations';
-            }
-            
-            const activeLink = document.querySelector(`.nav-links a[onclick*="'${linkToHighlight}'"]`);
-            if(activeLink) activeLink.classList.add('active');
-
-            window.scrollTo({ top: 0, behavior: 'instant' });
-            resetAnimations();
-        }
-
-        function goToSection(pageId, sectionId) {
-            showPage(pageId);
-            setTimeout(() => {
-                const target = document.getElementById(sectionId);
-                if(target) {
-                    const headerOffset = 80;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-                }
-            }, 100); 
-        }
-
-        function resetAnimations() {
-            const revealElements = document.querySelectorAll('.reveal');
-            revealElements.forEach(el => el.classList.remove('active'));
-            setTimeout(() => {
-                revealElements.forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    if(rect.top < window.innerHeight) { el.classList.add('active'); }
-                });
-            }, 50);
-        }
-
-        function openCvModal() { document.getElementById("cv-modal").style.display = "block"; document.body.style.overflow = "hidden"; }
-        function closeCvModal() { document.getElementById("cv-modal").style.display = "none"; document.body.style.overflow = "auto"; }
-        
-        window.onclick = function(event) {
-            const cvModal = document.getElementById("cv-modal");
-            if (event.target == cvModal) {
-                cvModal.style.display = "none"; document.body.style.overflow = "auto";
-            }
-        }
-
-        const navbar = document.getElementById('top-nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) { navbar.classList.add('scrolled'); } 
-            else { navbar.classList.remove('scrolled'); }
-        });
-
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.10 };
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('active'); }
-            });
-        }, observerOptions);
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const revealElements = document.querySelectorAll('.reveal');
-            revealElements.forEach((el) => { observer.observe(el); });
-            resetAnimations(); 
-        });
-    </script>
-</body>
-</html>
+    <!-- BOÎTE MODALE DU
