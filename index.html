@@ -12,21 +12,29 @@
     
     <style>
         /* =========================================
-           NOUVEAU THÈME : BLEU COBALT & GRIS CLAIR
+           NOUVEAU THÈME : NAVY & GRIS (Basé sur ton image)
            ========================================= */
         :root {
-            --fond-global: #FFFFFF;      /* Blanc pur pour la rigueur absolue */
-            --fond-encadre: #F3F4F6;     /* Gris très clair / Argent pour structurer */
-            --accent-lime: #2563EB;      /* Bleu cobalt vif pour attirer l'œil */
+            /* Palette extraite de l'image */
+            --c1-navy: #0A1128;       /* Bleu marine profond */
+            --c2-charcoal: #1F2429;   /* Gris anthracite */
+            --c3-slate: #757A80;      /* Gris moyen */
+            --c4-lightgray: #D2D5D9;  /* Gris clair */
+            --c5-pearl: #EBEDF0;      /* Gris perle / Blanc cassé */
+
+            /* Application au site */
+            --fond-global: var(--c5-pearl);      
+            --fond-encadre: var(--c4-lightgray); 
+            --accent-lime: var(--c1-navy);       
             
-            --fond-carte: #FFFFFF;       /* Blanc pour les encadrés */
-            --texte-principal: #000000;  /* Noir pur pour les titres (Rigueur) */
-            --texte-secondaire: #333333; /* Gris très foncé pour le texte (Lisibilité) */
+            --fond-carte: #FFFFFF; /* Blanc pur pour les cartes pour la lisibilité */
+            --texte-principal: var(--c2-charcoal);  
+            --texte-secondaire: var(--c3-slate); 
             
-            --bouton-bg: #2563EB;        /* Bleu cobalt vif */
-            --bouton-texte: #FFFFFF;     /* Texte blanc sur fond bleu */
-            --bouton-hover: #1D4ED8;     /* Bleu cobalt foncé au survol */
-            --bordure: #E5E7EB;          /* Bordures gris très clair */
+            --bouton-bg: var(--c1-navy);        
+            --bouton-texte: #FFFFFF;     
+            --bouton-hover: var(--c2-charcoal);     
+            --bordure: var(--c4-lightgray);          
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -160,11 +168,10 @@
         /* --- GRILLE DES PROJETS --- */
         .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; width: 100%; } 
         
-        /* ALIGNEMENT CENTRÉ POUR LES PROJETS */
         .portfolio-card { 
             display: flex; flex-direction: column; 
-            align-items: center; /* Centre l'image et le titre */
-            text-align: center; /* Centre le texte du titre */
+            align-items: center; 
+            text-align: center; 
             cursor: pointer; transition: transform 0.3s ease; 
         }
         
@@ -201,7 +208,7 @@
             background-size: contain; background-repeat: no-repeat; background-position: center;
         }
 
-        /* ROTATION -90° POUR OUTILLAGE ET FONDERIE */
+        /* ROTATION -90° */
         .portfolio-img.img-outillage::before, .project-detail-img.img-outillage::before {
             content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('photo/piecemontageph20.png');
@@ -584,4 +591,88 @@
         </section>
     </div>
 
-    <!-- BOÎTE MODALE DU
+    <!-- BOÎTE MODALE DU CV -->
+    <div id="cv-modal" class="fullscreen-modal">
+        <span class="modal-close" onclick="closeCvModal()">&times;</span>
+        <img class="modal-content-img" src="photo/mon-cv.jpg" alt="Curriculum Vitae HD">
+    </div>
+
+    <!-- ==========================================
+         SCRIPTS 
+         ========================================== -->
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => { page.classList.remove('active'); });
+            document.getElementById(pageId).classList.add('active');
+
+            const links = document.querySelectorAll('.nav-links > a, .nav-links > .dropdown > a');
+            links.forEach(link => { link.classList.remove('active'); });
+            
+            let linkToHighlight = pageId;
+            if (pageId.startsWith('projet-') || pageId === 'competences-iut') {
+                linkToHighlight = 'formations';
+            }
+            
+            const activeLink = document.querySelector(`.nav-links a[onclick*="'${linkToHighlight}'"]`);
+            if(activeLink) activeLink.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            resetAnimations();
+        }
+
+        function goToSection(pageId, sectionId) {
+            showPage(pageId);
+            setTimeout(() => {
+                const target = document.getElementById(sectionId);
+                if(target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                }
+            }, 100); 
+        }
+
+        function resetAnimations() {
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => el.classList.remove('active'));
+            setTimeout(() => {
+                revealElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if(rect.top < window.innerHeight) { el.classList.add('active'); }
+                });
+            }, 50);
+        }
+
+        function openCvModal() { document.getElementById("cv-modal").style.display = "block"; document.body.style.overflow = "hidden"; }
+        function closeCvModal() { document.getElementById("cv-modal").style.display = "none"; document.body.style.overflow = "auto"; }
+        
+        window.onclick = function(event) {
+            const cvModal = document.getElementById("cv-modal");
+            if (event.target == cvModal) {
+                cvModal.style.display = "none"; document.body.style.overflow = "auto";
+            }
+        }
+
+        const navbar = document.getElementById('top-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) { navbar.classList.add('scrolled'); } 
+            else { navbar.classList.remove('scrolled'); }
+        });
+
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.10 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach((el) => { observer.observe(el); });
+            resetAnimations(); 
+        });
+    </script>
+</body>
+</html>
