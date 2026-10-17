@@ -59,18 +59,18 @@
         }
         #top-nav.scrolled { box-shadow: 0 4px 20px rgba(255,255,255,0.05); }
         
-        .nav-links { display: flex; gap: 50px; align-items: center; }
+        .nav-links { display: flex; gap: 50px; align-items: center; height: 100%; }
         .nav-links a { 
             text-decoration: none; color: var(--texte-secondaire); 
             font-size: 1rem; font-weight: 400; transition: color 0.3s ease; cursor: pointer; 
         }
         .nav-links a:hover, .nav-links a.active { color: var(--accent-lime); font-weight: 600; }
 
-        /* Menus déroulants */
+        /* Menus déroulants (Correction de la perte du curseur) */
         .dropdown { position: relative; display: inline-block; height: 100%; display: flex; align-items: center; }
         .dropdown-content {
             display: none; position: absolute; background-color: var(--fond-carte);
-            min-width: 180px; top: 60px; left: 50%; transform: translateX(-50%);
+            min-width: 180px; top: 100%; left: 50%; transform: translateX(-50%);
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8); z-index: 1001;
             border: 1px solid var(--bordure); border-top: 3px solid var(--accent-lime);
         }
@@ -88,7 +88,7 @@
         .page-section.active { display: flex; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .content-container { width: 100%; max-width: 1600px; margin: 0 auto; padding: 100px 4%; }
+        .content-container { width: 100%; max-width: 1600px; margin: 0 auto; padding: 80px 4%; }
         .full-width-bg { width: 100%; background-color: var(--fond-encadre); padding: 70px 0; border-top: 1px solid var(--bordure); border-bottom: 1px solid var(--bordure); }
 
         /* --- PAGE 1: À PROPOS DE MOI --- */
@@ -100,10 +100,9 @@
         .img-p1 { background-image: url('photo/a-propos-1.jpg'); }
         .img-p2 { background-image: url('photo/a-propos-2.jpg'); }
 
-        /* --- FRISE CHRONOLOGIQUE (Réduite) --- */
+        /* --- FRISE CHRONOLOGIQUE --- */
         .timeline-centered { position: relative; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; }
         .timeline-centered::after { content: ''; position: absolute; width: 2px; background-color: rgba(255, 255, 255, 0.1); top: 0; bottom: 0; left: 50%; transform: translateX(-50%); }
-        /* Réduction de l'échelle : padding 15px (au lieu de 30) */
         .tc-item { width: 50%; position: relative; padding: 15px 0; cursor: pointer; z-index: 2; }
         .tc-item:nth-child(odd) { align-self: flex-start; text-align: right; padding-right: 60px; }
         .tc-item:nth-child(even) { align-self: flex-end; text-align: left; padding-left: 60px; }
@@ -114,7 +113,6 @@
         .tc-content { opacity: 1; font-size: 1rem; color: var(--texte-secondaire); line-height: 1.5; margin-top: 15px; text-align: inherit; }
         .tc-item:hover .tc-dot { background-color: var(--accent-lime); transform: scale(1.3); }
         
-        /* Réduction de la hauteur des images de la frise */
         .tc-image-placeholder { width: 100%; height: 180px; background-color: transparent; border: none; margin-top: 15px; background-size: contain; background-repeat: no-repeat; }
         .tc-item:nth-child(odd) .tc-image-placeholder { background-position: center right; }
         .tc-item:nth-child(even) .tc-image-placeholder { background-position: center left; }
@@ -143,13 +141,24 @@
         .modal-close:hover { color: var(--accent-lime); }
         @keyframes modalZoom { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
+        /* --- BANDEAU LARGES (Rafale de retour à la normale) --- */
+        .full-width-header-image { 
+            width: 100vw; height: 450px; background-color: #000000; 
+            overflow: hidden; position: relative; 
+            display: flex; justify-content: center; align-items: center;
+        }
+        .full-width-header-image video, .full-width-header-image img { 
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.6; 
+        }
+        .header-title-overlay {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: #FFFFFF; text-align: center; width: 100%; z-index: 10;
+        }
+        .header-title-overlay h1 { font-size: 5rem; margin: 0; text-shadow: 0px 4px 20px rgba(0, 0, 0, 1); }
+
         /* --- BANDEAU FORMATIONS (LOGO IUT) --- */
         .banner-iut { width: 100vw; max-height: 250px; background-color: #FFFFFF; display: flex; justify-content: center; align-items: center; overflow: hidden; border-bottom: 1px solid var(--bordure); }
         .banner-iut img { width: 100%; max-height: 250px; object-fit: contain; padding: 20px; }
-
-        /* --- BANDEAU EXPÉRIENCES (RAFALE) - Bord à Bord sans zoom --- */
-        .banner-experience { width: 100vw; display: flex; background-color: #000; overflow: hidden; border-bottom: 1px solid var(--bordure); }
-        .banner-experience img { width: 100%; height: auto; display: block; }
 
         /* --- MISE EN PAGE : FORMATION + ENCADRÉ COMPÉTENCES --- */
         .formation-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; margin-bottom: 100px; align-items: stretch; }
@@ -167,18 +176,33 @@
         .portfolio-card:hover h3 { color: var(--accent-lime); }
         
         .portfolio-img-container { position: relative; width: 100%; height: 280px; margin-bottom: 30px; border: 1px solid var(--bordure); background-color: var(--fond-carte); overflow: hidden; }
-        .portfolio-img { width: 100%; height: 100%; background-size: contain; background-repeat: no-repeat; background-position: center; transition: transform 0.5s ease; opacity: 0.9; }
-        .project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.4rem; font-weight: 500; font-family: 'Playfair Display', serif; }
+        .portfolio-img { position: relative; width: 100%; height: 100%; background-size: contain; background-repeat: no-repeat; background-position: center; transition: transform 0.5s ease; opacity: 0.9; }
+        
+        .project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.4rem; font-weight: 500; font-family: 'Playfair Display', serif; z-index: 5; }
         .portfolio-card:hover .portfolio-img { transform: scale(1.05); opacity: 1; } 
         .portfolio-card:hover .project-overlay { opacity: 1; } 
         
-        .img-outillage { background-image: url('photo/piecemontageph20.png'); }
         .img-oeuf { background-image: url('photo/projet-oeuf.jpg'); }
-        .img-fonderie { background-image: url('photo/piècealluparinject3D.png'); }
         
-        .project-detail-img { width: 100%; height: 500px; margin-bottom: 50px; border: 1px solid var(--bordure); background-color: var(--fond-carte); opacity: 0.9; background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .project-detail-img { position: relative; width: 100%; height: 500px; margin-bottom: 50px; border: 1px solid var(--bordure); background-color: var(--fond-carte); opacity: 0.9; background-size: contain; background-repeat: no-repeat; background-position: center; overflow: hidden; }
 
-        /* EXPÉRIENCES - NOUVELLE GRILLE EATON */
+        /* ASTUCE : Rotation de 90° des 2 images spécifiques (Outillage et Fonderie) */
+        .portfolio-img.img-outillage, .project-detail-img.img-outillage { background-image: none; }
+        .portfolio-img.img-outillage::before, .project-detail-img.img-outillage::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('photo/piecemontageph20.png');
+            background-size: contain; background-repeat: no-repeat; background-position: center;
+            transform: rotate(90deg);
+        }
+        .portfolio-img.img-fonderie, .project-detail-img.img-fonderie { background-image: none; }
+        .portfolio-img.img-fonderie::before, .project-detail-img.img-fonderie::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('photo/piècealluparinject3D.png');
+            background-size: contain; background-repeat: no-repeat; background-position: center;
+            transform: rotate(90deg);
+        }
+
+        /* EXPÉRIENCES - EATON */
         .parcours-eaton { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; background-color: var(--fond-carte); padding: 50px; border: 1px solid var(--bordure); margin-bottom: 100px; }
         
         .experience-item { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 120px; align-items: center; width: 100%; }
@@ -195,8 +219,8 @@
 
         @media (max-width: 1000px) {
             .nav-links { gap: 20px; flex-wrap: wrap; justify-content: center; }
-            .dropdown-content { top: 40px; }
-            .about-top-row { grid-template-columns: 1fr; gap: 50px; }
+            .dropdown-content { top: 100%; }
+            .about-top-row { grid-template-columns: 1fr; gap: 50px; padding-bottom: 0px !important; }
             .timeline-centered::after { left: 20px; transform: none; }
             .tc-item { width: 100%; text-align: left !important; padding-left: 60px !important; padding-right: 0 !important; }
             .tc-item:nth-child(even) { align-self: flex-start; }
@@ -208,7 +232,7 @@
             h1 { font-size: 3.5rem; }
             h2 { font-size: 2.5rem; }
             .project-detail-img { height: 300px; }
-            .content-container { padding: 60px 5%; }
+            .content-container { padding: 50px 5%; }
         }
     </style>
 </head>
@@ -245,7 +269,8 @@
             </video>
         </div>
 
-        <section class="content-container about-top-row">
+        <!-- Marge réduite ici avec style padding-bottom: 20px -->
+        <section class="content-container about-top-row" style="padding-bottom: 20px;">
             <div class="about-text reveal">
                 <h1>Tristan Bobard</h1>
                 <p>Je suis actuellement en BUT Génie Mécanique et Productique à l'IUT d'Orléans.</p>
@@ -485,14 +510,17 @@
     <!-- PAGE 3: EXPÉRIENCES PROFESSIONNELLES -->
     <div id="experiences" class="page-section" style="padding-top: 80px;">
         
-        <!-- Bandeau Rafale Modifié : Pas de zoom, sans titre, image bord à bord -->
-        <div class="banner-experience reveal">
-            <img src="photo/avionnraphale.png" alt="Avion Rafale">
+        <!-- Bandeau Rafale Restitué en Cover avec Titre par-dessus -->
+        <div class="full-width-header-image reveal">
+            <img src="photo/avionnraphale.png" alt="Bandeau Expériences">
+            <div class="header-title-overlay">
+                <h1>Mes Expériences professionnelles</h1>
+            </div>
         </div>
 
         <section class="content-container" style="padding-top: 80px;">
             
-            <!-- Nouveau Bloc Eaton -->
+            <!-- Bloc Eaton -->
             <div class="parcours-eaton reveal">
                 <div class="text-left">
                     <h3 style="border-bottom: 3px solid var(--accent-lime);">mon parcours chez Eaton</h3>
@@ -544,7 +572,6 @@
          SCRIPTS 
          ========================================== -->
     <script>
-        // Fonction classique pour afficher la page
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => { page.classList.remove('active'); });
@@ -565,7 +592,6 @@
             resetAnimations();
         }
 
-        // Fonction pour les sous-menus (Changer de page et scroller jusqu'à la section)
         function goToSection(pageId, sectionId) {
             showPage(pageId);
             setTimeout(() => {
