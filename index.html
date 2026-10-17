@@ -95,7 +95,7 @@
         .bg-video { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
         .about-top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: flex-start; }
         .about-photos { display: flex; flex-direction: column; gap: 40px; }
-        .photo-box { width: 100%; height: 380px; background-color: transparent; background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .photo-box { width: 100%; height: 380px; background-color: var(--fond-carte); background-size: cover; background-repeat: no-repeat; background-position: center; border: 1px solid var(--bordure); }
         .img-p1 { background-image: url('photo/a-propos-1.jpg'); }
         .img-p2 { background-image: url('photo/a-propos-2.jpg'); }
 
@@ -112,9 +112,8 @@
         .tc-content { opacity: 1; font-size: 1rem; color: var(--texte-secondaire); line-height: 1.5; margin-top: 15px; text-align: inherit; }
         .tc-item:hover .tc-dot { background-color: var(--accent-lime); transform: scale(1.3); }
         
-        .tc-image-placeholder { width: 100%; height: 180px; background-color: transparent; border: none; margin-top: 15px; background-size: contain; background-repeat: no-repeat; }
-        .tc-item:nth-child(odd) .tc-image-placeholder { background-position: center right; }
-        .tc-item:nth-child(even) .tc-image-placeholder { background-position: center left; }
+        /* Les images de la frise s'affichent sans bandes vides (cover) */
+        .tc-image-placeholder { width: 100%; height: 200px; background-color: var(--fond-carte); margin-top: 15px; background-size: cover; background-repeat: no-repeat; background-position: center !important; border: 1px solid var(--bordure); }
         
         .img-frise-1 { background-image: url('photo/lycée.png'); }
         .img-frise-2 { background-image: url('photo/etablissementiut.png'); }
@@ -164,6 +163,7 @@
             border: 1px solid var(--bordure); background-color: var(--fond-carte); overflow: hidden; 
         }
         
+        /* FIX : Remplissage à 100% sans espace (Cover) pour TOUTES les images de projets */
         .portfolio-img { position: relative; width: 100%; height: 100%; transition: transform 0.5s ease; opacity: 0.9; }
         .project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.4rem; font-weight: 500; font-family: 'Playfair Display', serif; z-index: 5; }
         
@@ -172,7 +172,7 @@
         
         .portfolio-img.img-oeuf { 
             background-image: url('photo/projet-oeuf.jpg'); 
-            background-size: contain; background-repeat: no-repeat; background-position: center; 
+            background-size: cover; background-repeat: no-repeat; background-position: center; 
         }
         
         .project-detail-img { 
@@ -181,51 +181,52 @@
         }
         .project-detail-img.img-oeuf {
             background-image: url('photo/projet-oeuf.jpg');
-            background-size: contain; background-repeat: no-repeat; background-position: center;
+            background-size: cover; background-repeat: no-repeat; background-position: center;
         }
 
-        /* ROTATION -90° */
+        /* ROTATION -90° ET REMPLISSAGE TOTAL (Cover) */
         .portfolio-img.img-outillage::before, .project-detail-img.img-outillage::before {
             content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('photo/piecemontageph20.png');
-            background-size: contain; background-repeat: no-repeat; background-position: center;
+            background-size: cover; background-repeat: no-repeat; background-position: center;
             transform: rotate(-90deg);
         }
         .portfolio-img.img-fonderie::before, .project-detail-img.img-fonderie::before {
             content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('photo/piècealluparinject3D.png');
-            background-size: contain; background-repeat: no-repeat; background-position: center;
+            background-size: cover; background-repeat: no-repeat; background-position: center;
             transform: rotate(-90deg);
         }
 
-        /* --- BANDEAU RAFALE CORRIGÉ --- */
-        /* Il remonte sous le menu (-80px), prend 100% de la largeur, mais sa hauteur est limitée (50vh) pour être moins épais. L'image se rogne légèrement (cover) pour ne pas laisser de bandes noires. */
+        /* --- BANDEAU EATON LOGO EN HAUT (REMPLACEMENT) --- */
         .banner-experience { 
             width: 100vw; 
-            height: 50vh; /* Moins épais (50% de l'écran) */
-            margin-top: -80px; /* Remonte tout en haut sous le menu */
-            background-color: transparent; 
+            margin-top: -80px; 
+            background-color: #FFFFFF; /* Fond blanc pour que le logo Eaton ressorte bien */
             display: flex; 
             justify-content: center; 
             align-items: center;
             border-bottom: 1px solid var(--bordure); 
-            overflow: hidden;
+            line-height: 0; 
+            padding: 100px 0; /* Ajoute un peu de marge en haut et en bas pour ne pas écraser le logo */
         }
         .banner-experience img { 
-            width: 100%; 
-            height: 100%;
-            object-fit: cover; /* Remplit tout l'espace sans déformer, coupe un peu le ciel */
-            object-position: center; /* Garde l'avion bien au centre */
+            width: auto; 
+            max-width: 80%; 
+            height: auto; 
             display: block; 
         }
 
-        /* EXPÉRIENCES - EATON */
+        /* EXPÉRIENCES - PARCOURS AVEC LE RAFALE --- */
         .parcours-eaton { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; background-color: var(--fond-carte); padding: 50px; border: 1px solid var(--bordure); margin-bottom: 100px; }
+        .image-right { width: 100%; height: 100%; min-height: 300px; }
         
         .experience-item { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 120px; align-items: center; width: 100%; }
         .experience-item:nth-child(even) { direction: rtl; }
         .experience-item:nth-child(even) > * { direction: ltr; }
-        .exp-image { width: 100%; height: 400px; background-color: transparent; border: none; background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0.9; }
+        
+        /* FIX: Remplissage total sans espace pour les images d'expérience */
+        .exp-image { width: 100%; height: 400px; background-color: var(--fond-carte); border: 1px solid var(--bordure); background-size: cover; background-repeat: no-repeat; background-position: center; opacity: 0.9; }
         .img-astronics { background-image: url('photo/exp-astronics.jpg'); }
         .img-linamar { background-image: url('photo/exp-linamar.jpg'); }
 
@@ -249,7 +250,7 @@
             h1 { font-size: 3.5rem; }
             h2 { font-size: 2.5rem; }
             .project-detail-img { height: 300px; }
-            .banner-experience { margin-top: -80px; height: 30vh; }
+            .banner-experience { margin-top: -80px; padding: 120px 0 60px 0; }
             .content-container { padding: 50px 5%; }
         }
     </style>
@@ -526,9 +527,9 @@
     <!-- PAGE 3: EXPÉRIENCES PROFESSIONNELLES -->
     <div id="experiences" class="page-section" style="padding-top: 80px;">
         
-        <!-- BANDEAU RAFALE -->
+        <!-- NOUVEAU BANDEAU : EATON LOGO -->
         <div class="banner-experience reveal">
-            <img src="photo/avionnraphale.png" alt="Expériences professionnelles">
+            <img src="photo/logoEaton.png" alt="Logo Eaton">
         </div>
 
         <section class="content-container" style="padding-top: 80px;">
@@ -538,8 +539,9 @@
                     <h3 style="border-bottom: 3px solid var(--accent-lime);">mon parcours chez Eaton</h3>
                     <p style="margin-top: 20px;">J'ai eu l'opportunité de mettre en pratique mes connaissances académiques lors de plusieurs expériences en entreprise. Ces immersions dans le monde industriel m'ont permis de développer mon autonomie, ma rigueur et ma compréhension des enjeux concrets liés à la conception et à la production.</p>
                 </div>
+                <!-- NOUVELLE IMAGE : AVION RAFALE -->
                 <div class="image-right">
-                    <img src="photo/logoEaton.png" alt="Logo Eaton" style="width: 100%; height: auto; object-fit: contain;">
+                    <img src="photo/avionnraphale.png" alt="Avion Rafale" style="width: 100%; height: 100%; min-height: 350px; object-fit: cover; border: 1px solid var(--bordure);">
                 </div>
             </div>
 
