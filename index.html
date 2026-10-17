@@ -12,21 +12,21 @@
     
     <style>
         /* =========================================
-           STYLES DU SITE (THÈME URBAN LOFT)
+           NOUVEAU THÈME DE COULEURS
            ========================================= */
         :root {
-            --fond-global: #000000;      
-            --fond-encadre: #464646;     
-            --accent-lime: #A35E47;      
+            --fond-global: #FFFAFA;      /* Blanc Neige */
+            --fond-encadre: #ADD8E6;     /* Bleu Ciel (fonds larges) */
+            --accent-lime: #000080;      /* Bleu Marine (titres, accents, boutons) */
             
-            --fond-carte: #121212;       
-            --texte-principal: #FFFFFF;  
-            --texte-secondaire: #9C9A9A; 
+            --fond-carte: #FFFFFF;       /* Blanc pur (cartes, menus) */
+            --texte-principal: #000080;  /* Bleu Marine (titres) */
+            --texte-secondaire: #6D8196; /* Gris-Bleu (paragraphes) */
             
-            --bouton-bg: #A35E47;        
-            --bouton-texte: #FFFFFF;     
-            --bouton-hover: #8A4E39;     
-            --bordure: #333333;          
+            --bouton-bg: #000080;        /* Bleu Marine */
+            --bouton-texte: #FFFAFA;     /* Blanc Neige */
+            --bouton-hover: #6D8196;     /* Gris-Bleu */
+            --bordure: #ADD8E6;          /* Bleu Ciel */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,9 +38,9 @@
         h1 { font-size: 5rem; margin-bottom: 20px; line-height: 1.1; }
         h2 { font-size: 3.2rem; margin-bottom: 30px; line-height: 1.2; }
         h3 { font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--bordure); padding-bottom: 10px; display: inline-block;}
-        p { color: var(--texte-secondaire); font-size: 1.1rem; line-height: 1.9; margin-bottom: 20px; font-weight: 300; }
+        p { color: var(--texte-secondaire); font-size: 1.1rem; line-height: 1.9; margin-bottom: 20px; font-weight: 400; }
 
-        ul.project-list { margin-left: 20px; margin-bottom: 30px; color: var(--texte-secondaire); font-size: 1.1rem; line-height: 1.9; font-weight: 300; }
+        ul.project-list { margin-left: 20px; margin-bottom: 30px; color: var(--texte-secondaire); font-size: 1.1rem; line-height: 1.9; font-weight: 400; }
         ul.project-list li { margin-bottom: 10px; }
 
         .btn-pill {
@@ -54,15 +54,15 @@
         #top-nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             display: flex; justify-content: center; align-items: center;
-            background: rgba(0, 0, 0, 0.95); height: 80px; transition: all 0.3s ease;
-            border-bottom: 1px solid var(--bordure);
+            background: rgba(255, 250, 250, 0.95); height: 80px; transition: all 0.3s ease;
+            border-bottom: 2px solid var(--bordure);
         }
-        #top-nav.scrolled { box-shadow: 0 4px 20px rgba(255,255,255,0.05); }
+        #top-nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
         
         .nav-links { display: flex; gap: 50px; align-items: center; height: 100%; }
         .nav-links a { 
             text-decoration: none; color: var(--texte-secondaire); 
-            font-size: 1rem; font-weight: 400; transition: color 0.3s ease; cursor: pointer; 
+            font-size: 1rem; font-weight: 500; transition: color 0.3s ease; cursor: pointer; 
         }
         .nav-links a:hover, .nav-links a.active { color: var(--accent-lime); font-weight: 600; }
 
@@ -70,16 +70,16 @@
         .dropdown-content {
             display: none; position: absolute; background-color: var(--fond-carte);
             min-width: 180px; top: 100%; left: 50%; transform: translateX(-50%);
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8); z-index: 1001;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1); z-index: 1001;
             border: 1px solid var(--bordure); border-top: 3px solid var(--accent-lime);
         }
         .dropdown-content a {
             color: var(--texte-secondaire) !important; padding: 12px 16px;
             text-decoration: none; display: block; text-align: center;
-            font-weight: 400 !important; font-size: 0.9rem !important; border-bottom: 1px solid var(--bordure);
+            font-weight: 500 !important; font-size: 0.9rem !important; border-bottom: 1px solid var(--bordure);
         }
         .dropdown-content a:last-child { border-bottom: none; }
-        .dropdown-content a:hover { background-color: #222; color: var(--accent-lime) !important; }
+        .dropdown-content a:hover { background-color: var(--fond-encadre); color: var(--accent-lime) !important; }
         .dropdown:hover .dropdown-content { display: block; }
 
         /* --- STRUCTURE DES PAGES ISOLÉES --- */
@@ -88,32 +88,41 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .content-container { width: 100%; max-width: 1600px; margin: 0 auto; padding: 80px 4%; }
+        /* La couleur Bleu Ciel est appliquée au grand encadré de la frise */
         .full-width-bg { width: 100%; background-color: var(--fond-encadre); padding: 70px 0; border-top: 1px solid var(--bordure); border-bottom: 1px solid var(--bordure); }
 
         /* --- PAGE 1: À PROPOS DE MOI --- */
-        .video-container { width: 100%; height: 65vh; background: #000; overflow: hidden; }
-        .bg-video { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+        .video-container { width: 100%; height: 65vh; background: #000; overflow: hidden; border-bottom: 2px solid var(--bordure); }
+        .bg-video { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
         .about-top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: flex-start; }
         .about-photos { display: flex; flex-direction: column; gap: 40px; }
-        .photo-box { width: 100%; height: 380px; background-color: var(--fond-carte); background-size: cover; background-repeat: no-repeat; background-position: center; border: 1px solid var(--bordure); }
+        /* Images A propos : Taille naturelle, pas de cadre */
+        .photo-box { width: 100%; height: 300px; background-color: transparent; background-size: contain; background-repeat: no-repeat; background-position: center; border: none; }
         .img-p1 { background-image: url('photo/a-propos-1.jpg'); }
         .img-p2 { background-image: url('photo/a-propos-2.jpg'); }
 
         /* --- FRISE CHRONOLOGIQUE --- */
         .timeline-centered { position: relative; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; }
-        .timeline-centered::after { content: ''; position: absolute; width: 2px; background-color: rgba(255, 255, 255, 0.1); top: 0; bottom: 0; left: 50%; transform: translateX(-50%); }
+        .timeline-centered::after { content: ''; position: absolute; width: 2px; background-color: var(--bordure); top: 0; bottom: 0; left: 50%; transform: translateX(-50%); }
         .tc-item { width: 50%; position: relative; padding: 15px 0; cursor: pointer; z-index: 2; }
         .tc-item:nth-child(odd) { align-self: flex-start; text-align: right; padding-right: 60px; }
         .tc-item:nth-child(even) { align-self: flex-end; text-align: left; padding-left: 60px; }
-        .tc-dot { position: absolute; width: 20px; height: 20px; background-color: var(--fond-encadre); border: 3px solid var(--accent-lime); border-radius: 50%; top: 20px; transition: all 0.3s ease; }
+        .tc-dot { position: absolute; width: 20px; height: 20px; background-color: var(--fond-global); border: 4px solid var(--accent-lime); border-radius: 50%; top: 20px; transition: all 0.3s ease; }
         .tc-item:nth-child(odd) .tc-dot { right: -10px; }
         .tc-item:nth-child(even) .tc-dot { left: -10px; }
-        .tc-date { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 500; color: var(--texte-principal); }
-        .tc-content { opacity: 1; font-size: 1rem; color: var(--texte-secondaire); line-height: 1.5; margin-top: 15px; text-align: inherit; }
-        .tc-item:hover .tc-dot { background-color: var(--accent-lime); transform: scale(1.3); }
+        .tc-date { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; color: var(--texte-principal); }
+        .tc-content { opacity: 1; font-size: 1.05rem; color: var(--texte-principal); line-height: 1.5; margin-top: 15px; text-align: inherit; }
+        .tc-item:hover .tc-dot { transform: scale(1.3); background-color: var(--accent-lime); }
         
-        /* Les images de la frise s'affichent sans bandes vides (cover) */
-        .tc-image-placeholder { width: 100%; height: 200px; background-color: var(--fond-carte); margin-top: 15px; background-size: cover; background-repeat: no-repeat; background-position: center !important; border: 1px solid var(--bordure); }
+        /* CORRECTION IMAGES FRISE : Hauteur réduite, pas de bordure, pas de fond, pas de zoom (contain) */
+        .tc-image-placeholder { 
+            width: 100%; height: 120px; 
+            background-color: transparent; border: none; 
+            margin-top: 15px; 
+            background-size: contain; background-repeat: no-repeat; 
+        }
+        .tc-item:nth-child(odd) .tc-image-placeholder { background-position: center right; }
+        .tc-item:nth-child(even) .tc-image-placeholder { background-position: center left; }
         
         .img-frise-1 { background-image: url('photo/lycée.png'); }
         .img-frise-2 { background-image: url('photo/etablissementiut.png'); }
@@ -124,12 +133,12 @@
         .bottom-media-row { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; }
         .media-column { display: flex; flex-direction: column; }
         .media-box { position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: var(--fond-carte); overflow: hidden; border: 1px solid var(--bordure); }
-        .cv-column .media-box { aspect-ratio: 16 / 10; background-color: #000; } 
+        .cv-column .media-box { aspect-ratio: 16 / 10; background-color: transparent; border: none; } 
         .media-box video { width: 100%; height: 100%; object-fit: cover; outline: none; }
-        .media-box img.cv-thumbnail { width: 100%; height: 100%; object-fit: contain; opacity: 0.8; transition: transform 0.4s ease; cursor: pointer; }
+        .media-box img.cv-thumbnail { width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s ease; cursor: pointer; }
         
-        .cv-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.2rem; font-weight: 500; font-family: 'Playfair Display', serif; }
-        .media-box:hover img.cv-thumbnail { transform: scale(1.03); opacity: 1; }
+        .cv-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 250, 250, 0.9); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.2rem; font-weight: 600; font-family: 'Playfair Display', serif; }
+        .media-box:hover img.cv-thumbnail { transform: scale(1.03); }
         .media-box:hover .cv-overlay { opacity: 1; }
 
         /* MODAL CV */
@@ -140,82 +149,75 @@
         @keyframes modalZoom { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
         /* --- BANDEAU FORMATIONS (LOGO IUT) --- */
-        .banner-iut { width: 100vw; max-height: 250px; background-color: #FFFFFF; display: flex; justify-content: center; align-items: center; overflow: hidden; border-bottom: 1px solid var(--bordure); }
+        .banner-iut { width: 100vw; max-height: 250px; background-color: #FFFFFF; display: flex; justify-content: center; align-items: center; overflow: hidden; border-bottom: 2px solid var(--bordure); }
         .banner-iut img { width: 100%; max-height: 250px; object-fit: contain; padding: 20px; }
 
         /* --- MISE EN PAGE : FORMATION + ENCADRÉ COMPÉTENCES --- */
         .formation-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; margin-bottom: 100px; align-items: stretch; }
         .formation-intro { background-color: var(--fond-carte); padding: 60px; border: 1px solid var(--bordure); height: 100%; }
         .competences-box { background-color: var(--fond-carte); padding: 60px; border: 1px solid var(--bordure); border-bottom: 5px solid var(--accent-lime); cursor: pointer; transition: transform 0.3s ease; display: flex; flex-direction: column; justify-content: center; }
-        .competences-box:hover { transform: translateY(-8px); }
+        .competences-box:hover { transform: translateY(-8px); background-color: var(--fond-encadre); }
         .competences-box h3 { color: var(--accent-lime); margin-bottom: 20px; font-size: 2.2rem; }
         .link-underline { margin-top: 30px; color: var(--texte-principal); text-decoration: underline; text-decoration-color: var(--accent-lime); text-underline-offset: 8px; font-weight: 500; font-size: 1.1rem; transition: color 0.3s ease; }
-        .competences-box:hover .link-underline { color: var(--accent-lime); }
 
         /* --- GRILLE DES PROJETS --- */
         .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; width: 100%; } 
         .portfolio-card { display: flex; flex-direction: column; align-items: flex-start; text-align: left; cursor: pointer; transition: transform 0.3s ease; }
         .portfolio-card:hover { transform: translateY(-5px); }
-        .portfolio-card:hover h3 { color: var(--accent-lime); }
         
+        /* CORRECTION IMAGES PROJETS : Hauteur réduite, pas de cadre, pas de fond, affichage naturel (contain) */
         .portfolio-img-container { 
-            position: relative; width: 100%; aspect-ratio: 1 / 1; margin-bottom: 30px; 
-            border: 1px solid var(--bordure); background-color: var(--fond-carte); overflow: hidden; 
+            position: relative; width: 100%; height: 200px; margin-bottom: 30px; 
+            border: none; background-color: transparent; overflow: hidden; 
         }
         
-        /* FIX : Remplissage à 100% sans espace (Cover) pour TOUTES les images de projets */
-        .portfolio-img { position: relative; width: 100%; height: 100%; transition: transform 0.5s ease; opacity: 0.9; }
-        .project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.4rem; font-weight: 500; font-family: 'Playfair Display', serif; z-index: 5; }
+        .portfolio-img { position: relative; width: 100%; height: 100%; transition: transform 0.5s ease; }
+        .project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 250, 250, 0.9); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.4rem; font-weight: 600; font-family: 'Playfair Display', serif; z-index: 5; }
         
-        .portfolio-card:hover .portfolio-img { transform: scale(1.05); opacity: 1; } 
+        .portfolio-card:hover .portfolio-img { transform: scale(1.05); } 
         .portfolio-card:hover .project-overlay { opacity: 1; } 
         
         .portfolio-img.img-oeuf { 
             background-image: url('photo/projet-oeuf.jpg'); 
-            background-size: cover; background-repeat: no-repeat; background-position: center; 
+            background-size: contain; background-repeat: no-repeat; background-position: left center; 
         }
         
         .project-detail-img { 
-            position: relative; width: 100%; aspect-ratio: 1 / 1; max-height: 500px; margin-bottom: 50px; 
-            border: 1px solid var(--bordure); background-color: var(--fond-carte); opacity: 0.9; overflow: hidden; 
+            position: relative; width: 100%; height: 350px; margin-bottom: 50px; 
+            border: none; background-color: transparent; overflow: hidden; 
         }
         .project-detail-img.img-oeuf {
             background-image: url('photo/projet-oeuf.jpg');
-            background-size: cover; background-repeat: no-repeat; background-position: center;
+            background-size: contain; background-repeat: no-repeat; background-position: left center;
         }
 
-        /* ROTATION -90° ET REMPLISSAGE TOTAL (Cover) */
+        /* ROTATION -90° (Taille adaptée pour éviter le rognage) */
         .portfolio-img.img-outillage::before, .project-detail-img.img-outillage::before {
             content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('photo/piecemontageph20.png');
-            background-size: cover; background-repeat: no-repeat; background-position: center;
+            background-size: contain; background-repeat: no-repeat; background-position: center;
             transform: rotate(-90deg);
         }
         .portfolio-img.img-fonderie::before, .project-detail-img.img-fonderie::before {
             content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('photo/piècealluparinject3D.png');
-            background-size: cover; background-repeat: no-repeat; background-position: center;
+            background-size: contain; background-repeat: no-repeat; background-position: center;
             transform: rotate(-90deg);
         }
 
-        /* --- BANDEAU EATON LOGO EN HAUT (REMPLACEMENT) --- */
+        /* --- BANDEAU EATON LOGO EN HAUT --- */
         .banner-experience { 
             width: 100vw; 
             margin-top: -80px; 
-            background-color: #FFFFFF; /* Fond blanc pour que le logo Eaton ressorte bien */
+            background-color: #FFFFFF; 
             display: flex; 
             justify-content: center; 
             align-items: center;
-            border-bottom: 1px solid var(--bordure); 
+            border-bottom: 2px solid var(--bordure); 
             line-height: 0; 
-            padding: 100px 0; /* Ajoute un peu de marge en haut et en bas pour ne pas écraser le logo */
+            padding: 100px 0; 
         }
-        .banner-experience img { 
-            width: auto; 
-            max-width: 80%; 
-            height: auto; 
-            display: block; 
-        }
+        .banner-experience img { width: auto; max-width: 80%; height: auto; display: block; }
 
         /* EXPÉRIENCES - PARCOURS AVEC LE RAFALE --- */
         .parcours-eaton { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; background-color: var(--fond-carte); padding: 50px; border: 1px solid var(--bordure); margin-bottom: 100px; }
@@ -225,8 +227,8 @@
         .experience-item:nth-child(even) { direction: rtl; }
         .experience-item:nth-child(even) > * { direction: ltr; }
         
-        /* FIX: Remplissage total sans espace pour les images d'expérience */
-        .exp-image { width: 100%; height: 400px; background-color: var(--fond-carte); border: 1px solid var(--bordure); background-size: cover; background-repeat: no-repeat; background-position: center; opacity: 0.9; }
+        /* Images expériences : naturelles sans cadres */
+        .exp-image { width: 100%; height: 300px; background-color: transparent; border: none; background-size: contain; background-repeat: no-repeat; background-position: center; }
         .img-astronics { background-image: url('photo/exp-astronics.jpg'); }
         .img-linamar { background-image: url('photo/exp-linamar.jpg'); }
 
@@ -243,13 +245,13 @@
             .tc-item { width: 100%; text-align: left !important; padding-left: 60px !important; padding-right: 0 !important; }
             .tc-item:nth-child(even) { align-self: flex-start; }
             .tc-item:nth-child(odd) .tc-dot, .tc-item:nth-child(even) .tc-dot { left: 10px; right: auto; }
-            .tc-image-placeholder { background-position: center !important; height: 180px; }
+            .tc-image-placeholder { background-position: center !important; height: 150px; }
             .bottom-media-row, .formation-layout, .parcours-eaton { grid-template-columns: 1fr; }
             .portfolio-grid, .experience-item { grid-template-columns: 1fr; gap: 40px;}
             .experience-item:nth-child(even) { direction: ltr; }
             h1 { font-size: 3.5rem; }
             h2 { font-size: 2.5rem; }
-            .project-detail-img { height: 300px; }
+            .project-detail-img { height: 250px; }
             .banner-experience { margin-top: -80px; padding: 120px 0 60px 0; }
             .content-container { padding: 50px 5%; }
         }
@@ -527,7 +529,7 @@
     <!-- PAGE 3: EXPÉRIENCES PROFESSIONNELLES -->
     <div id="experiences" class="page-section" style="padding-top: 80px;">
         
-        <!-- NOUVEAU BANDEAU : EATON LOGO -->
+        <!-- BANDEAU LOGO EATON -->
         <div class="banner-experience reveal">
             <img src="photo/logoEaton.png" alt="Logo Eaton">
         </div>
@@ -539,9 +541,9 @@
                     <h3 style="border-bottom: 3px solid var(--accent-lime);">mon parcours chez Eaton</h3>
                     <p style="margin-top: 20px;">J'ai eu l'opportunité de mettre en pratique mes connaissances académiques lors de plusieurs expériences en entreprise. Ces immersions dans le monde industriel m'ont permis de développer mon autonomie, ma rigueur et ma compréhension des enjeux concrets liés à la conception et à la production.</p>
                 </div>
-                <!-- NOUVELLE IMAGE : AVION RAFALE -->
+                <!-- IMAGE RAFALE -->
                 <div class="image-right">
-                    <img src="photo/avionnraphale.png" alt="Avion Rafale" style="width: 100%; height: 100%; min-height: 350px; object-fit: cover; border: 1px solid var(--bordure);">
+                    <img src="photo/avionnraphale.png" alt="Avion Rafale" style="width: 100%; height: 100%; min-height: 350px; object-fit: cover; border-radius: 8px;">
                 </div>
             </div>
 
