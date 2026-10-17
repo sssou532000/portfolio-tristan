@@ -159,7 +159,6 @@
         .portfolio-card:hover { transform: translateY(-5px); }
         .portfolio-card:hover h3 { color: var(--accent-lime); }
         
-        /* ADAPTATION DES CADRES : Passage au format carré pour mieux s'adapter aux images */
         .portfolio-img-container { 
             position: relative; width: 100%; aspect-ratio: 1 / 1; margin-bottom: 30px; 
             border: 1px solid var(--bordure); background-color: var(--fond-carte); overflow: hidden; 
@@ -171,13 +170,11 @@
         .portfolio-card:hover .portfolio-img { transform: scale(1.05); opacity: 1; } 
         .portfolio-card:hover .project-overlay { opacity: 1; } 
         
-        /* Image OEUF (sans rotation) */
         .portfolio-img.img-oeuf { 
             background-image: url('photo/projet-oeuf.jpg'); 
             background-size: contain; background-repeat: no-repeat; background-position: center; 
         }
         
-        /* CADRE DÉTAIL PROJET ADAPTÉ */
         .project-detail-img { 
             position: relative; width: 100%; aspect-ratio: 1 / 1; max-height: 500px; margin-bottom: 50px; 
             border: 1px solid var(--bordure); background-color: var(--fond-carte); opacity: 0.9; overflow: hidden; 
@@ -187,7 +184,7 @@
             background-size: contain; background-repeat: no-repeat; background-position: center;
         }
 
-        /* ROTATION -90° (Soit 180° par rapport au réglage précédent) */
+        /* ROTATION -90° */
         .portfolio-img.img-outillage::before, .project-detail-img.img-outillage::before {
             content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('photo/piecemontageph20.png');
@@ -201,17 +198,20 @@
             transform: rotate(-90deg);
         }
 
-        /* --- BANDEAU RAFALE (Sans zoom, sans titre, le plus grand possible) --- */
+        /* --- BANDEAU RAFALE CORRIGÉ (Touche les bords, sans bandes noires) --- */
         .banner-experience { 
-            width: 100vw; background-color: #000000; 
-            display: flex; justify-content: center; align-items: center; 
-            padding: 40px 0; /* Détache l'image des bords hauts et bas */
+            width: 100vw; 
+            background-color: transparent; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start;
+            padding: 0; /* Supprime l'espace noir en haut et en bas */
             border-bottom: 1px solid var(--bordure); 
         }
         .banner-experience img { 
-            width: 96%; /* Prend un maximum de place sur les côtés */
-            max-height: 75vh; 
-            object-fit: contain; /* AUCUN ZOOM, respecte les proportions */
+            width: 100%; /* S'étend d'un bord à l'autre */
+            height: auto; /* S'adapte à la hauteur réelle de la photo sans bandes */
+            display: block; 
         }
 
         /* EXPÉRIENCES - EATON */
@@ -244,7 +244,7 @@
             h1 { font-size: 3.5rem; }
             h2 { font-size: 2.5rem; }
             .project-detail-img { height: 300px; }
-            .banner-experience img { width: 100%; padding: 0 10px; }
+            .banner-experience img { width: 100%; padding: 0; }
             .content-container { padding: 50px 5%; }
         }
     </style>
@@ -521,7 +521,7 @@
     <!-- PAGE 3: EXPÉRIENCES PROFESSIONNELLES -->
     <div id="experiences" class="page-section" style="padding-top: 80px;">
         
-        <!-- Bandeau Rafale Modifié : Pas de titre, maximum de largeur, détaché des bords et sans zoom -->
+        <!-- Bandeau Rafale -->
         <div class="banner-experience reveal">
             <img src="photo/avionnraphale.png" alt="Expériences professionnelles">
         </div>
