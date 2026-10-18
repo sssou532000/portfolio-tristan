@@ -107,35 +107,47 @@
 
         /* --- FRISE CHRONOLOGIQUE HARMONISÉE --- */
         .timeline-centered { position: relative; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; }
-        .timeline-centered::after { content: ''; position: absolute; width: 3px; background-color: var(--bordure); top: 0; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px;}
-        .tc-item { width: 50%; position: relative; padding: 20px 0; cursor: pointer; z-index: 2; }
+        
+        /* CORRECTION LIGNE CENTRALE : Plus visible et continue */
+        .timeline-centered::after { 
+            content: ''; position: absolute; width: 3px; 
+            background-color: var(--c3-slate); opacity: 0.3; 
+            top: 0; bottom: 0; left: 50%; transform: translateX(-50%); 
+            border-radius: 2px; z-index: 0;
+        }
+        
+        .tc-item { width: 50%; position: relative; padding: 20px 0; cursor: pointer; z-index: 1; }
         .tc-item:nth-child(odd) { align-self: flex-start; text-align: right; padding-right: 60px; }
         .tc-item:nth-child(even) { align-self: flex-end; text-align: left; padding-left: 60px; }
-        .tc-dot { position: absolute; width: 22px; height: 22px; background-color: var(--fond-global); border: 4px solid var(--accent-lime); border-radius: 50%; top: 25px; transition: all 0.3s ease; box-shadow: 0 0 0 4px var(--fond-encadre); }
+        .tc-dot { 
+            position: absolute; width: 22px; height: 22px; background-color: var(--fond-global); 
+            border: 4px solid var(--accent-lime); border-radius: 50%; top: 25px; 
+            transition: all 0.3s ease; z-index: 2; 
+        }
         .tc-item:nth-child(odd) .tc-dot { right: -11px; }
         .tc-item:nth-child(even) .tc-dot { left: -11px; }
         .tc-date { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; color: var(--texte-principal); }
         .tc-content { opacity: 1; font-size: 1.05rem; color: var(--texte-secondaire); line-height: 1.5; margin-top: 15px; text-align: inherit; }
         .tc-item:hover .tc-dot { transform: scale(1.3); background-color: var(--accent-lime); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2); }
         
-        /* Les images de la frise dans de belles cartes centrées et uniformes */
+        /* CORRECTION IMAGES FRISE : Sans bordures blanches, avec coins arrondis (cover) */
         .tc-image-placeholder { 
             width: 100%; max-width: 280px; height: 160px; 
-            background-color: var(--fond-carte); 
-            border: 1px solid var(--bordure); border-radius: 8px;
-            margin-top: 20px; padding: 10px;
-            background-size: contain; background-repeat: no-repeat; background-position: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            background-color: transparent; border: none; 
+            border-radius: 12px; /* Coins arrondis */
+            margin-top: 20px; padding: 0; /* Suppression des marges internes */
+            background-size: cover; background-repeat: no-repeat; background-position: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Jolie ombre */
             transition: transform 0.3s ease;
         }
         .tc-item:nth-child(odd) .tc-image-placeholder { margin-left: auto; margin-right: 0; }
         .tc-item:nth-child(even) .tc-image-placeholder { margin-left: 0; margin-right: auto; }
-        .tc-item:hover .tc-image-placeholder { transform: translateY(-3px); }
+        .tc-item:hover .tc-image-placeholder { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
         
         .img-frise-1 { background-image: url('photo/lycée.png'); }
         .img-frise-2 { background-image: url('photo/etablissementiut.png'); }
         .img-frise-3 { background-image: url('photo/siteeatoncoignière.png'); }
-        .img-frise-4 { background-image: url('photo/signaturecontrateaton.png'); }
+        .img-frise-4 { background-image: url('photo/signaturecontrateaton.png'); background-size: contain; background-color: white;} /* Exception pour la signature qui a besoin de fond blanc */
 
         /* --- LIGNE 3 : CV et Vidéo --- */
         .bottom-media-row { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; }
@@ -254,7 +266,7 @@
             .tc-item { width: 100%; text-align: left !important; padding-left: 60px !important; padding-right: 0 !important; }
             .tc-item:nth-child(even) { align-self: flex-start; }
             .tc-item:nth-child(odd) .tc-dot, .tc-item:nth-child(even) .tc-dot { left: 10px; right: auto; }
-            .tc-image-placeholder { margin-left: 0 !important; max-width: 100%; }
+            .tc-image-placeholder { margin-left: 0 !important; max-width: 100%; height: 200px; }
             .bottom-media-row, .formation-layout, .parcours-eaton { grid-template-columns: 1fr; }
             .portfolio-grid, .experience-item { grid-template-columns: 1fr; gap: 40px;}
             .experience-item:nth-child(even) { direction: ltr; }
@@ -404,7 +416,7 @@
                     <h3>Le BUT Génie Mécanique et Productique (GMP)</h3>
                     <p>Après mon bac STI2D j’ai intégré le BUT Génie Mécanique et Productique à l’IUT d’Orléans. C’est une formation de trois ans qui prépare aux métiers de la conception, de l’industrialisation et de l’organisation industrielle. À Orléans, elle est en plus spécialisée dans l’automobile, ce qui rend les enseignements encore plus concrets.</p>
                     <p>Au fil des semestres j’y ai découvert la conception, la fabrication, la métrologie, et même le passage au banc de différents véhicules. Les cours théoriques sont toujours accompagnés de projets pratiques, encadrés par des enseignants experts dans leur domaine, et c’est ce qui m’a permis de mieux comprendre ce que j’apprenais.</p>
-                    <p>Enfin à partir de la deuxième année, j’ai choisi le parcours Simulation Numérique et Réalité Virtuelle. Grâce à lui, j’ai appris à simuler le fonctionnement de mécanismes, et j’ai pu ainsi acquérir des compétences techniques solides.</p>
+                    <p>Enfin à partir de la deuxième année, j’ai choisi le parcours Simulation Numérique et Réalité Virtuelle. Grâce à ce parcours j’ai appris à simuler le fonctionnement de mécanismes et j’ai pu ainsi acquérir des compétences techniques solides.</p>
                 </div>
 
                 <div class="competences-box reveal delay-1" onclick="showPage('competences-iut')">
