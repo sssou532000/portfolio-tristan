@@ -105,7 +105,7 @@
         .img-p1 { background-image: url('photo/a-propos-1.jpg'); }
         .img-p2 { background-image: url('photo/a-propos-2.jpg'); }
 
-        /* --- FRISE CHRONOLOGIQUE --- */
+        /* --- FRISE CHRONOLOGIQUE HARMONISÉE --- */
         .timeline-centered { position: relative; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; }
         .timeline-centered::after { content: ''; position: absolute; width: 3px; background-color: var(--c3-slate); opacity: 0.3; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px;}
         .tc-item { width: 50%; position: relative; padding: 20px 0; cursor: pointer; z-index: 1; }
@@ -210,55 +210,49 @@
 
 
         /* =======================================================
-           NOUVELLES CLASSES POUR LES IMAGES DANS LE TEXTE (Étapes)
+           NOUVELLES CLASSES : TAILLES 2X ET 3X POUR LES IMAGES
            ======================================================= */
         
-        /* Conteneur principal qui s'adapte (Colonne = prend 100% de large, Grid = côte à côte) */
         .step-gallery { 
-            display: flex; flex-direction: column; gap: 40px; margin: 30px 0; width: 100%; 
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin: 30px 0; width: 100%; 
         }
-        .step-gallery.grid-2 { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 30px; 
-        }
-        @media (max-width: 800px) { .step-gallery.grid-2 { grid-template-columns: 1fr; } }
 
-        /* Chaque image dans son conteneur pur */
-        .step-img-wrapper { 
-            display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; 
+        .gallery-item { 
+            display: flex; flex-direction: column; align-items: center; gap: 12px;
         }
-        
-        /* Zéro fond, Zéro bordure, 100% propre ! */
-        .step-img-wrapper img { 
-            width: 100%; height: auto; /* S'adapte naturellement sans bandes */
+
+        /* Tailles contrôlées (2x = ~450px | 3x = ~750px) */
+        .img-2x { width: 100%; max-width: 450px; }
+        .img-3x { width: 100%; max-width: 750px; }
+
+        /* Images naturelles (contain), sans rognage, avec une légère ombre */
+        .gallery-item img { 
+            width: 100%; height: auto; max-height: 600px;
             border-radius: 8px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Jolie ombre portée */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
             display: block; 
+            object-fit: contain;
             background-color: transparent; border: none; padding: 0;
         }
 
-        .step-img-wrapper span { 
+        .gallery-item span { 
             font-size: 0.95rem; color: var(--texte-secondaire); font-style: italic; text-align: center; 
         }
 
-        /* --- LE CORRECTIF MAGIQUE POUR L'IMAGE TOURNÉE --- */
-        /* Empêche le bug visuel de déborder sur le texte */
-        .rotated-img {
-            width: 100%;
-            height: 350px; /* Fixe la hauteur dans la page */
+        /* CORRECTIF : Rotation qui respecte la taille 3x sans déborder */
+        .rotated-wrapper {
+            width: 100%; max-width: 750px; /* Force la taille 3x */
+            height: 500px; /* Donne la hauteur nécessaire pour que l'image tourne sans se faire couper */
             position: relative;
         }
-        .rotated-img::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+        .rotated-wrapper::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background-image: var(--bg-url);
-            background-size: contain; /* Évite les bandes, ajuste parfaitement */
-            background-repeat: no-repeat;
-            background-position: center;
+            background-size: contain; 
+            background-repeat: no-repeat; background-position: center;
             transform: rotate(-90deg);
-            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.15)); /* Ombre sur l'image tournée */
+            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.15));
         }
-
 
         /* --- BANDEAU EATON LOGO EN HAUT --- */
         .banner-experience { 
@@ -302,6 +296,7 @@
             .project-detail-img { height: 250px; }
             .banner-experience { margin-top: -80px; padding: 120px 0 60px 0; }
             .content-container { padding: 50px 5%; }
+            .rotated-wrapper { height: 350px; }
         }
     </style>
 </head>
@@ -524,8 +519,9 @@
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 2 : Modélisation 3D (CAO)</strong><br>
                         J’ai ensuite modélisé cet outillage sur le logiciel Creo, en veillant à concevoir des formes adaptées pour en faciliter l'usinage.
                         
+                        <!-- L'image de l'étape 2 est en taille "2x" -->
                         <div class="step-gallery">
-                            <div class="step-img-wrapper">
+                            <div class="gallery-item img-2x">
                                 <img src="photo/montageindusfao.png" alt="Modélisation outillage">
                             </div>
                         </div>
@@ -534,14 +530,15 @@
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Programmation (FAO)</strong><br>
                         Cette étape s'est déroulée en deux phases. J'ai d'abord programmé l'usinage du dessous de la pièce et de ses surfaces d’appui, puis j'ai programmé la réalisation de l'empreinte qui accueillera la future pièce à usiner.
                         
+                        <!-- Les images de l'étape 3 sont en taille "3x" -->
                         <div class="step-gallery">
-                            <div class="step-img-wrapper">
+                            <div class="gallery-item img-3x">
                                 <img src="photo/vérificationp20montage.png" alt="Vérification">
                             </div>
-                            <div class="step-img-wrapper">
+                            <div class="gallery-item img-3x">
                                 <img src="photo/ph20monategusinage.png" alt="Phase 20">
                             </div>
-                            <div class="step-img-wrapper">
+                            <div class="gallery-item img-3x">
                                 <img src="photo/ph10montageusinage.png" alt="Phase 10">
                             </div>
                         </div>
@@ -550,9 +547,10 @@
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 4 : Fabrication</strong><br>
                         Une fois le programme généré et validé, j’ai procédé à la fabrication physique de la pièce sur une machine à commande numérique.
                         
+                        <!-- L'image tournée en taille "3x" -->
                         <div class="step-gallery">
-                            <div class="step-img-wrapper">
-                                <div class="rotated-img" style="--bg-url: url('photo/piecemontageph20.png');"></div>
+                            <div class="gallery-item img-3x">
+                                <div class="rotated-wrapper" style="--bg-url: url('photo/piecemontageph20.png');"></div>
                             </div>
                         </div>
                     </li>
@@ -607,11 +605,11 @@
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 2 : Modéliser la pièce en 3D (Logiciel de CAO)</strong><br>
                         L'instruction principale ici est de concevoir l'outillage virtuellement sur le logiciel Créo Paramétric. On modélise le brut en y ajoutant des surépaisseurs d'usinage et des angles de dépouille, noyau, canal de coulée...
                         
-                        <div class="step-gallery grid-2">
-                            <div class="step-img-wrapper">
+                        <div class="step-gallery">
+                            <div class="gallery-item img-2x">
                                 <img src="photo/caoassemblefonderie2.png" alt="CAO Assemblage Fonderie">
                             </div>
-                            <div class="step-img-wrapper">
+                            <div class="gallery-item img-2x">
                                 <img src="photo/fonderiepièce1cao.png" alt="CAO Pièce Fonderie">
                             </div>
                         </div>
@@ -621,12 +619,12 @@
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Création des plaques demi-modèles</strong><br>
                         Une fois la modélisation terminée, il faut fabriquer les plaques demi-modèles. Pour cette fabrication, nous pouvons paramétrer la machine d'usinage via un logiciel de FAO afin d'usiner les plaques sur des fraiseuses à commande numérique, ou bien utiliser une imprimante 3D pour les obtenir par fabrication additive.
                         
-                        <div class="step-gallery grid-2">
-                            <div class="step-img-wrapper">
+                        <div class="step-gallery">
+                            <div class="gallery-item img-3x">
                                 <img src="photo/plaquedemiemodèle3d.png" alt="Plaque imprimée en 3D">
                                 <span>Plaques obtenues par impression 3D</span>
                             </div>
-                            <div class="step-img-wrapper">
+                            <div class="gallery-item img-3x">
                                 <img src="photo/plaquemodeleusine.png" alt="Plaque usinée en commande numérique">
                                 <span>Plaques obtenues par usinage CNC</span>
                             </div>
@@ -638,19 +636,19 @@
                         À l'aide des plaques demi-modèles obtenues à l'étape précédente (par usinage ou impression 3D), on prépare le moule. On place la plaque dans un châssis, on la saupoudre de talc, puis on vient y tasser fermement du sable de moulage. La consigne la plus critique est de s'assurer de l'alignement parfait des deux moitiés juste avant d'y couler le métal en fusion.
                         
                         <div class="step-gallery" style="margin-top: 20px; margin-bottom: 20px;">
-                            <div class="step-img-wrapper">
-                                <img src="photo/hommefond.png" alt="Opération de coulée en fonderie" style="max-height: 400px; width: auto;">
+                            <div class="gallery-item img-3x">
+                                <img src="photo/hommefond.png" alt="Opération de coulée en fonderie">
                             </div>
                         </div>
 
                         <p style="margin-top: 20px; margin-bottom: 10px;"><strong>Voici les deux pièces finales différentes que j'ai obtenues :</strong></p>
                         
-                        <div class="step-gallery grid-2">
-                            <div class="step-img-wrapper">
+                        <div class="step-gallery">
+                            <div class="gallery-item img-3x">
                                 <img src="photo/piecefonderi1.png" alt="Première pièce de fonderie">
                             </div>
-                            <div class="step-img-wrapper">
-                                <div class="rotated-img" style="--bg-url: url('photo/piècealluparinject3D.png');"></div>
+                            <div class="gallery-item img-3x">
+                                <div class="rotated-wrapper" style="--bg-url: url('photo/piècealluparinject3D.png');"></div>
                             </div>
                         </div>
                     </li>
