@@ -107,23 +107,11 @@
 
         /* --- FRISE CHRONOLOGIQUE HARMONISÉE --- */
         .timeline-centered { position: relative; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; }
-        
-        .timeline-centered::after { 
-            content: ''; position: absolute; width: 3px; 
-            background-color: var(--c3-slate); opacity: 0.3; 
-            top: 0; bottom: 0; left: 50%; transform: translateX(-50%); 
-            border-radius: 2px; z-index: 0;
-        }
-        
+        .timeline-centered::after { content: ''; position: absolute; width: 3px; background-color: var(--c3-slate); opacity: 0.3; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px;}
         .tc-item { width: 50%; position: relative; padding: 20px 0; cursor: pointer; z-index: 1; }
         .tc-item:nth-child(odd) { align-self: flex-start; text-align: right; padding-right: 60px; }
         .tc-item:nth-child(even) { align-self: flex-end; text-align: left; padding-left: 60px; }
-        .tc-dot { 
-            position: absolute; width: 22px; height: 22px; background-color: var(--fond-global); 
-            border: 4px solid var(--accent-lime); border-radius: 50%; top: 25px; 
-            transition: all 0.3s ease; z-index: 2; 
-            box-shadow: 0 0 0 4px var(--fond-encadre);
-        }
+        .tc-dot { position: absolute; width: 22px; height: 22px; background-color: var(--fond-global); border: 4px solid var(--accent-lime); border-radius: 50%; top: 25px; transition: all 0.3s ease; box-shadow: 0 0 0 4px var(--fond-encadre); z-index: 2; }
         .tc-item:nth-child(odd) .tc-dot { right: -11px; }
         .tc-item:nth-child(even) .tc-dot { left: -11px; }
         .tc-date { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; color: var(--texte-principal); }
@@ -132,8 +120,7 @@
         
         .tc-image-placeholder { 
             width: 100%; max-width: 280px; height: 160px; 
-            background-color: transparent; border: none; 
-            border-radius: 12px; 
+            background-color: transparent; border: none; border-radius: 12px;
             margin-top: 20px; padding: 0; 
             background-size: cover; background-repeat: no-repeat; background-position: center;
             box-shadow: 0 8px 16px rgba(0,0,0,0.1); 
@@ -201,10 +188,10 @@
         .portfolio-card:hover .portfolio-img { transform: scale(1.05); } 
         .portfolio-card:hover .project-overlay { opacity: 1; } 
         
-        .portfolio-img.img-oeuf { background-image: url('photo/projet-oeuf.jpg'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .portfolio-img.img-oeuf { background-image: url('photo/projetoeufsurprise.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
         
         .project-detail-img { position: relative; width: 100%; height: 350px; margin-bottom: 50px; border: none; background-color: transparent; overflow: hidden; border-radius: 8px; }
-        .project-detail-img.img-oeuf { background-image: url('photo/projet-oeuf.jpg'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .project-detail-img.img-oeuf { background-image: url('photo/projetoeufsurprise.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
 
         /* ROTATION -90° */
         .portfolio-img.img-outillage::before, .project-detail-img.img-outillage::before {
@@ -345,7 +332,7 @@
                         <div class="tc-dot"></div>
                         <div class="tc-date">Septembre 2024</div>
                         <div class="tc-content">
-                            Entrée en BUT Génie Mécanique et Productique (GMP).
+                            Entrée en BUT Génie Mécanique et Productique (GMP) à l'IUT d'Orléans.
                             <div class="tc-image-placeholder img-frise-2"></div>
                         </div>
                     </div>
@@ -354,7 +341,7 @@
                         <div class="tc-dot"></div>
                         <div class="tc-date">Avril 2026</div>
                         <div class="tc-content">
-                            Premier stage technique en bureau des méthodes au sein de EATON.
+                            Premier stage technique en bureau des méthodes au sein de <br> EATON.
                             <div class="tc-image-placeholder img-frise-3"></div>
                         </div>
                     </div>
@@ -363,7 +350,7 @@
                         <div class="tc-dot"></div>
                         <div class="tc-date">Juin 2026</div>
                         <div class="tc-content">
-                            Signature de mon contrat d’alternance pour la 3 -ème années d’alternance.
+                            Signature de mon contrat d’alternance chez EATON pour la 3 -ème années d’alternance.
                             <div class="tc-image-placeholder img-frise-4"></div>
                         </div>
                     </div>
@@ -420,7 +407,6 @@
 
                 <div class="competences-box reveal delay-1" onclick="showPage('competences-iut')">
                     <h3>Compétences acquises à l'IUT</h3>
-                    <p>Découvrez en détail les outils, logiciels et méthodes que j'ai pu maîtriser au cours de ma formation.</p>
                     <span class="link-underline">Voir mes compétences &rarr;</span>
                 </div>
             </div>
@@ -497,14 +483,38 @@
                     <li style="margin-bottom: 25px;">
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 2 : Modélisation 3D (CAO)</strong><br>
                         J’ai ensuite modélisé cet outillage sur le logiciel Creo, en veillant à concevoir des formes adaptées pour en faciliter l'usinage.
+                        
+                        <div class="step-row" style="margin-top: 20px;">
+                            <div class="step-col">
+                                <img src="photo/montageindusfao.png" alt="Modélisation outillage">
+                            </div>
+                        </div>
                     </li>
                     <li style="margin-bottom: 25px;">
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Programmation (FAO)</strong><br>
-                        Suite à la modélisation, j’ai paramétré la FAO afin de générer le programme d'usinage. Cette étape s'est déroulée en deux phases : une première pour usiner le dessous de la pièce et ses surfaces d’appui, puis une seconde pour réaliser la forme (l'empreinte) qui accueillera la future pièce à usiner.
+                        Suite à la modélisation, j’ai paramétré la FAO afin de générer le programme d'usinage. Cette étape s'est déroulée en deux phases : une première pour usiner le dessous de la pièce et ses surfaces d’appui, puis une seconde pour réaliser l'empreinte qui accueillera la future pièce à usiner.
+                        
+                        <div class="step-row" style="margin-top: 20px;">
+                            <div class="step-col">
+                                <img src="photo/vérificationp20montage.png" alt="Vérification">
+                            </div>
+                            <div class="step-col">
+                                <img src="photo/ph20monategusinage.png" alt="Phase 20">
+                            </div>
+                            <div class="step-col">
+                                <img src="photo/ph10montageusinage.png" alt="Phase 10">
+                            </div>
+                        </div>
                     </li>
                     <li style="margin-bottom: 25px;">
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 4 : Fabrication</strong><br>
                         Une fois le programme généré et validé, j’ai procédé à la fabrication physique de la pièce sur une machine à commande numérique.
+                        
+                        <div class="step-row" style="margin-top: 20px;">
+                            <div class="step-col">
+                                <img src="photo/piecemontageph20.png" alt="Pièce finale" class="img-rotate-90">
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
