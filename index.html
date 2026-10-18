@@ -12,22 +12,20 @@
     
     <style>
         /* =========================================
-           NOUVEAU THÈME : NAVY & GRIS (Basé sur ton image)
+           THÈME : BLEU COBALT & GRIS CLAIR
            ========================================= */
         :root {
-            /* Palette extraite de l'image */
-            --c1-navy: #0A1128;       /* Bleu marine profond */
-            --c2-charcoal: #1F2429;   /* Gris anthracite */
-            --c3-slate: #757A80;      /* Gris moyen */
-            --c4-lightgray: #D2D5D9;  /* Gris clair */
-            --c5-pearl: #EBEDF0;      /* Gris perle / Blanc cassé */
+            --c1-navy: #0A1128;       
+            --c2-charcoal: #1F2429;   
+            --c3-slate: #757A80;      
+            --c4-lightgray: #D2D5D9;  
+            --c5-pearl: #EBEDF0;      
 
-            /* Application au site */
             --fond-global: var(--c5-pearl);      
             --fond-encadre: var(--c4-lightgray); 
             --accent-lime: var(--c1-navy);       
             
-            --fond-carte: #FFFFFF; /* Blanc pur pour les cartes pour la lisibilité */
+            --fond-carte: #FFFFFF; 
             --texte-principal: var(--c2-charcoal);  
             --texte-secondaire: var(--c3-slate); 
             
@@ -222,6 +220,18 @@
             transform: rotate(-90deg);
         }
 
+        /* --- CLASSES POUR L'INTÉGRATION DES IMAGES DANS LES ÉTAPES --- */
+        .step-row { display: flex; gap: 20px; margin-top: 25px; margin-bottom: 35px; width: 100%; justify-content: center;}
+        .step-col { flex: 1; display: flex; flex-direction: column; align-items: center; max-width: 400px; }
+        .step-col img { 
+            width: 100%; height: 250px; object-fit: contain; 
+            border: 1px solid var(--bordure); border-radius: 8px; 
+            background-color: var(--fond-carte); padding: 10px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .step-col span { margin-top: 12px; font-size: 0.95rem; color: var(--texte-secondaire); font-style: italic; }
+        .img-rotate-90 { transform: rotate(-90deg); }
+
         /* --- BANDEAU EATON LOGO EN HAUT --- */
         .banner-experience { 
             width: 100vw; 
@@ -262,6 +272,7 @@
             .bottom-media-row, .formation-layout, .parcours-eaton { grid-template-columns: 1fr; }
             .portfolio-grid, .experience-item { grid-template-columns: 1fr; gap: 40px;}
             .experience-item:nth-child(even) { direction: ltr; }
+            .step-row { flex-direction: column; align-items: center; }
             h1 { font-size: 3.5rem; }
             h2 { font-size: 2.5rem; }
             .project-detail-img { height: 250px; }
@@ -526,14 +537,67 @@
             <button class="btn-pill" onclick="showPage('formations')" style="margin-bottom: 40px;">&larr; Retour aux projets</button>
             <div class="reveal">
                 <h2>Fonderie</h2>
-                <div class="project-detail-img img-fonderie"></div>
-                <h3>Processus de création d’une pièce de fonderie : de la CAO à la coulée</h3>
-                <p>Lors d’un projet au sein du département GMP de l’IUT d’Orléans, j’ai mené de bout en bout la réalisation d'une pièce de fonderie. Voici la méthodologie appliquée :</p>
-                <ul class="project-list">
-                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 1 : Analyser et définir la stratégie de fabrication</strong><br>L'objectif est de comprendre les contraintes de la pièce pour définir la meilleure méthode de travail via la rédaction de gammes de fabrication détaillées.</li>
-                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 2 : Modéliser la pièce en 3D (Logiciel de CAO)</strong><br>L'instruction principale ici est de concevoir l'outillage virtuellement sur le logiciel Créo Paramétric. On modélise le brut en y ajoutant des surépaisseurs d'usinage et des angles de dépouille.</li>
-                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Programmer et lancer l'usinage (Logiciel de FAO)</strong><br>Une fois convertie au format STL, on paramètre la machine d'usinage via SRP Player et on usine les plaques sur des fraiseuses à commande numérique.</li>
-                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 4 : Préparer le moule en sable et procéder à la coulée</strong><br>On place la plaque usinée dans un châssis, on la saupoudre de talc, puis on vient y tasser fermement du sable de moulage. La consigne la plus critique est de s'assurer de l'alignement parfait des deux moitiés juste avant d'y couler le métal en fusion.</li>
+                
+                <h3>Processus de création de pièces de fonderie : de la CAO à la coulée</h3>
+                <p>Fort de mon expérience acquise lors de la réalisation de deux pièces de fonderie distinctes au sein du département GMP de l'IUT d'Orléans, j'ai pu maîtriser de bout en bout la méthodologie complexe qu'exige ce procédé. De la conception virtuelle à la coulée finale, voici les étapes clés que j'applique pour garantir la viabilité et la qualité d'une pièce de fonderie :</p>
+                
+                <ul class="project-list" style="margin-top: 30px;">
+                    <li style="margin-bottom: 35px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 1 : Analyser et définir la stratégie de fabrication</strong><br>
+                        L'objectif est de comprendre les contraintes de la pièce pour définir la meilleure méthode de travail via la rédaction de gammes de fabrication détaillées.
+                    </li>
+                    
+                    <li style="margin-bottom: 35px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 2 : Modéliser la pièce en 3D (Logiciel de CAO)</strong><br>
+                        L'instruction principale ici est de concevoir l'outillage virtuellement sur le logiciel Créo Paramétric. On modélise le brut en y ajoutant des surépaisseurs d'usinage et des angles de dépouille, noyau, canal de coulée...
+                        
+                        <div class="step-row">
+                            <div class="step-col">
+                                <img src="photo/caoassemblefonderie2.png" alt="CAO Assemblage Fonderie">
+                            </div>
+                            <div class="step-col">
+                                <img src="photo/fonderiepièce1cao.png" alt="CAO Pièce Fonderie">
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li style="margin-bottom: 35px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Création des plaques demi-modèles</strong><br>
+                        Une fois la modélisation terminée, il faut fabriquer les plaques demi-modèles. Pour cela, deux solutions s'offrent à nous : nous pouvons soit paramétrer la machine d'usinage via un logiciel de FAO pour usiner les plaques sur des fraiseuses à commande numérique, soit utiliser une imprimante 3D pour obtenir les plaques par fabrication additive.
+                        
+                        <div class="step-row">
+                            <div class="step-col">
+                                <img src="photo/plaquedemiemodèle3d.png" alt="Plaque imprimée en 3D">
+                                <span>Plaques obtenues par impression 3D</span>
+                            </div>
+                            <div class="step-col">
+                                <img src="photo/plaquemodeleusine.png" alt="Plaque usinée en commande numérique">
+                                <span>Plaques obtenues par usinage CNC</span>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li style="margin-bottom: 35px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 4 : Préparer le moule en sable et procéder à la coulée</strong><br>
+                        À l'aide des plaques demi-modèles obtenues à l'étape précédente (par usinage ou impression 3D), on prépare le moule. On place la plaque dans un châssis, on la saupoudre de talc, puis on vient y tasser fermement du sable de moulage. La consigne la plus critique est de s'assurer de l'alignement parfait des deux moitiés juste avant d'y couler le métal en fusion.
+                        
+                        <div class="step-row" style="margin-top: 20px; margin-bottom: 20px;">
+                            <div class="step-col">
+                                <img src="photo/hommefond.png" alt="Opération de coulée en fonderie" style="height: 350px;">
+                            </div>
+                        </div>
+
+                        <p style="margin-top: 20px; margin-bottom: 10px;"><strong>Voici les deux pièces finales différentes que j'ai obtenues :</strong></p>
+                        
+                        <div class="step-row">
+                            <div class="step-col">
+                                <img src="photo/piecefonderi1.png" alt="Première pièce de fonderie">
+                            </div>
+                            <div class="step-col">
+                                <img src="photo/piècealluparinject3D.png" alt="Deuxième pièce de fonderie" class="img-rotate-90">
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </section>
