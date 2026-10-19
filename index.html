@@ -208,13 +208,15 @@
             transform: rotate(-90deg);
         }
 
-
         /* =======================================================
            NOUVELLES CLASSES : TAILLES 2X ET 3X POUR LES IMAGES
            ======================================================= */
         
         .step-gallery { 
             display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin: 30px 0; width: 100%; 
+        }
+        .step-gallery.grid-2 { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 30px; 
         }
 
         .gallery-item { 
@@ -225,7 +227,7 @@
         .img-2x { width: 100%; max-width: 450px; }
         .img-3x { width: 100%; max-width: 750px; }
 
-        /* Images naturelles (contain), sans rognage, avec une légère ombre */
+        /* Images naturelles (contain), sans rognage, sans fond */
         .gallery-item img { 
             width: 100%; height: auto; max-height: 600px;
             border-radius: 8px; 
@@ -239,10 +241,10 @@
             font-size: 0.95rem; color: var(--texte-secondaire); font-style: italic; text-align: center; 
         }
 
-        /* CORRECTIF : Rotation qui respecte la taille 3x sans déborder */
+        /* ROTATION SANS DÉBORDEMENT */
         .rotated-wrapper {
-            width: 100%; max-width: 750px; /* Force la taille 3x */
-            height: 500px; /* Donne la hauteur nécessaire pour que l'image tourne sans se faire couper */
+            width: 100%; max-width: 750px;
+            height: 500px; 
             position: relative;
         }
         .rotated-wrapper::before {
@@ -291,6 +293,7 @@
             .bottom-media-row, .formation-layout, .parcours-eaton { grid-template-columns: 1fr; }
             .portfolio-grid, .experience-item { grid-template-columns: 1fr; gap: 40px;}
             .experience-item:nth-child(even) { direction: ltr; }
+            .step-gallery.grid-2 { grid-template-columns: 1fr; }
             h1 { font-size: 3.5rem; }
             h2 { font-size: 2.5rem; }
             .project-detail-img { height: 250px; }
@@ -519,7 +522,6 @@
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 2 : Modélisation 3D (CAO)</strong><br>
                         J’ai ensuite modélisé cet outillage sur le logiciel Creo, en veillant à concevoir des formes adaptées pour en faciliter l'usinage.
                         
-                        <!-- L'image de l'étape 2 est en taille "2x" -->
                         <div class="step-gallery">
                             <div class="gallery-item img-2x">
                                 <img src="photo/montageindusfao.png" alt="Modélisation outillage">
@@ -528,9 +530,8 @@
                     </li>
                     <li style="margin-bottom: 25px;">
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Programmation (FAO)</strong><br>
-                        Cette étape s'est déroulée en deux phases. J'ai d'abord programmé l'usinage du dessous de la pièce et de ses surfaces d’appui, puis j'ai programmé la réalisation de l'empreinte qui accueillera la future pièce à usiner.
+                        Le programme d’usinage s'est déroulé en deux phases j'ai d'abord réalisé la face inférieure et le contour de la pièce puis j'ai usiné la face supérieure conçue pour assurer la mise en position de la future pièce sur ce montage
                         
-                        <!-- Les images de l'étape 3 sont en taille "3x" -->
                         <div class="step-gallery">
                             <div class="gallery-item img-3x">
                                 <img src="photo/vérificationp20montage.png" alt="Vérification">
@@ -547,7 +548,6 @@
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 4 : Fabrication</strong><br>
                         Une fois le programme généré et validé, j’ai procédé à la fabrication physique de la pièce sur une machine à commande numérique.
                         
-                        <!-- L'image tournée en taille "3x" -->
                         <div class="step-gallery">
                             <div class="gallery-item img-3x">
                                 <div class="rotated-wrapper" style="--bg-url: url('photo/piecemontageph20.png');"></div>
@@ -566,21 +566,51 @@
                 <h2>Oeuf surprise : De la théorie au thermoformage</h2>
                 <div class="project-detail-img img-oeuf"></div>
                 
-                <h3 style="margin-top: 30px;">1. Dimensionnement et calculs d'un œuf en fibre de carbone</h3>
-                <p>Dans un premier temps, le projet a été étudié pour une fabrication en fibre de carbone sur un grand moule (325 mm x 245 mm). Voici la méthodologie employée pour le dimensionnement théorique :</p>
-                <ul class="project-list">
-                    <li style="margin-bottom: 15px;"><strong style="color: var(--accent-lime);">Matériaux :</strong> Sélection d'un tissu de fibre de carbone en sergé (193 g/m²). La souplesse de ce type de tissage permet d'épouser les courbes du moule de manière optimale sans provoquer de plis.</li>
-                    <li style="margin-bottom: 15px;"><strong style="color: var(--accent-lime);">Calcul du nombre de plis :</strong> La conception exigeait une paroi de 3 mm d'épaisseur. À partir de l'épaisseur ciblée et d'un taux de fibre défini à 45 %, le calcul théorique a permis de déterminer qu'il fallait utiliser exactement 14 plis de tissu.</li>
-                    <li style="margin-bottom: 15px;"><strong style="color: var(--accent-lime);">Calcul des masses requises :</strong> Suivant les équations de conception, la masse de fibre a été calculée à 215,14 g. Ensuite, le calcul de la matrice nécessaire indiquait un total de 285,89 g.</li>
-                </ul>
+                <h3 style="margin-top: 30px;">L'objectif de notre projet</h3>
+                <p>L'objectif de notre projet était de fabriquer un "objet mystère" de A à Z. Notre mission était de construire un grand œuf refermable qui cachait à l'intérieur une véritable petite balançoire en métal. Sur cette balançoire, nous devions fabriquer et installer un petit bonhomme en bois articulé. Le but principal de ce projet était donc d'apprendre à passer de la théorie à la pratique en utilisant toutes sortes de techniques concrètes de la découpe du métal à l'impression 3D.</p>
 
-                <h3 style="margin-top: 50px;">2. Procédure de fabrication finale en thermoformage (Plastique PET)</h3>
-                <p>Suite aux retours techniques et pour des raisons d'adaptation, la fabrication de la coque a finalement été réorientée et réalisée avec succès via la technique du thermoformage. Voici la procédure de réalisation :</p>
-                <ul class="project-list">
-                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 1 : Chauffage de la matière</strong><br>La première étape consiste à placer une plaque de plastique PET dans la thermoformeuse. Il a été déterminé expérimentalement que la plaque nécessitait un temps de chauffe précis de 50 secondes.</li>
-                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 2 : Moulage par le vide</strong><br>Une fois la plaque ramollie, l'aspiration de la machine est activée. L'air entre le moule et la plaque est évacué hermétiquement, forçant le plastique à épouser instantanément la géométrie du moule. </li>
-                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Ébavurage et finitions</strong><br>Après le refroidissement, la pièce est retirée et ébavurée pour enlever l'excédent de PET. Pour la finition esthétique, les pièces sont poncées puis peintes uniformément à la bombe.</li>
-                    <li style="margin-bottom: 25px;"><strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 4 : Assemblage et mécanisme de fermeture</strong><br>À l'arrière, des charnières sont vissées sur des supports modélisés et imprimés en 3D (PLA), puis fixés aux coques grâce à de la colle néoprène. À l'avant, la fermeture est sécurisée par un scratch.</li>
+                <h3 style="margin-top: 40px; font-size: 1.5rem; border:none;">Les grandes étapes de mon travail réalisé en rapport avec la réalisation de l'œuf</h3>
+                
+                <ul class="project-list" style="margin-top: 20px;">
+                    <li style="margin-bottom: 35px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">La conception et les calculs initiaux</strong><br>
+                        Au tout début du projet j'ai réalisé la conception théorique et les différents calculs nécessaires avec l'objectif de fabriquer l'œuf en fibre de carbone.
+                        <div class="step-gallery">
+                            <div class="gallery-item img-2x">
+                                <img src="photo/oeufcao.png" alt="Conception CAO de l'œuf">
+                            </div>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 35px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Le changement de méthode vers le thermoformage</strong><br>
+                        En raison d'un manque de matériaux j'ai dû m'adapter et modifier ma stratégie de fabrication en optant finalement pour le thermoformage d'une plaque de plastique.
+                        <div class="step-gallery grid-2">
+                            <div class="gallery-item img-2x">
+                                <img src="photo/plaquethermoformé.png" alt="Moule thermoformage">
+                            </div>
+                            <div class="gallery-item img-2x">
+                                <img src="photo/plaquethermoformée.png" alt="Plaque thermoformée">
+                            </div>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 35px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Le nettoyage et les finitions</strong><br>
+                        Une fois les deux moitiés de la coque moulées j'ai procédé aux finitions en réalisant l'ébavurage le ponçage puis la peinture de l'œuf.
+                        <div class="step-gallery">
+                            <div class="gallery-item img-3x">
+                                <img src="photo/oeufpaint.png" alt="Peinture de l'oeuf">
+                            </div>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 35px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">L'assemblage final de la coque</strong><br>
+                        Pour terminer j'ai assemblé les deux parties de l'œuf en installant une charnière que j'ai pu fixer solidement grâce à des supports sur mesure créés en impression 3D.
+                        <div class="step-gallery">
+                            <div class="gallery-item img-2x">
+                                <img src="photo/support.png" alt="Support en impression 3D">
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -592,8 +622,7 @@
             <div class="reveal">
                 <h2>Fonderie</h2>
                 
-                <h3>Processus de création de pièces de fonderie : de la CAO à la coulée</h3>
-                <p>Fort de mon expérience acquise lors de la réalisation de deux pièces de fonderie distinctes au sein du département GMP de l'IUT d'Orléans, j'ai pu maîtriser de bout en bout la méthodologie complexe qu'exige ce procédé. De la conception virtuelle à la coulée finale, voici les étapes clés que j'applique pour garantir la viabilité et la qualité d'une pièce de fonderie :</p>
+                <p>Pendant ma formation à l'IUT d'Orléans j'ai eu l'occasion de créer deux pièces de fonderie différentes ce qui m'a permis de bien comprendre toutes les étapes de fabrication. Par conséquent voici les grandes étapes que j'applique pour obtenir une pièce de qualité</p>
                 
                 <ul class="project-list" style="margin-top: 30px;">
                     <li style="margin-bottom: 35px;">
@@ -603,9 +632,9 @@
                     
                     <li style="margin-bottom: 35px;">
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 2 : Modéliser la pièce en 3D (Logiciel de CAO)</strong><br>
-                        L'instruction principale ici est de concevoir l'outillage virtuellement sur le logiciel Créo Paramétric. On modélise le brut en y ajoutant des surépaisseurs d'usinage et des angles de dépouille, noyau, canal de coulée...
+                        L'instruction principale ici est de concevoir l'outillage virtuellement sur le logiciel Créo Paramétric. On modélise le brut en y ajoutant des surépaisseurs d'usinage et des angles de dépouille, noyau, canal de coulé...
                         
-                        <div class="step-gallery">
+                        <div class="step-gallery grid-2">
                             <div class="gallery-item img-2x">
                                 <img src="photo/caoassemblefonderie2.png" alt="CAO Assemblage Fonderie">
                             </div>
@@ -616,10 +645,10 @@
                     </li>
                     
                     <li style="margin-bottom: 35px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Création des plaques demi-modèles</strong><br>
-                        Une fois la modélisation terminée, il faut fabriquer les plaques demi-modèles. Pour cette fabrication, nous pouvons paramétrer la machine d'usinage via un logiciel de FAO afin d'usiner les plaques sur des fraiseuses à commande numérique, ou bien utiliser une imprimante 3D pour les obtenir par fabrication additive.
+                        <strong style="color: var(--accent-lime); font-size: 1.2rem;">Création des plaques demi-modèles</strong><br>
+                        Une fois la modélisation terminée il faut fabriquer les plaques demi-modèles. Pour cette fabrication nous pouvons paramétrer la machine d'usinage via un logiciel de FAO afin d'usiner les plaques sur des fraiseuses à commande numérique ou bien utiliser une imprimante 3D pour les obtenir par fabrication additive.
                         
-                        <div class="step-gallery">
+                        <div class="step-gallery grid-2">
                             <div class="gallery-item img-3x">
                                 <img src="photo/plaquedemiemodèle3d.png" alt="Plaque imprimée en 3D">
                                 <span>Plaques obtenues par impression 3D</span>
@@ -633,7 +662,7 @@
                     
                     <li style="margin-bottom: 35px;">
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 4 : Préparer le moule en sable et procéder à la coulée</strong><br>
-                        À l'aide des plaques demi-modèles obtenues à l'étape précédente (par usinage ou impression 3D), on prépare le moule. On place la plaque dans un châssis, on la saupoudre de talc, puis on vient y tasser fermement du sable de moulage. La consigne la plus critique est de s'assurer de l'alignement parfait des deux moitiés juste avant d'y couler le métal en fusion.
+                        À l'aide des plaques demi-modèles obtenues à l'étape précédente on place alors les plaques dans un châssis sur lequel on saupoudre du talc puis on vient y tasser fermement du sable de moulage. La consigne la plus critique est de s'assurer de l'alignement parfait des deux moitiés juste avant d'y couler le métal en fusion.
                         
                         <div class="step-gallery" style="margin-top: 20px; margin-bottom: 20px;">
                             <div class="gallery-item img-3x">
@@ -643,7 +672,7 @@
 
                         <p style="margin-top: 20px; margin-bottom: 10px;"><strong>Voici les deux pièces finales différentes que j'ai obtenues :</strong></p>
                         
-                        <div class="step-gallery">
+                        <div class="step-gallery grid-2">
                             <div class="gallery-item img-3x">
                                 <img src="photo/piecefonderi1.png" alt="Première pièce de fonderie">
                             </div>
