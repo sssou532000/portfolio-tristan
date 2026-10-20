@@ -135,24 +135,11 @@
         .img-frise-3 { background-image: url('photo/siteeatoncoignière.png'); }
         .img-frise-4 { background-image: url('photo/signaturecontrateaton.png'); background-size: contain; background-color: white; }
 
-        /* --- LIGNE 3 : CV et Vidéo --- */
-        .bottom-media-row { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; }
-        .media-column { display: flex; flex-direction: column; }
-        .media-box { position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: var(--fond-encadre); overflow: hidden; border: 1px solid var(--bordure); border-radius: 8px; }
-        .cv-column .media-box { aspect-ratio: 16 / 10; background-color: transparent; border: none; } 
-        .media-box video { width: 100%; height: 100%; object-fit: cover; outline: none; }
-        .media-box img.cv-thumbnail { width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s ease; cursor: pointer; border-radius: 8px; }
-        
-        .cv-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); color: var(--accent-lime); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; font-size: 1.2rem; font-weight: 600; font-family: 'Playfair Display', serif; border-radius: 8px; }
-        .media-box:hover img.cv-thumbnail { transform: scale(1.03); }
-        .media-box:hover .cv-overlay { opacity: 1; }
-
-        /* MODAL CV */
-        .fullscreen-modal { display: none; position: fixed; z-index: 10001; padding-top: 50px; padding-bottom: 50px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); overflow-y: auto; }
-        .modal-content-img { margin: auto; display: block; max-width: 90%; max-height: 85vh; object-fit: contain; animation: modalZoom 0.3s ease; }
-        .modal-close { position: fixed; top: 25px; right: 40px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; z-index: 10002; }
-        .modal-close:hover { color: var(--accent-lime); }
-        @keyframes modalZoom { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        /* --- SECTION CV & VIDÉO --- */
+        .bottom-media-row { display: flex; justify-content: center; margin-top: 40px; }
+        .media-column { display: flex; flex-direction: column; width: 100%; max-width: 1000px; }
+        .media-box { position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: var(--fond-encadre); overflow: hidden; border: 1px solid var(--bordure); border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.05); }
+        .media-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
         /* --- BANDEAU FORMATIONS (LOGO IUT) --- */
         .banner-iut { width: 100vw; max-height: 250px; background-color: #FFFFFF; display: flex; justify-content: center; align-items: center; overflow: hidden; border-bottom: 1px solid var(--bordure); }
@@ -218,12 +205,15 @@
         .step-gallery.grid-2 { 
             display: grid; grid-template-columns: 1fr 1fr; gap: 30px; 
         }
+        .step-gallery.grid-3 { 
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; 
+        }
 
         .gallery-item { 
             display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;
         }
 
-        /* Tailles contrôlées (2x = ~450px | 3x = ~750px | xl = pleine largeur pour les tableaux) */
+        /* Tailles contrôlées */
         .img-2x { max-width: 450px; }
         .img-3x { max-width: 750px; }
         .img-xl { max-width: 1200px; margin: 0 auto; }
@@ -313,7 +303,7 @@
             .bottom-media-row, .formation-layout, .parcours-eaton { grid-template-columns: 1fr; }
             .portfolio-grid, .experience-item { grid-template-columns: 1fr; gap: 40px;}
             .experience-item:nth-child(even) { direction: ltr; }
-            .step-gallery.grid-2 { grid-template-columns: 1fr; }
+            .step-gallery.grid-2, .step-gallery.grid-3 { grid-template-columns: 1fr; }
             h1 { font-size: 3.5rem; }
             h2 { font-size: 2.5rem; }
             .project-detail-img { height: 250px; }
@@ -341,7 +331,8 @@
                     <a onclick="showPage('competences-iut')">compétences</a>
                 </div>
             </div>
-
+            
+            <a onclick="showPage('projet-extrascolaire')">Projet Extrascolaire</a>
             <a onclick="showPage('experiences')">Expériences professionnelles</a>
             <a onclick="showPage('contact')">Contact</a>
         </div>
@@ -419,29 +410,18 @@
 
         <!-- SECTION CV & VIDÉO -->
         <section id="section-cv" class="content-container reveal" style="padding-top: 80px;">
+            <h2 style="text-align: center; margin-bottom: 40px;">Ma Présentation Vidéo</h2>
             <div class="bottom-media-row">
-                
                 <div class="media-column">
-                    <h3>Présentation Vidéo</h3>
                     <div class="media-box">
                         <iframe 
-                            width="100%" height="100%" 
-                            src="https://www.youtube.com/embed/VOTRE_ID_VIDEO?rel=0" 
+                            src="https://www.youtube.com/embed/kDAz7TgWhxg?rel=0" 
                             title="Présentation Tristan Bobard" frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen style="position: absolute; top: 0; left: 0;">
+                            allowfullscreen>
                         </iframe>
                     </div>
                 </div>
-
-                <div class="media-column cv-column">
-                    <h3>Mon Curriculum Vitae</h3>
-                    <div class="media-box" onclick="openCvModal()" title="Cliquez pour agrandir">
-                        <img class="cv-thumbnail" src="photo/mon-cv.jpg" alt="Aperçu CV">
-                        <div class="cv-overlay"><span>Consulter le CV +</span></div>
-                    </div>
-                </div>
-
             </div>
         </section>
     </div>
@@ -541,7 +521,7 @@
                         <strong style="color: var(--accent-lime); font-size: 1.4rem;">Usinage et Fabrication</strong><br>
                         Ce qui me passionne, c’est avant tout de passer du virtuel au réel en fabriquant moi-même les pièces. J’ai donc appris à maîtriser l'usinage classique, mais aussi la commande numérique en programmant mes propres parcours d'outils avec TopSolid. Enfin, j’ai également été formé à des techniques spécifiques comme la découpe jet d'eau ou l'électroérosion.
                         
-                        <div class="step-gallery" style="margin-top: 20px;">
+                        <div class="step-gallery grid-3" style="margin-top: 20px;">
                             <div class="gallery-item img-3x">
                                 <img src="photo/somab.png" alt="Machine Somab">
                             </div>
@@ -564,7 +544,6 @@
                         <strong style="color: var(--accent-lime); font-size: 1.4rem;">Métrologie et Qualité</strong><br>
                         Garantir la précision est indispensable, donc j'utilise des outils de mesure traditionnels et je programme des machines de mesure tridimensionnelle avec le logiciel Calypso pour m'assurer que chaque pièce respecte strictement les tolérances exigées. Ou encore, je sais manier les différents outils de probabilités pour réaliser des cartes de contrôle afin d'identifier les problèmes qualités.
                         
-                        <!-- Tableaux de bord de métrologie affichés en XL pour une lecture parfaite -->
                         <div class="step-gallery" style="margin-top: 20px;">
                             <div class="gallery-item img-xl">
                                 <img src="photo/tableaudebordMPS.png" alt="Tableau de bord qualité">
@@ -598,7 +577,6 @@
                         <strong style="color: var(--accent-lime); font-size: 1.4rem;">Pilotage de Production</strong><br>
                         J’ai aussi appris à avoir une vision globale de l'atelier en sachant piloter et optimiser une ligne de production. Pour cela, je crée mes propres tableaux de bord sur Excel et j'applique des méthodes d'organisation industrielles concrètes, comme le Lean Management ou le Kanban.
                         
-                        <!-- Tableaux de bord Lean/Prod affichés en XL pour une lecture parfaite -->
                         <div class="step-gallery" style="margin-top: 20px;">
                             <div class="gallery-item img-xl">
                                 <img src="photo/lean.png" alt="Tableau de bord Lean">
@@ -613,7 +591,6 @@
                         <strong style="color: var(--accent-lime); font-size: 1.4rem;">Spécialité Automobile</strong><br>
                         Enfin, pour compléter mon profil technique, j'ai pu profiter d’une chance qu'on a à l’IUT d'Orléans, à savoir la spécialité Automobile. Ça m'a permis d'étudier en profondeur l'architecture et le fonctionnement des moteurs pour vraiment analyser en détail ce qui s'y passe. Et on ne reste pas que dans la théorie puisqu'on a aussi travaillé sur la dynamique du véhicule en réalisant directement des TP sur des bancs moteurs…
                         
-                        <!-- Graphiques Excel affichés en XL pour une lecture parfaite -->
                         <div class="step-gallery" style="margin-top: 20px;">
                             <div class="gallery-item img-xl">
                                 <img src="photo/millers.png" alt="Cycle de Miller">
@@ -663,7 +640,6 @@
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Programmation (FAO)</strong><br>
                         Le programme d’usinage s'est déroulé en deux phases j'ai d'abord réalisé la face inférieure et le contour de la pièce puis j'ai usiné la face supérieure conçue pour assurer la mise en position de la future pièce sur ce montage.
                         
-                        <!-- Remplacement de la grille pour afficher les images en grande taille, l'une sous l'autre -->
                         <div class="step-gallery">
                             <div class="gallery-item img-xl">
                                 <img src="photo/vérificationp20montage.png" alt="Vérification">
@@ -820,6 +796,36 @@
         </section>
     </div>
 
+    <!-- NOUVELLE PAGE: PROJET EXTRASCOLAIRE -->
+    <div id="projet-extrascolaire" class="page-section" style="padding-top: 80px;">
+        <section class="content-container">
+            <div class="reveal">
+                <h2 style="text-align: center; margin-bottom: 60px;">Redonner vie à une moto</h2>
+                
+                <!-- Encadré gris contenant le texte -->
+                <div style="background-color: var(--fond-carte); padding: 50px; border: 1px solid var(--bordure); border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); margin-bottom: 50px;">
+                    <p style="margin-bottom: 0;">
+                        J’ai eu l’occasion il y a un petit moment de m’acheter une moto dans le but de la réparer. Cela n’a pas été de tout repos vu l’étendue des réparations que j’ai dû effectuer sur cette dernière. Dès les premiers jours j’ai compris que l’état de la machine était bien plus dégradé que ce que j’imaginais au départ. J’ai donc entièrement démonté la moto pièce par pièce et appris énormément de choses en même temps afin qu’elle puisse fonctionner correctement. J’ai notamment remplacé le piston et la bielle puis refait tout le circuit électrique et remis en état les différents roulements de la boîte de vitesses, ce qui constituait une grande partie des travaux. Il m’a fallu beaucoup de patience et de recherches pour comprendre le fonctionnement de chaque élément et trouver les bonnes pièces à remplacer. Après de nombreuses heures passées dans mon garage la moto a enfin pu redémarrer et rouler comme il le fallait.
+                    </p>
+                </div>
+
+                <!-- Galerie des 3 photos alignées -->
+                <div class="step-gallery grid-3">
+                    <div class="gallery-item img-3x">
+                        <img src="photo/roulementmoto.png" alt="Remplacement des roulements">
+                    </div>
+                    <div class="gallery-item img-3x">
+                        <img src="photo/cadremoto.png" alt="Cadre de la moto démontée">
+                    </div>
+                    <div class="gallery-item img-3x">
+                        <img src="photo/motopiston.png" alt="Remplacement du piston">
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </div>
+
     <!-- PAGE 3: EXPÉRIENCES PROFESSIONNELLES -->
     <div id="experiences" class="page-section" style="padding-top: 80px;">
         
@@ -853,108 +859,4 @@
             <div class="experience-item reveal">
                 <div>
                     <h3>Linamar Light Metals</h3>
-                    <p>Stage de fin de deuxième année dans l'entreprise Linamar, spécialisée dans l'usinage de pièces automobiles.</p>
-                </div>
-                <div class="exp-image img-linamar"></div>
-            </div>
-            
-        </section>
-    </div>
-
-    <!-- PAGE 4: CONTACT -->
-    <div id="contact" class="page-section">
-        <section class="content-container reveal" style="text-align: center;">
-            <h2>Établissons le contact</h2>
-            <p>Je suis disponible pour échanger sur vos projets ou pour une opportunité professionnelle.</p>
-            <div style="margin-top: 50px; display: flex; gap: 30px; justify-content: center;">
-                <a href="mailto:ton.email@email.com" class="btn-pill">Email Direct</a>
-                <a href="https://linkedin.com/in/tonprofil" target="_blank" class="btn-pill">Profil LinkedIn</a>
-            </div>
-        </section>
-    </div>
-
-    <!-- BOÎTE MODALE DU CV -->
-    <div id="cv-modal" class="fullscreen-modal">
-        <span class="modal-close" onclick="closeCvModal()">&times;</span>
-        <img class="modal-content-img" src="photo/mon-cv.jpg" alt="Curriculum Vitae HD">
-    </div>
-
-    <!-- ==========================================
-         SCRIPTS 
-         ========================================== -->
-    <script>
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page-section');
-            pages.forEach(page => { page.classList.remove('active'); });
-            document.getElementById(pageId).classList.add('active');
-
-            const links = document.querySelectorAll('.nav-links > a, .nav-links > .dropdown > a');
-            links.forEach(link => { link.classList.remove('active'); });
-            
-            let linkToHighlight = pageId;
-            if (pageId.startsWith('projet-') || pageId === 'competences-iut') {
-                linkToHighlight = 'formations';
-            }
-            
-            const activeLink = document.querySelector(`.nav-links a[onclick*="'${linkToHighlight}'"]`);
-            if(activeLink) activeLink.classList.add('active');
-
-            window.scrollTo({ top: 0, behavior: 'instant' });
-            resetAnimations();
-        }
-
-        function goToSection(pageId, sectionId) {
-            showPage(pageId);
-            setTimeout(() => {
-                const target = document.getElementById(sectionId);
-                if(target) {
-                    const headerOffset = 80;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-                }
-            }, 100); 
-        }
-
-        function resetAnimations() {
-            const revealElements = document.querySelectorAll('.reveal');
-            revealElements.forEach(el => el.classList.remove('active'));
-            setTimeout(() => {
-                revealElements.forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    if(rect.top < window.innerHeight) { el.classList.add('active'); }
-                });
-            }, 50);
-        }
-
-        function openCvModal() { document.getElementById("cv-modal").style.display = "block"; document.body.style.overflow = "hidden"; }
-        function closeCvModal() { document.getElementById("cv-modal").style.display = "none"; document.body.style.overflow = "auto"; }
-        
-        window.onclick = function(event) {
-            const cvModal = document.getElementById("cv-modal");
-            if (event.target == cvModal) {
-                cvModal.style.display = "none"; document.body.style.overflow = "auto";
-            }
-        }
-
-        const navbar = document.getElementById('top-nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) { navbar.classList.add('scrolled'); } 
-            else { navbar.classList.remove('scrolled'); }
-        });
-
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.10 };
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('active'); }
-            });
-        }, observerOptions);
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const revealElements = document.querySelectorAll('.reveal');
-            revealElements.forEach((el) => { observer.observe(el); });
-            resetAnimations(); 
-        });
-    </script>
-</body>
-</html>
+                    <p>Stage de fin
