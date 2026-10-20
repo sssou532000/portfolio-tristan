@@ -218,14 +218,18 @@
         .step-gallery.grid-2 { 
             display: grid; grid-template-columns: 1fr 1fr; gap: 30px; 
         }
-
-        .gallery-item { 
-            display: flex; flex-direction: column; align-items: center; gap: 12px;
+        .step-gallery.grid-3 { 
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; 
         }
 
-        /* Tailles contrôlées (2x = ~450px | 3x = ~750px) */
-        .img-2x { width: 100%; max-width: 450px; }
-        .img-3x { width: 100%; max-width: 750px; }
+        .gallery-item { 
+            display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;
+        }
+
+        /* Tailles contrôlées (2x = ~450px | 3x = ~750px | full = pleine largeur) */
+        .img-2x { max-width: 450px; }
+        .img-3x { max-width: 750px; }
+        .img-full { max-width: 100%; }
 
         /* Images naturelles (contain), sans rognage, sans fond */
         .gallery-item img { 
@@ -236,6 +240,19 @@
             object-fit: contain;
             background-color: transparent; border: none; padding: 0;
         }
+
+        /* Exception pour l'image pleine largeur (hommefond) pour enlever la marge */
+        .img-full img {
+            border-radius: 0;
+            box-shadow: none;
+            width: 100vw;
+            max-width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 20px 0;
+        }
+
 
         .gallery-item span { 
             font-size: 0.95rem; color: var(--texte-secondaire); font-style: italic; text-align: center; 
@@ -293,7 +310,7 @@
             .bottom-media-row, .formation-layout, .parcours-eaton { grid-template-columns: 1fr; }
             .portfolio-grid, .experience-item { grid-template-columns: 1fr; gap: 40px;}
             .experience-item:nth-child(even) { direction: ltr; }
-            .step-gallery.grid-2 { grid-template-columns: 1fr; }
+            .step-gallery.grid-2, .step-gallery.grid-3 { grid-template-columns: 1fr; }
             h1 { font-size: 3.5rem; }
             h2 { font-size: 2.5rem; }
             .project-detail-img { height: 250px; }
@@ -488,29 +505,133 @@
          SOUS-PAGES DES PROJETS & COMPÉTENCES
          ======================================================== -->
 
+    <!-- NOUVELLE SECTION COMPÉTENCES -->
     <div id="competences-iut" class="page-section">
         <section class="content-container">
             <button class="btn-pill" onclick="showPage('formations')" style="margin-bottom: 40px;">&larr; Retour</button>
             <div class="reveal">
-                <h2>Mes Compétences acquises à l'IUT</h2>
-                <div class="project-detail-img" style="background-image: url('photo/image-competences.jpg'); border-radius: 8px;"></div>
-                <p><strong>Présentation :</strong> Détaillez ici les outils, logiciels et méthodes que vous maîtrisez grâce à votre formation.</p>
-                <ul class="project-list">
-                    <li>Conception (SolidWorks, Catia, etc.)</li>
-                    <li>Usinage et FAO</li>
-                    <li>Résistance des matériaux</li>
-                    <li>Gestion de projet industriel</li>
+                <h2 style="text-align: center; margin-bottom: 60px;">Mes Compétences acquises à l'IUT</h2>
+                
+                <ul class="project-list" style="margin-top: 30px;">
+                    
+                    <li style="margin-bottom: 50px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.4rem;">Conception 3D (CAO)</strong><br>
+                        En conception, mon but est de donner vie aux idées. Je pars souvent d'un simple croquis papier pour arriver à une modélisation 3D complète suivie de ses différents plans à partir de PTC Creo. De plus, je réfléchis aussi au choix des matériaux. Mon objectif est toujours de trouver le meilleur compromis entre le poids, le coût de fabrication et la résistance.
+                        
+                        <div class="step-gallery grid-2" style="margin-top: 20px;">
+                            <div class="gallery-item img-3x">
+                                <img src="photo/plangenouielle.png" alt="Plan de genouillère">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/dessinseguai.png" alt="Dessin technique">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/indusfonderiemontagesoudage.png" alt="Modélisation outillage">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/assemblageseguai.png" alt="Assemblage">
+                            </div>
+                        </div>
+                    </li>
+
+                    <li style="margin-bottom: 50px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.4rem;">Usinage et Fabrication</strong><br>
+                        Ce qui me passionne, c’est avant tout de passer du virtuel au réel en fabriquant moi-même les pièces. J’ai donc appris à maîtriser l'usinage classique, mais aussi la commande numérique en programmant mes propres parcours d'outils avec TopSolid. Enfin, j’ai également été formé à des techniques spécifiques comme la découpe jet d'eau ou l'électroérosion.
+                        
+                        <div class="step-gallery grid-3" style="margin-top: 20px;">
+                            <div class="gallery-item img-3x">
+                                <img src="photo/somab.png" alt="Machine Somab">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/touretbrut.png" alt="Tournage">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/semmelleusiné.png" alt="Semelle usinée">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/codefraisage.png" alt="Code fraisage">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/nef400.png" alt="Machine NEF 400">
+                            </div>
+                        </div>
+                    </li>
+
+                    <li style="margin-bottom: 50px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.4rem;">Métrologie et Qualité</strong><br>
+                        Garantir la précision est indispensable, donc j'utilise des outils de mesure traditionnels et je programme des machines de mesure tridimensionnelle avec le logiciel Calypso pour m'assurer que chaque pièce respecte strictement les tolérances exigées. Ou encore, je sais manier les différents outils de probabilités pour réaliser des cartes de contrôle afin d'identifier les problèmes qualités.
+                        
+                        <div class="step-gallery grid-3" style="margin-top: 20px;">
+                            <div class="gallery-item img-3x">
+                                <img src="photo/tableaudebordMPS.png" alt="Tableau de bord qualité">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/calypso.png" alt="Rapport Calypso">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/scanbox.png" alt="Machine de métrologie Scanbox">
+                            </div>
+                        </div>
+                    </li>
+
+                    <li style="margin-bottom: 50px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.4rem;">Matériaux Composites</strong><br>
+                        J'ai aussi travaillé sur des matériaux techniques comme les composites. Je sais réaliser des pièces en fibre de carbone ou de verre, en passant de la préparation du moule jusqu'à la polymérisation de la résine, et c'est un vrai plus pour créer des éléments à la fois très légers et résistants.
+                        
+                        <div class="step-gallery grid-2" style="margin-top: 20px;">
+                            <div class="gallery-item img-3x">
+                                <img src="photo/compositeetplaque.png" alt="Préparation de la plaque composite">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/misesousvide.png" alt="Mise sous vide">
+                            </div>
+                        </div>
+                    </li>
+
+                    <li style="margin-bottom: 50px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.4rem;">Pilotage de Production</strong><br>
+                        J’ai aussi appris à avoir une vision globale de l'atelier en sachant piloter et optimiser une ligne de production. Pour cela, je crée mes propres tableaux de bord sur Excel et j'applique des méthodes d'organisation industrielles concrètes, comme le Lean Management ou le Kanban.
+                        
+                        <div class="step-gallery grid-2" style="margin-top: 20px;">
+                            <div class="gallery-item img-3x">
+                                <img src="photo/lean.png" alt="Tableau de bord Lean">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/tableaudebord.png" alt="Tableau de bord de production">
+                            </div>
+                        </div>
+                    </li>
+
+                    <li style="margin-bottom: 50px;">
+                        <strong style="color: var(--accent-lime); font-size: 1.4rem;">Spécialité Automobile</strong><br>
+                        Enfin, pour compléter mon profil technique, j'ai pu profiter d’une chance qu'on a à l’IUT d'Orléans, à savoir la spécialité Automobile. Ça m'a permis d'étudier en profondeur l'architecture et le fonctionnement des moteurs pour vraiment analyser en détail ce qui s'y passe. Et on ne reste pas que dans la théorie puisqu'on a aussi travaillé sur la dynamique du véhicule en réalisant directement des TP sur des bancs moteurs…
+                        
+                        <div class="step-gallery grid-2" style="margin-top: 20px;">
+                            <div class="gallery-item img-3x">
+                                <img src="photo/millers.png" alt="Cycle de Miller">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/moteur.png" alt="Moteur sur banc d'essai">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/stawltc.png" alt="Données d'analyse">
+                            </div>
+                            <div class="gallery-item img-3x">
+                                <img src="photo/johnedeer.png" alt="Moteur John Deere">
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </section>
     </div>
 
+    <!-- PROJET 1 -->
     <div id="projet-1" class="page-section">
         <section class="content-container">
             <button class="btn-pill" onclick="showPage('formations')" style="margin-bottom: 40px;">&larr; Retour aux projets</button>
             <div class="reveal">
                 <h2>Fabrication d'un outillage</h2>
-                <div class="project-detail-img img-outillage"></div>
                 
                 <h3>Processus de conception et de fabrication de l'outillage</h3>
                 <ul class="project-list" style="margin-top: 30px;">
@@ -530,9 +651,9 @@
                     </li>
                     <li style="margin-bottom: 25px;">
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Programmation (FAO)</strong><br>
-                        Le programme d’usinage s'est déroulé en deux phases j'ai d'abord réalisé la face inférieure et le contour de la pièce puis j'ai usiné la face supérieure conçue pour assurer la mise en position de la future pièce sur ce montage
+                        Le programme d’usinage s'est déroulé en deux phases j'ai d'abord réalisé la face inférieure et le contour de la pièce puis j'ai usiné la face supérieure conçue pour assurer la mise en position de la future pièce sur ce montage.
                         
-                        <div class="step-gallery">
+                        <div class="step-gallery grid-3">
                             <div class="gallery-item img-3x">
                                 <img src="photo/vérificationp20montage.png" alt="Vérification">
                             </div>
@@ -559,6 +680,7 @@
         </section>
     </div>
 
+    <!-- PROJET 2 -->
     <div id="projet-2" class="page-section">
         <section class="content-container">
             <button class="btn-pill" onclick="showPage('formations')" style="margin-bottom: 40px;">&larr; Retour aux projets</button>
@@ -616,6 +738,7 @@
         </section>
     </div>
 
+    <!-- PROJET 3 -->
     <div id="projet-3" class="page-section">
         <section class="content-container">
             <button class="btn-pill" onclick="showPage('formations')" style="margin-bottom: 40px;">&larr; Retour aux projets</button>
@@ -665,7 +788,7 @@
                         À l'aide des plaques demi-modèles obtenues à l'étape précédente on place alors les plaques dans un châssis sur lequel on saupoudre du talc puis on vient y tasser fermement du sable de moulage. La consigne la plus critique est de s'assurer de l'alignement parfait des deux moitiés juste avant d'y couler le métal en fusion.
                         
                         <div class="step-gallery" style="margin-top: 20px; margin-bottom: 20px;">
-                            <div class="gallery-item img-3x">
+                            <div class="gallery-item img-full">
                                 <img src="photo/hommefond.png" alt="Opération de coulée en fonderie">
                             </div>
                         </div>
