@@ -218,9 +218,6 @@
         .step-gallery.grid-2 { 
             display: grid; grid-template-columns: 1fr 1fr; gap: 30px; 
         }
-        .step-gallery.grid-3 { 
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; 
-        }
 
         .gallery-item { 
             display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;
@@ -316,7 +313,7 @@
             .bottom-media-row, .formation-layout, .parcours-eaton { grid-template-columns: 1fr; }
             .portfolio-grid, .experience-item { grid-template-columns: 1fr; gap: 40px;}
             .experience-item:nth-child(even) { direction: ltr; }
-            .step-gallery.grid-2, .step-gallery.grid-3 { grid-template-columns: 1fr; }
+            .step-gallery.grid-2 { grid-template-columns: 1fr; }
             h1 { font-size: 3.5rem; }
             h2 { font-size: 2.5rem; }
             .project-detail-img { height: 250px; }
@@ -544,7 +541,7 @@
                         <strong style="color: var(--accent-lime); font-size: 1.4rem;">Usinage et Fabrication</strong><br>
                         Ce qui me passionne, c’est avant tout de passer du virtuel au réel en fabriquant moi-même les pièces. J’ai donc appris à maîtriser l'usinage classique, mais aussi la commande numérique en programmant mes propres parcours d'outils avec TopSolid. Enfin, j’ai également été formé à des techniques spécifiques comme la découpe jet d'eau ou l'électroérosion.
                         
-                        <div class="step-gallery grid-3" style="margin-top: 20px;">
+                        <div class="step-gallery" style="margin-top: 20px;">
                             <div class="gallery-item img-3x">
                                 <img src="photo/somab.png" alt="Machine Somab">
                             </div>
@@ -666,14 +663,15 @@
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 3 : Programmation (FAO)</strong><br>
                         Le programme d’usinage s'est déroulé en deux phases j'ai d'abord réalisé la face inférieure et le contour de la pièce puis j'ai usiné la face supérieure conçue pour assurer la mise en position de la future pièce sur ce montage.
                         
-                        <div class="step-gallery grid-3">
-                            <div class="gallery-item img-3x">
+                        <!-- Remplacement de la grille pour afficher les images en grande taille, l'une sous l'autre -->
+                        <div class="step-gallery">
+                            <div class="gallery-item img-xl">
                                 <img src="photo/vérificationp20montage.png" alt="Vérification">
                             </div>
-                            <div class="gallery-item img-3x">
+                            <div class="gallery-item img-xl">
                                 <img src="photo/ph20monategusinage.png" alt="Phase 20">
                             </div>
-                            <div class="gallery-item img-3x">
+                            <div class="gallery-item img-xl">
                                 <img src="photo/ph10montageusinage.png" alt="Phase 10">
                             </div>
                         </div>
