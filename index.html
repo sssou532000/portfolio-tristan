@@ -209,7 +209,7 @@
         }
 
         /* =======================================================
-           NOUVELLES CLASSES : TAILLES 2X ET 3X POUR LES IMAGES
+           CLASSES : TAILLES 2X, 3X ET XL POUR LES IMAGES
            ======================================================= */
         
         .step-gallery { 
@@ -226,9 +226,10 @@
             display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;
         }
 
-        /* Tailles contrôlées (2x = ~450px | 3x = ~750px | full = pleine largeur) */
+        /* Tailles contrôlées (2x = ~450px | 3x = ~750px | xl = pleine largeur pour les tableaux) */
         .img-2x { max-width: 450px; }
         .img-3x { max-width: 750px; }
+        .img-xl { max-width: 1200px; margin: 0 auto; }
         .img-full { max-width: 100%; }
 
         /* Images naturelles (contain), sans rognage, sans fond */
@@ -239,6 +240,12 @@
             display: block; 
             object-fit: contain;
             background-color: transparent; border: none; padding: 0;
+        }
+
+        /* Spécial Tableaux de bords Excel (sans contrainte de hauteur max) */
+        .img-xl img {
+            max-height: none; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
         }
 
         /* Exception pour l'image pleine largeur (hommefond) pour enlever la marge */
@@ -252,7 +259,6 @@
             transform: translateX(-50%);
             margin: 20px 0;
         }
-
 
         .gallery-item span { 
             font-size: 0.95rem; color: var(--texte-secondaire); font-style: italic; text-align: center; 
@@ -561,15 +567,18 @@
                         <strong style="color: var(--accent-lime); font-size: 1.4rem;">Métrologie et Qualité</strong><br>
                         Garantir la précision est indispensable, donc j'utilise des outils de mesure traditionnels et je programme des machines de mesure tridimensionnelle avec le logiciel Calypso pour m'assurer que chaque pièce respecte strictement les tolérances exigées. Ou encore, je sais manier les différents outils de probabilités pour réaliser des cartes de contrôle afin d'identifier les problèmes qualités.
                         
-                        <div class="step-gallery grid-3" style="margin-top: 20px;">
-                            <div class="gallery-item img-3x">
+                        <!-- Tableaux de bord de métrologie affichés en XL pour une lecture parfaite -->
+                        <div class="step-gallery" style="margin-top: 20px;">
+                            <div class="gallery-item img-xl">
                                 <img src="photo/tableaudebordMPS.png" alt="Tableau de bord qualité">
                             </div>
-                            <div class="gallery-item img-3x">
-                                <img src="photo/calypso.png" alt="Rapport Calypso">
-                            </div>
-                            <div class="gallery-item img-3x">
-                                <img src="photo/scanbox.png" alt="Machine de métrologie Scanbox">
+                            <div class="step-gallery grid-2">
+                                <div class="gallery-item img-3x">
+                                    <img src="photo/calypso.png" alt="Rapport Calypso">
+                                </div>
+                                <div class="gallery-item img-3x">
+                                    <img src="photo/scanbox.png" alt="Machine de métrologie Scanbox">
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -592,11 +601,12 @@
                         <strong style="color: var(--accent-lime); font-size: 1.4rem;">Pilotage de Production</strong><br>
                         J’ai aussi appris à avoir une vision globale de l'atelier en sachant piloter et optimiser une ligne de production. Pour cela, je crée mes propres tableaux de bord sur Excel et j'applique des méthodes d'organisation industrielles concrètes, comme le Lean Management ou le Kanban.
                         
-                        <div class="step-gallery grid-2" style="margin-top: 20px;">
-                            <div class="gallery-item img-3x">
+                        <!-- Tableaux de bord Lean/Prod affichés en XL pour une lecture parfaite -->
+                        <div class="step-gallery" style="margin-top: 20px;">
+                            <div class="gallery-item img-xl">
                                 <img src="photo/lean.png" alt="Tableau de bord Lean">
                             </div>
-                            <div class="gallery-item img-3x">
+                            <div class="gallery-item img-xl">
                                 <img src="photo/tableaudebord.png" alt="Tableau de bord de production">
                             </div>
                         </div>
@@ -606,18 +616,21 @@
                         <strong style="color: var(--accent-lime); font-size: 1.4rem;">Spécialité Automobile</strong><br>
                         Enfin, pour compléter mon profil technique, j'ai pu profiter d’une chance qu'on a à l’IUT d'Orléans, à savoir la spécialité Automobile. Ça m'a permis d'étudier en profondeur l'architecture et le fonctionnement des moteurs pour vraiment analyser en détail ce qui s'y passe. Et on ne reste pas que dans la théorie puisqu'on a aussi travaillé sur la dynamique du véhicule en réalisant directement des TP sur des bancs moteurs…
                         
-                        <div class="step-gallery grid-2" style="margin-top: 20px;">
-                            <div class="gallery-item img-3x">
+                        <!-- Graphiques Excel affichés en XL pour une lecture parfaite -->
+                        <div class="step-gallery" style="margin-top: 20px;">
+                            <div class="gallery-item img-xl">
                                 <img src="photo/millers.png" alt="Cycle de Miller">
                             </div>
-                            <div class="gallery-item img-3x">
-                                <img src="photo/moteur.png" alt="Moteur sur banc d'essai">
-                            </div>
-                            <div class="gallery-item img-3x">
+                            <div class="gallery-item img-xl">
                                 <img src="photo/stawltc.png" alt="Données d'analyse">
                             </div>
-                            <div class="gallery-item img-3x">
-                                <img src="photo/johnedeer.png" alt="Moteur John Deere">
+                            <div class="step-gallery grid-2">
+                                <div class="gallery-item img-3x">
+                                    <img src="photo/moteur.png" alt="Moteur sur banc d'essai">
+                                </div>
+                                <div class="gallery-item img-3x">
+                                    <img src="photo/johnedeer.png" alt="Moteur John Deere">
+                                </div>
                             </div>
                         </div>
                     </li>
