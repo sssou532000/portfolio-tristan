@@ -320,7 +320,7 @@
             <div class="dropdown">
                 <a onclick="showPage('a-propos')" class="active">À propos de moi</a>
                 <div class="dropdown-content">
-                    <a onclick="goToSection('a-propos', 'section-cv')">mon CV vidéo</a>
+                    <a onclick="goToSection('a-propos', 'section-cv')">Ma Présentation Vidéo</a>
                 </div>
             </div>
             
@@ -859,4 +859,108 @@
             <div class="experience-item reveal">
                 <div>
                     <h3>Linamar Light Metals</h3>
-                    <p>Stage de fin
+                    <p>Stage de fin de deuxième année dans l'entreprise Linamar, spécialisée dans l'usinage de pièces automobiles.</p>
+                </div>
+                <div class="exp-image img-linamar"></div>
+            </div>
+            
+        </section>
+    </div>
+
+    <!-- PAGE 4: CONTACT -->
+    <div id="contact" class="page-section">
+        <section class="content-container reveal" style="text-align: center;">
+            <h2>Établissons le contact</h2>
+            <p>Je suis disponible pour échanger sur vos projets ou pour une opportunité professionnelle.</p>
+            <div style="margin-top: 50px; display: flex; gap: 30px; justify-content: center;">
+                <a href="mailto:ton.email@email.com" class="btn-pill">Email Direct</a>
+                <a href="https://linkedin.com/in/tonprofil" target="_blank" class="btn-pill">Profil LinkedIn</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- BOÎTE MODALE DU CV (Cachée, mais code conservé au cas où) -->
+    <div id="cv-modal" class="fullscreen-modal">
+        <span class="modal-close" onclick="closeCvModal()">&times;</span>
+        <img class="modal-content-img" src="photo/mon-cv.jpg" alt="Curriculum Vitae HD">
+    </div>
+
+    <!-- ==========================================
+         SCRIPTS 
+         ========================================== -->
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => { page.classList.remove('active'); });
+            document.getElementById(pageId).classList.add('active');
+
+            const links = document.querySelectorAll('.nav-links > a, .nav-links > .dropdown > a');
+            links.forEach(link => { link.classList.remove('active'); });
+            
+            let linkToHighlight = pageId;
+            if ((pageId.startsWith('projet-') && pageId !== 'projet-extrascolaire') || pageId === 'competences-iut') {
+                linkToHighlight = 'formations';
+            }
+            
+            const activeLink = document.querySelector(`.nav-links a[onclick*="'${linkToHighlight}'"]`);
+            if(activeLink) activeLink.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            resetAnimations();
+        }
+
+        function goToSection(pageId, sectionId) {
+            showPage(pageId);
+            setTimeout(() => {
+                const target = document.getElementById(sectionId);
+                if(target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                }
+            }, 100); 
+        }
+
+        function resetAnimations() {
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => el.classList.remove('active'));
+            setTimeout(() => {
+                revealElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if(rect.top < window.innerHeight) { el.classList.add('active'); }
+                });
+            }, 50);
+        }
+
+        function openCvModal() { document.getElementById("cv-modal").style.display = "block"; document.body.style.overflow = "hidden"; }
+        function closeCvModal() { document.getElementById("cv-modal").style.display = "none"; document.body.style.overflow = "auto"; }
+        
+        window.onclick = function(event) {
+            const cvModal = document.getElementById("cv-modal");
+            if (event.target == cvModal) {
+                cvModal.style.display = "none"; document.body.style.overflow = "auto";
+            }
+        }
+
+        const navbar = document.getElementById('top-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) { navbar.classList.add('scrolled'); } 
+            else { navbar.classList.remove('scrolled'); }
+        });
+
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.10 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach((el) => { observer.observe(el); });
+            resetAnimations(); 
+        });
+    </script>
+</body>
+</html>
