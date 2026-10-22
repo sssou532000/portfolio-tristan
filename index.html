@@ -276,18 +276,21 @@
             filter: drop-shadow(0 4px 15px rgba(0,0,0,0.15));
         }
 
-        /* --- ENCADRÉS POUR OBJECTIFS --- */
-        .highlight-box {
-            background-color: #E2E8F0; /* Bleu gris très clair */
-            padding: 25px; 
-            border-left: 5px solid var(--accent-lime); 
-            border-radius: 4px; 
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        /* ENCADRÉ MOTS CLÉS COMPÉTENCES */
+        .keywords-box {
+            background-color: var(--fond-encadre);
+            padding: 15px 30px;
+            border-radius: 4px;
+            margin-top: 15px;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
         }
-        .highlight-box p {
+        .keywords-box p {
             margin: 0;
-            color: var(--texte-principal);
+            color: var(--texte-secondaire);
+            font-size: 1.05rem;
+            line-height: 1.8;
             font-weight: 500;
         }
 
@@ -521,10 +524,14 @@
                 
                 <ul class="project-list" style="margin-top: 30px;">
                     
-                    <li style="margin-bottom: 50px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.4rem;">Conception 3D (CAO)</strong><br>
-                        En conception, mon but est de donner vie aux idées. Je pars souvent d'un simple croquis papier pour arriver à une modélisation 3D complète suivie de ses différents plans à partir de PTC Creo. De plus, je réfléchis aussi au choix des matériaux. Mon objectif est toujours de trouver le meilleur compromis entre le poids, le coût de fabrication et la résistance.
-                        
+                    <li style="margin-bottom: 50px; display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 100%; max-width: 1200px;">
+                            <strong style="color: var(--accent-lime); font-size: 1.4rem;">Conception 3D (CAO)</strong><br>
+                            En conception, mon but est de donner vie aux idées. Je pars souvent d'un simple croquis papier pour arriver à une <strong>modélisation 3D</strong> complète suivie de ses différents plans à partir de <strong>PTC Creo</strong>. De plus, je réfléchis aussi au choix des matériaux. Mon objectif est toujours de trouver le meilleur compromis entre le poids, le coût de fabrication et la résistance.
+                        </div>
+                        <div class="keywords-box">
+                            <p>Modélisation 3D<br>Mise en plan<br>Cotation fonctionnelle</p>
+                        </div>
                         <div class="step-gallery grid-2" style="margin-top: 20px;">
                             <div class="gallery-item img-3x">
                                 <img src="photo/plangenouielle.png" alt="Plan de genouillère">
@@ -541,10 +548,14 @@
                         </div>
                     </li>
 
-                    <li style="margin-bottom: 50px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.4rem;">Usinage et Fabrication</strong><br>
-                        Ce qui me passionne, c’est avant tout de passer du virtuel au réel en fabriquant moi-même les pièces. J’ai donc appris à maîtriser l'usinage classique, mais aussi la commande numérique en programmant mes propres parcours d'outils avec TopSolid. Enfin, j’ai également été formé à des techniques spécifiques comme la découpe jet d'eau ou l'électroérosion.
-                        
+                    <li style="margin-bottom: 50px; display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 100%; max-width: 1200px;">
+                            <strong style="color: var(--accent-lime); font-size: 1.4rem;">Usinage et Fabrication</strong><br>
+                            Ce qui me passionne, c’est avant tout de passer du virtuel au réel en fabriquant moi-même les pièces. J’ai donc appris à maîtriser l'usinage classique, mais aussi la <strong>commande numérique</strong> en programmant mes propres parcours d'outils avec <strong>TopSolid</strong>. Enfin, j’ai également été formé à des techniques spécifiques comme la découpe jet d'eau ou l'électroérosion.
+                        </div>
+                        <div class="keywords-box">
+                            <p>Usinage machine<br>Tour<br>Fraiseuse<br>Découpe jet d'eau / laser<br>Électroérosion</p>
+                        </div>
                         <div class="step-gallery grid-3" style="margin-top: 20px;">
                             <div class="gallery-item img-3x">
                                 <img src="photo/somab.png" alt="Machine Somab">
@@ -564,10 +575,14 @@
                         </div>
                     </li>
 
-                    <li style="margin-bottom: 50px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.4rem;">Métrologie et Qualité</strong><br>
-                        Garantir la précision est indispensable, donc j'utilise des outils de mesure traditionnels et je programme des machines de mesure tridimensionnelle avec le logiciel Calypso pour m'assurer que chaque pièce respecte strictement les tolérances exigées. Ou encore, je sais manier les différents outils de probabilités pour réaliser des cartes de contrôle afin d'identifier les problèmes qualités.
-                        
+                    <li style="margin-bottom: 50px; display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 100%; max-width: 1200px;">
+                            <strong style="color: var(--accent-lime); font-size: 1.4rem;">Métrologie et Qualité</strong><br>
+                            Garantir la précision est indispensable, donc j'utilise des outils de mesure traditionnels et je programme des <strong>machines de mesure tridimensionnelle</strong> avec le logiciel <strong>Calypso</strong> pour m'assurer que chaque pièce respecte strictement les tolérances exigées. Ou encore, je sais manier les différents outils de probabilités pour réaliser des <strong>cartes de contrôle</strong> afin d'identifier les problèmes qualités.
+                        </div>
+                        <div class="keywords-box">
+                            <p>Contrôle qualité<br>Mesure tridimensionnelle<br>Cartes de contrôle</p>
+                        </div>
                         <div class="step-gallery" style="margin-top: 20px;">
                             <div class="gallery-item img-xl">
                                 <img src="photo/tableaudebordMPS.png" alt="Tableau de bord qualité">
@@ -583,10 +598,14 @@
                         </div>
                     </li>
 
-                    <li style="margin-bottom: 50px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.4rem;">Matériaux Composites</strong><br>
-                        J'ai aussi travaillé sur des matériaux techniques comme les composites. Je sais réaliser des pièces en fibre de carbone ou de verre, en passant de la préparation du moule jusqu'à la polymérisation de la résine, et c'est un vrai plus pour créer des éléments à la fois très légers et résistants.
-                        
+                    <li style="margin-bottom: 50px; display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 100%; max-width: 1200px;">
+                            <strong style="color: var(--accent-lime); font-size: 1.4rem;">Matériaux Composites</strong><br>
+                            J'ai aussi travaillé sur des matériaux techniques comme les composites. Je sais réaliser des pièces en <strong>fibre de carbone</strong> ou de verre, en passant de la préparation du moule jusqu'à la <strong>polymérisation</strong> de la résine, et c'est un vrai plus pour créer des éléments à la fois très légers et résistants.
+                        </div>
+                        <div class="keywords-box">
+                            <p>Fibre de carbone<br>Moulage au contact<br>Mise sous vide</p>
+                        </div>
                         <div class="step-gallery grid-2" style="margin-top: 20px;">
                             <div class="gallery-item img-3x">
                                 <img src="photo/compositeetplaque.png" alt="Préparation de la plaque composite">
@@ -597,10 +616,14 @@
                         </div>
                     </li>
 
-                    <li style="margin-bottom: 50px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.4rem;">Pilotage de Production</strong><br>
-                        J’ai aussi appris à avoir une vision globale de l'atelier en sachant piloter et optimiser une ligne de production. Pour cela, je crée mes propres tableaux de bord sur Excel et j'applique des méthodes d'organisation industrielles concrètes, comme le Lean Management ou le Kanban.
-                        
+                    <li style="margin-bottom: 50px; display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 100%; max-width: 1200px;">
+                            <strong style="color: var(--accent-lime); font-size: 1.4rem;">Pilotage de Production</strong><br>
+                            J’ai aussi appris à avoir une vision globale de l'atelier en sachant piloter et optimiser une ligne de production. Pour cela, je crée mes propres <strong>tableaux de bord sur Excel</strong> et j'applique des méthodes d'organisation industrielles concrètes, comme le <strong>Lean Management</strong> ou le <strong>Kanban</strong>.
+                        </div>
+                        <div class="keywords-box">
+                            <p>Gestion de flux<br>Lean Management<br>Tableaux de bord Excel</p>
+                        </div>
                         <div class="step-gallery" style="margin-top: 20px;">
                             <div class="gallery-item img-xl">
                                 <img src="photo/lean.png" alt="Tableau de bord Lean">
@@ -611,10 +634,14 @@
                         </div>
                     </li>
 
-                    <li style="margin-bottom: 50px;">
-                        <strong style="color: var(--accent-lime); font-size: 1.4rem;">Spécialité Automobile</strong><br>
-                        Enfin, pour compléter mon profil technique, j'ai pu profiter d’une chance qu'on a à l’IUT d'Orléans, à savoir la spécialité Automobile. Ça m'a permis d'étudier en profondeur l'architecture et le fonctionnement des moteurs pour vraiment analyser en détail ce qui s'y passe. Et on ne reste pas que dans la théorie puisqu'on a aussi travaillé sur la dynamique du véhicule en réalisant directement des TP sur des bancs moteurs…
-                        
+                    <li style="margin-bottom: 50px; display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 100%; max-width: 1200px;">
+                            <strong style="color: var(--accent-lime); font-size: 1.4rem;">Spécialité Automobile</strong><br>
+                            Enfin, pour compléter mon profil technique, j'ai pu profiter d’une chance qu'on a à l’IUT d'Orléans, à savoir la spécialité Automobile. Ça m'a permis d'étudier en profondeur l'architecture et le fonctionnement des moteurs pour vraiment analyser en détail ce qui s'y passe. Et on ne reste pas que dans la théorie puisqu'on a aussi travaillé sur la <strong>dynamique du véhicule</strong> en réalisant directement des TP sur des <strong>bancs moteurs</strong>…
+                        </div>
+                        <div class="keywords-box">
+                            <p>Architecture moteur<br>Dynamique du véhicule<br>Passage au banc</p>
+                        </div>
                         <div class="step-gallery" style="margin-top: 20px;">
                             <div class="gallery-item img-xl">
                                 <img src="photo/millers.png" alt="Cycle de Miller">
@@ -644,12 +671,9 @@
             <div class="reveal">
                 <h2>Fabrication d'un outillage</h2>
                 
-                <!-- Mise en évidence de l'objectif FAO -->
-                <div class="highlight-box">
-                    <p><strong>Objectif et Compétences développées :</strong> L'objectif de ce projet était de concevoir et d'usiner un outillage de A à Z. Cela m'a permis de développer mes compétences en modélisation 3D (CAO sur Creo), en programmation d'usinage (FAO), ainsi qu'en mise en œuvre sur machine à commande numérique.</p>
-                </div>
+                <p><strong>Objectif et Compétences développées :</strong> L'objectif de ce projet était de concevoir et d'usiner un outillage. Cela m'a permis de développer mes compétences en <strong>modélisation 3D</strong>, en <strong>programmation d'usinage (FAO)</strong>, ainsi qu'en mise en œuvre sur <strong>machine à commande numérique</strong>.</p>
 
-                <h3>Processus de conception et de fabrication de l'outillage</h3>
+                <h3 style="margin-top: 30px;">Processus de conception et de fabrication de l'outillage</h3>
                 <ul class="project-list" style="margin-top: 30px;">
                     <li style="margin-bottom: 25px;">
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Étape 1 : Analyse du besoin</strong><br>
@@ -705,14 +729,14 @@
                 <div class="project-detail-img img-oeuf"></div>
                 
                 <h3 style="margin-top: 30px;">L'objectif de notre projet</h3>
-                <p>L'objectif de notre projet était de fabriquer un "objet mystère" de A à Z. Notre mission était de construire un grand œuf refermable qui cachait à l'intérieur une véritable petite balançoire en métal. Sur cette balançoire, nous devions fabriquer et installer un petit bonhomme en bois articulé. Le but principal de ce projet était donc d'apprendre à passer de la théorie à la pratique en utilisant toutes sortes de techniques concrètes de la découpe du métal à l'impression 3D.</p>
+                <p>L'objectif de notre projet était de fabriquer un "objet mystère" de A à Z. Notre mission était de construire un grand œuf refermable qui cachait à l'intérieur une véritable petite balançoire en métal. Sur cette balançoire, nous devions fabriquer et installer un petit bonhomme en bois articulé. Le but principal de ce projet était donc d'apprendre à passer de la théorie à la pratique en utilisant toutes sortes de techniques concrètes de la découpe du métal à l'<strong>impression 3D</strong>.</p>
 
                 <h3 style="margin-top: 40px; font-size: 1.5rem; border:none;">Les grandes étapes de mon travail réalisé en rapport avec la réalisation de l'œuf</h3>
                 
                 <ul class="project-list" style="margin-top: 20px;">
                     <li style="margin-bottom: 35px;">
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">La conception et les calculs initiaux</strong><br>
-                        Au tout début du projet j'ai réalisé la conception théorique et les différents calculs nécessaires avec l'objectif de fabriquer l'œuf en fibre de carbone.
+                        Au tout début du projet j'ai réalisé la conception théorique et les différents calculs nécessaires avec l'objectif de fabriquer l'œuf en <strong>fibre de carbone</strong>.
                         <div class="step-gallery">
                             <div class="gallery-item img-2x">
                                 <img src="photo/oeufcao.png" alt="Conception CAO de l'œuf">
@@ -721,7 +745,7 @@
                     </li>
                     <li style="margin-bottom: 35px;">
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Le changement de méthode vers le thermoformage</strong><br>
-                        En raison d'un manque de matériaux j'ai dû m'adapter et modifier ma stratégie de fabrication en optant finalement pour le thermoformage d'une plaque de plastique.
+                        En raison d'un manque de matériaux j'ai dû m'adapter et modifier ma stratégie de fabrication en optant finalement pour le <strong>thermoformage</strong> d'une plaque de plastique.
                         <div class="step-gallery grid-2">
                             <div class="gallery-item img-2x">
                                 <img src="photo/plaquethermoformé.png" alt="Moule thermoformage">
@@ -742,7 +766,7 @@
                     </li>
                     <li style="margin-bottom: 35px;">
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">L'assemblage final de la coque</strong><br>
-                        Pour terminer j'ai assemblé les deux parties de l'œuf en installant une charnière que j'ai pu fixer solidement grâce à des supports sur mesure créés en impression 3D.
+                        Pour terminer j'ai assemblé les deux parties de l'œuf en installant une charnière que j'ai pu fixer solidement grâce à des supports sur mesure créés en <strong>impression 3D</strong>.
                         <div class="step-gallery">
                             <div class="gallery-item img-2x">
                                 <img src="photo/support.png" alt="Support en impression 3D">
@@ -761,10 +785,7 @@
             <div class="reveal">
                 <h2>Fonderie</h2>
                 
-                <!-- Mise en évidence de l'objectif Fonderie -->
-                <div class="highlight-box">
-                    <p><strong>Objectif :</strong> Pendant ma formation à l'IUT d'Orléans j'ai eu l'occasion de créer deux pièces de fonderie différentes ce qui m'a permis de bien comprendre toutes les étapes de fabrication. Par conséquent voici les grandes étapes que j'applique pour obtenir une pièce de qualité.</p>
-                </div>
+                <p><strong>Objectif :</strong> Pendant ma formation à l'IUT d'Orléans j'ai eu l'occasion de créer deux pièces de fonderie différentes ce qui m'a permis de bien comprendre toutes les étapes de fabrication. Par conséquent voici les grandes étapes que j'applique pour obtenir une pièce de qualité.</p>
                 
                 <ul class="project-list" style="margin-top: 30px;">
                     <li style="margin-bottom: 35px;">
@@ -788,7 +809,7 @@
                     
                     <li style="margin-bottom: 35px;">
                         <strong style="color: var(--accent-lime); font-size: 1.2rem;">Création des plaques demi-modèles</strong><br>
-                        Une fois la modélisation terminée il faut fabriquer les plaques demi-modèles. Pour cette fabrication nous pouvons paramétrer la machine d'usinage via un logiciel de FAO afin d'usiner les plaques sur des fraiseuses à commande numérique ou bien utiliser une imprimante 3D pour les obtenir par fabrication additive.
+                        Une fois la modélisation terminée il faut fabriquer les plaques demi-modèles. Pour cette fabrication nous pouvons paramétrer la machine d'usinage via un logiciel de FAO afin d'usiner les plaques sur des fraiseuses à <strong>commande numérique</strong> ou bien utiliser une <strong>imprimante 3D</strong> pour les obtenir par fabrication additive.
                         
                         <div class="step-gallery grid-2">
                             <div class="gallery-item img-3x">
@@ -837,10 +858,10 @@
                 <!-- Encadré gris contenant le texte -->
                 <div style="background-color: var(--fond-carte); padding: 50px; border: 1px solid var(--bordure); border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); margin-bottom: 50px;">
                     <p>
-                        J’ai eu l’occasion il y a un petit moment de m’acheter une moto dans le but de la réparer. Cela n’a pas été de tout repos vu l’étendue des réparations que j’ai dû effectuer sur cette dernière. Dès les premiers jours j’ai compris que l’état de la machine était bien plus dégradé que ce que j’imaginais au départ. J’ai donc entièrement démonté la moto pièce par pièce et appris énormément de choses en même temps afin qu’elle puisse fonctionner correctement. J’ai notamment remplacé le piston et la bielle puis refait tout le circuit électrique et remis en état les différents roulements de la boîte de vitesses, ce qui constituait une grande partie des travaux. Il m’a fallu beaucoup de patience et de recherches pour comprendre le fonctionnement de chaque élément et trouver les bonnes pièces à remplacer. Après de nombreuses heures passées dans mon garage la moto a enfin pu redémarrer et rouler comme il le fallait.
+                        J’ai eu l’occasion il y a un petit moment de m’acheter une moto dans le but de la réparer. Cela n’a pas été de tout repos vu l’étendue des réparations que j’ai dû effectuer sur cette dernière. Dès les premiers jours j’ai compris que l’état de la machine était bien plus dégradé que ce que j’imaginais au départ. J’ai donc entièrement <strong>démonté la moto pièce par pièce</strong> et appris énormément de choses en même temps afin qu’elle puisse fonctionner correctement. J’ai notamment <strong>remplacé le piston et la bielle</strong> puis <strong>refait tout le circuit électrique</strong> et remis en état les différents roulements de la boîte de vitesses, ce qui constituait une grande partie des travaux. Il m’a fallu beaucoup de patience et de recherches pour comprendre le fonctionnement de chaque élément et trouver les bonnes pièces à remplacer. Après de nombreuses heures passées dans mon garage la moto a enfin pu redémarrer et rouler comme il le fallait.
                     </p>
                     <p style="margin-bottom: 0; margin-top: 15px; color: var(--texte-principal);">
-                        <strong>Compétences appliquées en lien avec l'IUT : Mécanique générale, diagnostic, montage/démontage, électricité et rigueur d'intervention.</strong>
+                        <strong>Compétences appliquées en lien avec l'IUT : diagnostic, montage/démontage, électricité.</strong>
                     </p>
                 </div>
 
@@ -892,7 +913,7 @@
                 <div style="width: 100%;">
                     <h3 style="margin-bottom: 20px;">Stage en Bureau des Méthodes</h3>
                     <h4 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--accent-lime); font-weight: 600; margin-bottom: 10px;">L’objectif de ce stage :</h4>
-                    <p>L'objectif principal de mon stage était de fiabiliser la production tout en fluidifiant le travail des opérateurs. Cela passait par une réorganisation physique de l'atelier au niveau logistique et des outillages et par une standardisation des méthodes de travail au niveau qualité et gestion des temps.</p>
+                    <p>L'objectif principal de mon stage était de fiabiliser la production tout en fluidifiant le travail des opérateurs. Cela passait par une <strong>réorganisation physique</strong> de l'atelier au niveau logistique et des outillages et par une <strong>standardisation</strong> des méthodes de travail au niveau qualité et gestion des temps.</p>
                     
                     <h4 style="margin-top: 40px; font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--accent-lime); font-weight: 600; margin-bottom: 20px;">Mes réalisations concrètes :</h4>
                     <ul class="project-list" style="margin-left: 0; padding-left: 20px;">
@@ -905,13 +926,20 @@
                             </div>
                         </li>
                         <li style="margin-bottom: 40px;">
-                            <strong>Digitalisation et Traçabilité :</strong> J'ai automatisé la fiche de validation d'emboutissage sur Excel via des fonctions complexes de recherche et de tri, permettant de lier instantanément les références des plans à l'emplacement physique de leurs matrices.
+                            <strong>Digitalisation et Traçabilité :</strong> J'ai automatisé la fiche de validation d'emboutissage sur <strong>Excel</strong> via des fonctions complexes de recherche et de tri, permettant de lier instantanément les références des plans à l'emplacement physique de leurs matrices.
+                            
                             <div class="step-gallery grid-2" style="margin-top: 15px;">
-                                <div class="gallery-item img-3x">
+                                <div class="gallery-item img-xl">
                                     <img src="photo/preuve.png" alt="Fichier de traçabilité">
                                 </div>
-                                <div class="gallery-item img-3x">
+                                <div class="gallery-item img-xl">
                                     <img src="photo/réaoganisationepm.png" alt="Réorganisation process">
+                                </div>
+                            </div>
+                            <!-- Image Excel supplémentaire fois 2 juste en dessous -->
+                            <div class="step-gallery" style="margin-top: 15px;">
+                                <div class="gallery-item img-xl">
+                                    <img src="photo/exelstagetriage.png" alt="Fichier Excel triage">
                                 </div>
                             </div>
                         </li>
@@ -924,7 +952,7 @@
                             </div>
                         </li>
                         <li style="margin-bottom: 40px;">
-                            <strong>Analyse de Productivité :</strong> J'ai aussi réalisé des chronométrages directement sur le terrain pour identifier les pertes de temps et j'ai structuré ces données via des analyses statistiques pour définir de nouveaux temps de cycle de référence.
+                            <strong>Analyse de Productivité :</strong> J'ai aussi réalisé des chronométrages directement sur le terrain pour identifier les pertes de temps et j'ai structuré ces données via des <strong>analyses statistiques</strong> pour définir de nouveaux temps de cycle de référence.
                             <div class="step-gallery" style="margin-top: 15px;">
                                 <div class="gallery-item img-xl">
                                     <img src="photo/tempsembouuutissaage.png" alt="Analyse de temps d'emboutissage">
@@ -932,6 +960,11 @@
                             </div>
                         </li>
                     </ul>
+                    
+                    <!-- COMPÉTENCES EN LIEN AVEC L'IUT -->
+                    <p style="margin-top: 20px; color: var(--texte-principal);">
+                        <strong>Compétences de l'IUT utilisées pour ces missions : la gestion de flux, le lean, le KANBAN.</strong>
+                    </p>
                 </div>
             </div>
             
@@ -963,7 +996,7 @@
             links.forEach(link => { link.classList.remove('active'); });
             
             let linkToHighlight = pageId;
-            if (pageId.startsWith('projet-') || pageId === 'competences-iut') {
+            if ((pageId.startsWith('projet-') && pageId !== 'projet-extrascolaire') || pageId === 'competences-iut') {
                 linkToHighlight = 'formations';
             }
             
