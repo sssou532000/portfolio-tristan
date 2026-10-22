@@ -12,7 +12,7 @@
     
     <style>
         /* =========================================
-           THÈME : BLEU COBALT & GRIS CLAIR
+           THÈME : BLEU FONCÉ & GRIS CLAIR
            ========================================= */
         :root {
             --c1-navy: #0A1128;       
@@ -26,12 +26,14 @@
             --accent-lime: var(--c1-navy);       
             
             --fond-carte: #FFFFFF; 
-            --texte-principal: var(--c2-charcoal);  
-            --texte-secondaire: var(--c3-slate); 
+            
+            /* -- NOUVELLES COULEURS DE TEXTE (Tout en bleu foncé) -- */
+            --texte-principal: var(--c1-navy);  /* Bleu très profond pour les titres */
+            --texte-secondaire: #1E3A8A;        /* Bleu foncé élégant pour les paragraphes */
             
             --bouton-bg: var(--c1-navy);        
             --bouton-texte: #FFFFFF;     
-            --bouton-hover: var(--c2-charcoal);     
+            --bouton-hover: #172554;     
             --bordure: var(--c4-lightgray);          
         }
 
@@ -279,6 +281,9 @@
         .image-right { width: 100%; height: 100%; min-height: 350px; }
         
         .experience-item { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 120px; align-items: center; width: 100%; }
+        /* Retire la contrainte de colonne pour le détail de stage EATON */
+        .experience-item.full-width-item { grid-template-columns: 1fr !important; }
+
         .experience-item:nth-child(even) { direction: rtl; }
         .experience-item:nth-child(even) > * { direction: ltr; }
         
@@ -842,29 +847,57 @@
                     <p>J’ai effectué mon stage et mon alternance chez Eaton sur le site de Coignières dans les Yvelines. Eaton est un groupe industriel américain présent sur les 5 continents et organisé en trois secteurs : Électrique, Aerospace et Mobilité.</p>
                     <p style="margin-bottom: 30px;">Le site de Coignières appartient à la division Aerospace et c’est le seul de cette division en France. Il fabrique des joints dynamiques, des accumulateurs hydrauliques et des soufflets métalliques pour l’aéronautique et le spatial, avec des clients comme Safran, Airbus ou Dassault Aviation.</p>
                 </div>
-                <!-- IMAGE RAFALE -->
-                <div class="image-right">
-                    <img src="photo/avionnraphale.png" alt="Avion Rafale" style="width: 100%; height: 100%; min-height: 350px; object-fit: cover; border-radius: 8px;">
+                <!-- IMAGE RAFALE AVEC ENCADRÉ ACCUMULATEUR -->
+                <div class="image-right" style="display: flex; flex-direction: column; gap: 20px;">
+                    <img src="photo/avionnraphale.png" alt="Avion Rafale" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
+                    <div style="display: flex; align-items: center; gap: 15px; background: var(--fond-carte); padding: 15px; border-radius: 8px; border: 1px solid var(--bordure);">
+                        <img src="photo/accumulateur.png" alt="Accumulateur Hydraulique" style="width: 80px; height: 80px; object-fit: contain;">
+                        <p style="margin: 0; font-size: 0.9rem; line-height: 1.4;"><strong>Exemple de production :</strong><br>Accumulateur hydraulique haute précision.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- NOUVEAU BLOC : DÉTAIL DU STAGE EATON -->
-            <div class="experience-item reveal">
-                <div>
+            <!-- NOUVEAU BLOC : DÉTAIL DU STAGE EATON (Pleine largeur) -->
+            <div class="experience-item full-width-item reveal">
+                <div style="width: 100%;">
                     <h3 style="margin-bottom: 20px;">Stage en Bureau des Méthodes</h3>
                     <h4 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--accent-lime); font-weight: 600; margin-bottom: 10px;">L’objectif de ce stage :</h4>
                     <p>L'objectif principal de mon stage était de fiabiliser la production tout en fluidifiant le travail des opérateurs. Cela passait par une réorganisation physique de l'atelier au niveau logistique et des outillages et par une standardisation des méthodes de travail au niveau qualité et gestion des temps.</p>
                     
-                    <h4 style="margin-top: 25px; font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--accent-lime); font-weight: 600; margin-bottom: 10px;">Mes réalisations concrètes :</h4>
+                    <h4 style="margin-top: 40px; font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--accent-lime); font-weight: 600; margin-bottom: 20px;">Mes réalisations concrètes :</h4>
                     <ul class="project-list" style="margin-left: 0; padding-left: 20px;">
-                        <li style="margin-bottom: 15px;"><strong>Réorganisation de l'outillage :</strong> J'ai réalisé un inventaire complet des 200 références de matrices et optimisé les systèmes de rangement. J'ai conçu de nouvelles mallettes standardisées pour le rangement et le transport avec des mousses de calage sur-mesure pour protéger ces outillages de précision contre les chocs.</li>
-                        <li style="margin-bottom: 15px;"><strong>Digitalisation et Traçabilité :</strong> J'ai automatisé la fiche de validation d'emboutissage sur Excel via des fonctions complexes de recherche et de tri, permettant de lier instantanément les références des plans à l'emplacement physique de leurs matrices.</li>
-                        <li style="margin-bottom: 15px;"><strong>Standardisation Qualité :</strong> J'ai rédigé des fiches de poste visuelles pour guider les opérateurs dans l'utilisation des nouveaux outillages et créé des documents de référence qualité pour garantir la conformité des pièces.</li>
-                        <li style="margin-bottom: 15px;"><strong>Analyse de Productivité :</strong> J'ai aussi réalisé des chronométrages directement sur le terrain pour identifier les pertes de temps et j'ai structuré ces données via des analyses statistiques pour définir de nouveaux temps de cycle de référence.</li>
+                        <li style="margin-bottom: 40px;">
+                            <strong>Réorganisation de l'outillage :</strong> J'ai réalisé un inventaire complet des 200 références de matrices et optimisé les systèmes de rangement. J'ai conçu de nouvelles mallettes standardisées pour le rangement et le transport avec des mousses de calage sur-mesure pour protéger ces outillages de précision contre les chocs.
+                            <div class="step-gallery" style="margin-top: 15px;">
+                                <div class="gallery-item img-2x">
+                                    <img src="photo/rangement.png" alt="Rangement outillage">
+                                </div>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 40px;">
+                            <strong>Digitalisation et Traçabilité :</strong> J'ai automatisé la fiche de validation d'emboutissage sur Excel via des fonctions complexes de recherche et de tri, permettant de lier instantanément les références des plans à l'emplacement physique de leurs matrices.
+                            <div class="step-gallery" style="margin-top: 15px;">
+                                <div class="gallery-item img-xl">
+                                    <img src="photo/exelstagetriage.png" alt="Fichier Excel de traçabilité">
+                                </div>
+                            </div>
+                        </li>
+                        <li style="margin-bottom: 40px;">
+                            <strong>Standardisation Qualité :</strong> J'ai rédigé des fiches de poste visuelles pour guider les opérateurs dans l'utilisation des nouveaux outillages et créé des documents de référence qualité pour garantir la conformité des pièces.
+                        </li>
+                        <li style="margin-bottom: 40px;">
+                            <strong>Analyse de Productivité :</strong> J'ai aussi réalisé des chronométrages directement sur le terrain pour identifier les pertes de temps et j'ai structuré ces données via des analyses statistiques pour définir de nouveaux temps de cycle de référence.
+                            <div class="step-gallery grid-2" style="margin-top: 15px;">
+                                <div class="gallery-item img-2x">
+                                    <img src="photo/tableautempsseat.png" alt="Tableau de temps">
+                                </div>
+                                <div class="gallery-item img-2x">
+                                    <img src="photo/emboutissageph.png" alt="Processus d'emboutissage">
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
-                <!-- IMAGE D'ILLUSTRATION DU STAGE (Le site de Coignières par défaut) -->
-                <div class="exp-image" style="background-image: url('photo/siteeatoncoignière.png'); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);"></div>
             </div>
 
             <div class="experience-item reveal">
