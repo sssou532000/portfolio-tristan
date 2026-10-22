@@ -275,8 +275,8 @@
         .banner-experience img { width: auto; max-width: 80%; height: auto; display: block; }
 
         /* EXPÉRIENCES - PARCOURS AVEC LE RAFALE --- */
-        .parcours-eaton { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; background-color: var(--fond-carte); padding: 50px; border: 1px solid var(--bordure); border-radius: 8px; margin-bottom: 100px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-        .image-right { width: 100%; height: 100%; min-height: 300px; }
+        .parcours-eaton { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: stretch; background-color: var(--fond-carte); padding: 50px; border: 1px solid var(--bordure); border-radius: 8px; margin-bottom: 100px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .image-right { width: 100%; height: 100%; min-height: 350px; }
         
         .experience-item { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 120px; align-items: center; width: 100%; }
         .experience-item:nth-child(even) { direction: rtl; }
@@ -332,8 +332,9 @@
                 </div>
             </div>
             
-            <a onclick="showPage('projet-extrascolaire')">Projet Extrascolaire</a>
+            <!-- Inversion de l'ordre selon la consigne -->
             <a onclick="showPage('experiences')">Expériences professionnelles</a>
+            <a onclick="showPage('projet-extrascolaire')">Projet Extrascolaire</a>
             <a onclick="showPage('contact')">Contact</a>
         </div>
     </nav>
@@ -488,7 +489,6 @@
          SOUS-PAGES DES PROJETS & COMPÉTENCES
          ======================================================== -->
 
-    <!-- NOUVELLE SECTION COMPÉTENCES -->
     <div id="competences-iut" class="page-section">
         <section class="content-container">
             <button class="btn-pill" onclick="showPage('formations')" style="margin-bottom: 40px;">&larr; Retour</button>
@@ -840,7 +840,19 @@
                 <div class="text-left">
                     <h3 style="border-bottom: 3px solid var(--accent-lime); margin-bottom: 20px;">Mon parcours chez Eaton</h3>
                     <p>J’ai effectué mon stage et mon alternance chez Eaton sur le site de Coignières dans les Yvelines. Eaton est un groupe industriel américain présent sur les 5 continents et organisé en trois secteurs : Électrique, Aerospace et Mobilité.</p>
-                    <p style="margin-top: 15px;">Le site de Coignières appartient à la division Aerospace et c’est le seul de cette division en France. Il fabrique des joints dynamiques, des accumulateurs hydrauliques et des soufflets métalliques pour l’aéronautique et le spatial, avec des clients comme Safran, Airbus ou Dassault Aviation.</p>
+                    <p style="margin-bottom: 30px;">Le site de Coignières appartient à la division Aerospace et c’est le seul de cette division en France. Il fabrique des joints dynamiques, des accumulateurs hydrauliques et des soufflets métalliques pour l’aéronautique et le spatial, avec des clients comme Safran, Airbus ou Dassault Aviation.</p>
+                    
+                    <!-- NOUVEAU TEXTE EATON: Objectif & Réalisations -->
+                    <h4 style="margin-top: 30px; font-family: 'Inter', sans-serif; font-size: 1.2rem; color: var(--accent-lime); font-weight: 600; margin-bottom: 15px;">L’objectif de ce stage :</h4>
+                    <p>L'objectif principal de mon stage était de fiabiliser la production tout en fluidifiant le travail des opérateurs. Cela passait par une réorganisation physique de l'atelier au niveau logistique et des outillages et par une standardisation des méthodes de travail au niveau qualité et gestion des temps.</p>
+                    
+                    <h4 style="margin-top: 25px; font-family: 'Inter', sans-serif; font-size: 1.2rem; color: var(--accent-lime); font-weight: 600; margin-bottom: 15px;">Mes réalisations concrètes :</h4>
+                    <ul class="project-list" style="margin-left: 0; padding-left: 20px;">
+                        <li style="margin-bottom: 15px;"><strong>Réorganisation de l'outillage :</strong> J'ai réalisé un inventaire complet des 200 références de matrices et optimisé les systèmes de rangement. J'ai conçu de nouvelles mallettes standardisées pour le rangement et le transport avec des mousses de calage sur-mesure pour protéger ces outillages de précision contre les chocs.</li>
+                        <li style="margin-bottom: 15px;"><strong>Digitalisation et Traçabilité :</strong> J'ai automatisé la fiche de validation d'emboutissage sur Excel via des fonctions complexes de recherche et de tri, permettant de lier instantanément les références des plans à l'emplacement physique de leurs matrices.</li>
+                        <li style="margin-bottom: 15px;"><strong>Standardisation Qualité :</strong> J'ai rédigé des fiches de poste visuelles pour guider les opérateurs dans l'utilisation des nouveaux outillages et créé des documents de référence qualité pour garantir la conformité des pièces.</li>
+                        <li style="margin-bottom: 15px;"><strong>Analyse de Productivité :</strong> J'ai aussi réalisé des chronométrages directement sur le terrain pour identifier les pertes de temps et j'ai structuré ces données via des analyses statistiques pour définir de nouveaux temps de cycle de référence.</li>
+                    </ul>
                 </div>
                 <!-- IMAGE RAFALE -->
                 <div class="image-right">
@@ -877,12 +889,6 @@
                 <a href="https://linkedin.com/in/tonprofil" target="_blank" class="btn-pill">Profil LinkedIn</a>
             </div>
         </section>
-    </div>
-
-    <!-- BOÎTE MODALE DU CV (Cachée, mais code conservé au cas où) -->
-    <div id="cv-modal" class="fullscreen-modal">
-        <span class="modal-close" onclick="closeCvModal()">&times;</span>
-        <img class="modal-content-img" src="photo/mon-cv.jpg" alt="Curriculum Vitae HD">
     </div>
 
     <!-- ==========================================
@@ -931,16 +937,6 @@
                     if(rect.top < window.innerHeight) { el.classList.add('active'); }
                 });
             }, 50);
-        }
-
-        function openCvModal() { document.getElementById("cv-modal").style.display = "block"; document.body.style.overflow = "hidden"; }
-        function closeCvModal() { document.getElementById("cv-modal").style.display = "none"; document.body.style.overflow = "auto"; }
-        
-        window.onclick = function(event) {
-            const cvModal = document.getElementById("cv-modal");
-            if (event.target == cvModal) {
-                cvModal.style.display = "none"; document.body.style.overflow = "auto";
-            }
         }
 
         const navbar = document.getElementById('top-nav');
