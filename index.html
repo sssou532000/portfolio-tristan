@@ -101,11 +101,19 @@
         /* --- PAGE 1: À PROPOS DE MOI --- */
         .video-container { width: 100%; height: 65vh; background: #000; overflow: hidden; border-bottom: 1px solid var(--bordure); }
         .bg-video { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
-        .about-top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: flex-start; }
-        .about-photos { display: flex; flex-direction: column; gap: 40px; }
-        .photo-box { width: 100%; height: 300px; background-color: transparent; background-size: contain; background-repeat: no-repeat; background-position: center; border: none; }
-        .img-p1 { background-image: url('photo/a-propos-1.jpg'); }
-        .img-p2 { background-image: url('photo/a-propos-2.jpg'); }
+        .about-top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        
+        .about-photos { display: flex; justify-content: center; align-items: center; }
+        .img-moi { 
+            background-image: url('photo/moi.png'); 
+            background-size: cover; 
+            background-position: center;
+            width: 100%; 
+            max-width: 400px; 
+            aspect-ratio: 3/4; 
+            border-radius: 8px; 
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1); 
+        }
 
         /* --- FRISE CHRONOLOGIQUE HARMONISÉE --- */
         .timeline-centered { position: relative; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; }
@@ -268,6 +276,21 @@
             filter: drop-shadow(0 4px 15px rgba(0,0,0,0.15));
         }
 
+        /* --- ENCADRÉS POUR OBJECTIFS --- */
+        .highlight-box {
+            background-color: #E2E8F0; /* Bleu gris très clair */
+            padding: 25px; 
+            border-left: 5px solid var(--accent-lime); 
+            border-radius: 4px; 
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .highlight-box p {
+            margin: 0;
+            color: var(--texte-principal);
+            font-weight: 500;
+        }
+
         /* --- BANDEAU EATON LOGO EN HAUT --- */
         .banner-experience { 
             width: 100vw; margin-top: -80px; background-color: #FFFFFF; 
@@ -321,7 +344,7 @@
             <div class="dropdown">
                 <a onclick="showPage('a-propos')" class="active">À propos de moi</a>
                 <div class="dropdown-content">
-                    <a onclick="goToSection('a-propos', 'section-cv')">Ma Présentation Vidéo</a>
+                    <a onclick="goToSection('a-propos', 'section-cv')">Ma vidéo de présentation</a>
                 </div>
             </div>
             
@@ -334,8 +357,8 @@
             </div>
             
             <a onclick="showPage('experiences')">Expériences professionnelles</a>
-            <a onclick="showPage('projet-extrascolaire')">Projet Extrascolaire</a>
-            <a onclick="showPage('contact')">Contact</a>
+            <a onclick="showPage('realisations-personnelles')">Réalisations personnelles</a>
+            <a onclick="showPage('contact')">Me contacter</a>
         </div>
     </nav>
 
@@ -354,12 +377,12 @@
                 <p>Je suis actuellement en BUT Génie Mécanique et Productique à l'IUT d'Orléans.</p>
                 <p>Passionné par la mécanique depuis toujours, j'aime comprendre comment fonctionnent les systèmes qui nous entourent et concevoir des solutions techniques concrètes.</p>
                 <p>En dehors de mes études, je passe beaucoup de temps sur mon vélo. C’est un sport qui me permet de m’évader, mais aussi de me dépasser et de repousser mes limites.</p>
-                <p>Je vous laisse découvrir mon parcours, mes compétences et mes différents projets à travers ce portfolio.</p>
+                <p>Je vous laisse découvrir mon parcours, mes compétences et mes différents projets à travers mon site internet.</p>
             </div>
             
+            <!-- Photo de Profil Mise à jour -->
             <div class="about-photos reveal delay-1">
-                <div class="photo-box img-p1"></div>
-                <div class="photo-box img-p2"></div>
+                <div class="img-moi"></div>
             </div>
         </section>
 
@@ -411,7 +434,7 @@
 
         <!-- SECTION CV & VIDÉO -->
         <section id="section-cv" class="content-container reveal" style="padding-top: 80px;">
-            <h2 style="text-align: center; margin-bottom: 40px;">Ma Présentation Vidéo</h2>
+            <h2 style="text-align: center; margin-bottom: 40px;">Ma vidéo de présentation</h2>
             <div class="bottom-media-row">
                 <div class="media-column">
                     <div class="media-box">
@@ -621,6 +644,11 @@
             <div class="reveal">
                 <h2>Fabrication d'un outillage</h2>
                 
+                <!-- Mise en évidence de l'objectif FAO -->
+                <div class="highlight-box">
+                    <p><strong>Objectif et Compétences développées :</strong> L'objectif de ce projet était de concevoir et d'usiner un outillage de A à Z. Cela m'a permis de développer mes compétences en modélisation 3D (CAO sur Creo), en programmation d'usinage (FAO), ainsi qu'en mise en œuvre sur machine à commande numérique.</p>
+                </div>
+
                 <h3>Processus de conception et de fabrication de l'outillage</h3>
                 <ul class="project-list" style="margin-top: 30px;">
                     <li style="margin-bottom: 25px;">
@@ -733,7 +761,10 @@
             <div class="reveal">
                 <h2>Fonderie</h2>
                 
-                <p>Pendant ma formation à l'IUT d'Orléans j'ai eu l'occasion de créer deux pièces de fonderie différentes ce qui m'a permis de bien comprendre toutes les étapes de fabrication. Par conséquent voici les grandes étapes que j'applique pour obtenir une pièce de qualité</p>
+                <!-- Mise en évidence de l'objectif Fonderie -->
+                <div class="highlight-box">
+                    <p><strong>Objectif :</strong> Pendant ma formation à l'IUT d'Orléans j'ai eu l'occasion de créer deux pièces de fonderie différentes ce qui m'a permis de bien comprendre toutes les étapes de fabrication. Par conséquent voici les grandes étapes que j'applique pour obtenir une pièce de qualité.</p>
+                </div>
                 
                 <ul class="project-list" style="margin-top: 30px;">
                     <li style="margin-bottom: 35px;">
@@ -797,16 +828,19 @@
         </section>
     </div>
 
-    <!-- NOUVELLE PAGE: PROJET EXTRASCOLAIRE -->
-    <div id="projet-extrascolaire" class="page-section" style="padding-top: 80px;">
+    <!-- PAGE: RÉALISATIONS PERSONNELLES -->
+    <div id="realisations-personnelles" class="page-section" style="padding-top: 80px;">
         <section class="content-container">
             <div class="reveal">
                 <h2 style="text-align: center; margin-bottom: 60px;">Redonner vie à une moto</h2>
                 
                 <!-- Encadré gris contenant le texte -->
                 <div style="background-color: var(--fond-carte); padding: 50px; border: 1px solid var(--bordure); border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); margin-bottom: 50px;">
-                    <p style="margin-bottom: 0;">
+                    <p>
                         J’ai eu l’occasion il y a un petit moment de m’acheter une moto dans le but de la réparer. Cela n’a pas été de tout repos vu l’étendue des réparations que j’ai dû effectuer sur cette dernière. Dès les premiers jours j’ai compris que l’état de la machine était bien plus dégradé que ce que j’imaginais au départ. J’ai donc entièrement démonté la moto pièce par pièce et appris énormément de choses en même temps afin qu’elle puisse fonctionner correctement. J’ai notamment remplacé le piston et la bielle puis refait tout le circuit électrique et remis en état les différents roulements de la boîte de vitesses, ce qui constituait une grande partie des travaux. Il m’a fallu beaucoup de patience et de recherches pour comprendre le fonctionnement de chaque élément et trouver les bonnes pièces à remplacer. Après de nombreuses heures passées dans mon garage la moto a enfin pu redémarrer et rouler comme il le fallait.
+                    </p>
+                    <p style="margin-bottom: 0; margin-top: 15px; color: var(--texte-principal);">
+                        <strong>Compétences appliquées en lien avec l'IUT : Mécanique générale, diagnostic, montage/démontage, électricité et rigueur d'intervention.</strong>
                     </p>
                 </div>
 
@@ -853,7 +887,7 @@
                 </div>
             </div>
 
-            <!-- NOUVEAU BLOC : DÉTAIL DU STAGE EATON (Pleine largeur) -->
+            <!-- DÉTAIL DU STAGE EATON (Pleine largeur) -->
             <div class="experience-item full-width-item reveal">
                 <div style="width: 100%;">
                     <h3 style="margin-bottom: 20px;">Stage en Bureau des Méthodes</h3>
@@ -907,11 +941,11 @@
     <!-- PAGE 4: CONTACT -->
     <div id="contact" class="page-section">
         <section class="content-container reveal" style="text-align: center;">
-            <h2>Établissons le contact</h2>
+            <h2>Me contacter</h2>
             <p>Je suis disponible pour échanger sur vos projets ou pour une opportunité professionnelle.</p>
             <div style="margin-top: 50px; display: flex; gap: 30px; justify-content: center;">
-                <a href="mailto:ton.email@email.com" class="btn-pill">Email Direct</a>
-                <a href="https://linkedin.com/in/tonprofil" target="_blank" class="btn-pill">Profil LinkedIn</a>
+                <a href="mailto:tristanbobard@gmail.com" class="btn-pill">tristanbobard@gmail.com</a>
+                <a href="https://www.linkedin.com/in/tristan-bobard-864a453a1" target="_blank" class="btn-pill">Mon profil LinkedIn</a>
             </div>
         </section>
     </div>
@@ -929,7 +963,7 @@
             links.forEach(link => { link.classList.remove('active'); });
             
             let linkToHighlight = pageId;
-            if ((pageId.startsWith('projet-') && pageId !== 'projet-extrascolaire') || pageId === 'competences-iut') {
+            if (pageId.startsWith('projet-') || pageId === 'competences-iut') {
                 linkToHighlight = 'formations';
             }
             
