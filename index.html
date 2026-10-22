@@ -28,7 +28,7 @@
             --fond-carte: #FFFFFF; 
             
             /* -- COULEURS DE TEXTE (Tout en bleu foncé) -- */
-            --texte-principal: #0A1128;  /* Bleu très profond */
+            --texte-principal: #0A1128;  
             --texte-secondaire: #1E3A8A;        
             
             --bouton-bg: var(--c1-navy);        
@@ -206,7 +206,7 @@
         }
 
         /* =======================================================
-           CLASSES : TAILLES 2X, 3X ET XL POUR LES IMAGES
+           CLASSES : TAILLES 2X, 3X, XL ET XXL POUR LES IMAGES
            ======================================================= */
         
         .step-gallery { 
@@ -227,6 +227,7 @@
         .img-2x { max-width: 450px; }
         .img-3x { max-width: 750px; }
         .img-xl { max-width: 1200px; margin: 0 auto; }
+        .img-xxl { max-width: 100%; margin: 0 auto; width: 100%; } /* Nouvelle taille extra-large */
         .img-full { max-width: 100%; }
 
         /* Images naturelles (contain), sans rognage, sans fond */
@@ -239,11 +240,12 @@
             background-color: transparent; border: none; padding: 0;
         }
 
-        /* Spécial Tableaux de bords Excel (sans contrainte de hauteur max) */
-        .img-xl img {
+        /* Spécial Tableaux de bords Excel */
+        .img-xl img, .img-xxl img {
             max-height: none; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
         }
+        .img-xxl img { width: 100%; } /* Force l'image XXL à prendre toute la largeur */
 
         /* Exception pour l'image pleine largeur (hommefond) pour enlever la marge */
         .img-full img {
@@ -526,7 +528,7 @@
                     <li style="margin-bottom: 50px; display: flex; flex-direction: column; align-items: center;">
                         <div style="width: 100%; max-width: 1200px;">
                             <strong style="color: var(--texte-principal); font-size: 1.4rem;">Conception 3D (CAO)</strong><br>
-                            En conception, mon but est de donner vie aux idées. Je pars souvent d'un simple croquis papier pour arriver à une modélisation 3D complète suivie de ses différents plans à partir de PTC Creo. De plus, je réfléchis aussi au choix des matériaux. Mon objectif est toujours de trouver le meilleur compromis entre le poids, le coût de fabrication et la résistance.
+                            En conception, mon but est de donner vie aux idées. Je pars souvent d'un simple croquis papier pour arriver à une <strong>modélisation 3D</strong> complète suivie de ses différents plans à partir de <strong>PTC Creo</strong>. De plus, je réfléchis aussi au choix des matériaux. Mon objectif est toujours de trouver le meilleur compromis entre le poids, le coût de fabrication et la résistance.
                         </div>
                         <div class="keywords-box">
                             <p>Modélisation 3D<br>Mise en plan<br>Cotation fonctionnelle</p>
@@ -550,7 +552,7 @@
                     <li style="margin-bottom: 50px; display: flex; flex-direction: column; align-items: center;">
                         <div style="width: 100%; max-width: 1200px;">
                             <strong style="color: var(--texte-principal); font-size: 1.4rem;">Usinage et Fabrication</strong><br>
-                            Ce qui me passionne, c’est avant tout de passer du virtuel au réel en fabriquant moi-même les pièces. J’ai donc appris à maîtriser l'usinage classique, mais aussi la commande numérique en programmant mes propres parcours d'outils avec TopSolid. Enfin, j’ai également été formé à des techniques spécifiques comme la découpe jet d'eau ou l'électroérosion.
+                            Ce qui me passionne, c’est avant tout de passer du virtuel au réel en fabriquant moi-même les pièces. J’ai donc appris à maîtriser l'usinage classique, mais aussi la <strong>commande numérique</strong> en programmant mes propres parcours d'outils avec <strong>TopSolid</strong>. Enfin, j’ai également été formé à des techniques spécifiques comme la découpe jet d'eau ou l'électroérosion.
                         </div>
                         <div class="keywords-box">
                             <p>Usinage machine<br>Tour<br>Fraiseuse<br>Découpe jet d'eau / laser<br>Électroérosion</p>
@@ -577,7 +579,7 @@
                     <li style="margin-bottom: 50px; display: flex; flex-direction: column; align-items: center;">
                         <div style="width: 100%; max-width: 1200px;">
                             <strong style="color: var(--texte-principal); font-size: 1.4rem;">Métrologie et Qualité</strong><br>
-                            Garantir la précision est indispensable, donc j'utilise des outils de mesure traditionnels et je programme des machines de mesure tridimensionnelle avec le logiciel Calypso pour m'assurer que chaque pièce respecte strictement les tolérances exigées. Ou encore, je sais manier les différents outils de probabilités pour réaliser des cartes de contrôle afin d'identifier les problèmes qualités.
+                            Garantir la précision est indispensable, donc j'utilise des outils de mesure traditionnels et je programme des <strong>machines de mesure tridimensionnelle</strong> avec le logiciel <strong>Calypso</strong> pour m'assurer que chaque pièce respecte strictement les tolérances exigées. Ou encore, je sais manier les différents outils de probabilités pour réaliser des <strong>cartes de contrôle</strong> afin d'identifier les problèmes qualités.
                         </div>
                         <div class="keywords-box">
                             <p>Contrôle qualité<br>Mesure tridimensionnelle<br>Cartes de contrôle</p>
@@ -600,7 +602,7 @@
                     <li style="margin-bottom: 50px; display: flex; flex-direction: column; align-items: center;">
                         <div style="width: 100%; max-width: 1200px;">
                             <strong style="color: var(--texte-principal); font-size: 1.4rem;">Matériaux Composites</strong><br>
-                            J'ai aussi travaillé sur des matériaux techniques comme les composites. Je sais réaliser des pièces en fibre de carbone ou de verre, en passant de la préparation du moule jusqu'à la polymérisation de la résine, et c'est un vrai plus pour créer des éléments à la fois très légers et résistants.
+                            J'ai aussi travaillé sur des matériaux techniques comme les composites. Je sais réaliser des pièces en <strong>fibre de carbone</strong> ou de verre, en passant de la préparation du moule jusqu'à la <strong>polymérisation</strong> de la résine, et c'est un vrai plus pour créer des éléments à la fois très légers et résistants.
                         </div>
                         <div class="keywords-box">
                             <p>Fibre de carbone<br>Moulage au contact<br>Mise sous vide</p>
@@ -618,7 +620,7 @@
                     <li style="margin-bottom: 50px; display: flex; flex-direction: column; align-items: center;">
                         <div style="width: 100%; max-width: 1200px;">
                             <strong style="color: var(--texte-principal); font-size: 1.4rem;">Pilotage de Production</strong><br>
-                            J’ai aussi appris à avoir une vision globale de l'atelier en sachant piloter et optimiser une ligne de production. Pour cela, je crée mes propres tableaux de bord sur Excel et j'applique des méthodes d'organisation industrielles concrètes, comme le Lean Management ou le Kanban.
+                            J’ai aussi appris à avoir une vision globale de l'atelier en sachant piloter et optimiser une ligne de production. Pour cela, je crée mes propres tableaux de bord sur Excel et j'applique des méthodes d'organisation industrielles concrètes, comme le <strong>Lean Management</strong> ou le <strong>Kanban</strong>.
                         </div>
                         <div class="keywords-box">
                             <p>Gestion de flux<br>Lean Management<br>Tableaux de bord Excel</p>
@@ -636,7 +638,7 @@
                     <li style="margin-bottom: 50px; display: flex; flex-direction: column; align-items: center;">
                         <div style="width: 100%; max-width: 1200px;">
                             <strong style="color: var(--texte-principal); font-size: 1.4rem;">Spécialité Automobile</strong><br>
-                            Enfin, pour compléter mon profil technique, j'ai pu profiter d’une chance qu'on a à l’IUT d'Orléans, à savoir la spécialité Automobile. Ça m'a permis d'étudier en profondeur l'architecture et le fonctionnement des moteurs pour vraiment analyser en détail ce qui s'y passe. Et on ne reste pas que dans la théorie puisqu'on a aussi travaillé sur la dynamique du véhicule en réalisant directement des TP sur des bancs moteurs…
+                            Enfin, pour compléter mon profil technique, j'ai pu profiter d’une chance qu'on a à l’IUT d'Orléans, à savoir la spécialité Automobile. Ça m'a permis d'étudier en profondeur l'architecture et le fonctionnement des moteurs pour vraiment analyser en détail ce qui s'y passe. Et on ne reste pas que dans la théorie puisqu'on a aussi travaillé sur la dynamique du véhicule en réalisant directement des TP sur des <strong>bancs moteurs</strong>…
                         </div>
                         <div class="keywords-box">
                             <p>Architecture moteur<br>Dynamique du véhicule<br>Passage au banc</p>
@@ -915,7 +917,7 @@
                     <h4 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--accent-lime); font-weight: 600; margin-bottom: 10px;">L’objectif de ce stage :</h4>
                     <p>L'objectif principal de mon stage était de fiabiliser la production tout en fluidifiant le travail des opérateurs. Cela passait par une réorganisation physique de l'atelier au niveau logistique et des outillages et par une standardisation des méthodes de travail au niveau qualité et gestion des temps.</p>
                     
-                    <!-- COMPÉTENCES EN LIEN AVEC L'IUT DÉPLACÉES ICI -->
+                    <!-- COMPÉTENCES EN LIEN AVEC L'IUT -->
                     <div style="background-color: var(--fond-encadre); padding: 10px 20px; border-radius: 4px; margin-bottom: 30px; display: inline-block;">
                         <p style="margin: 0; color: var(--texte-principal); font-weight: 600;">Compétences de l'IUT utilisées pour ces missions : la gestion de flux, le lean, le KANBAN.</p>
                     </div>
@@ -933,10 +935,13 @@
                         <li style="margin-bottom: 40px;">
                             <strong style="color: var(--texte-principal);">Digitalisation et Traçabilité :</strong> J'ai automatisé la fiche de validation d'emboutissage sur Excel via des fonctions complexes de recherche et de tri, permettant de lier instantanément les références des plans à l'emplacement physique de leurs matrices.
                             
-                            <!-- Seulement l'image réaoganisationepm en très grand -->
-                            <div class="step-gallery" style="margin-top: 15px;">
-                                <div class="gallery-item img-xl">
+                            <!-- Application de la taille XXL pour la première image (très grande) et XL pour la seconde en dessous -->
+                            <div class="step-gallery" style="margin-top: 25px; flex-direction: column; gap: 40px;">
+                                <div class="gallery-item img-xxl">
                                     <img src="photo/réaoganisationepm.png" alt="Réorganisation process">
+                                </div>
+                                <div class="gallery-item img-xl">
+                                    <img src="photo/preuve.png" alt="Fichier de traçabilité">
                                 </div>
                             </div>
                         </li>
