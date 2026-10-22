@@ -27,9 +27,9 @@
             
             --fond-carte: #FFFFFF; 
             
-            /* -- NOUVELLES COULEURS DE TEXTE (Tout en bleu foncé) -- */
-            --texte-principal: var(--c1-navy);  /* Bleu très profond pour les titres */
-            --texte-secondaire: #1E3A8A;        /* Bleu foncé élégant pour les paragraphes */
+            /* -- COULEURS DE TEXTE (Tout en bleu foncé) -- */
+            --texte-principal: var(--c1-navy);  
+            --texte-secondaire: #1E3A8A;        
             
             --bouton-bg: var(--c1-navy);        
             --bouton-texte: #FFFFFF;     
@@ -286,10 +286,6 @@
 
         .experience-item:nth-child(even) { direction: rtl; }
         .experience-item:nth-child(even) > * { direction: ltr; }
-        
-        .exp-image { width: 100%; height: 300px; background-color: transparent; border: none; background-size: contain; background-repeat: no-repeat; background-position: center; }
-        .img-astronics { background-image: url('photo/exp-astronics.jpg'); }
-        .img-linamar { background-image: url('photo/exp-linamar.jpg'); }
 
         .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 0.9s cubic-bezier(0.25, 1, 0.5, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -850,9 +846,9 @@
                 <!-- IMAGE RAFALE AVEC ENCADRÉ ACCUMULATEUR -->
                 <div class="image-right" style="display: flex; flex-direction: column; gap: 20px;">
                     <img src="photo/avionnraphale.png" alt="Avion Rafale" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
-                    <div style="display: flex; align-items: center; gap: 15px; background: var(--fond-carte); padding: 15px; border-radius: 8px; border: 1px solid var(--bordure);">
-                        <img src="photo/accumulateur.png" alt="Accumulateur Hydraulique" style="width: 80px; height: 80px; object-fit: contain;">
-                        <p style="margin: 0; font-size: 0.9rem; line-height: 1.4;"><strong>Exemple de production :</strong><br>Accumulateur hydraulique haute précision.</p>
+                    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px; background: var(--fond-carte); padding: 25px; border-radius: 8px; border: 1px solid var(--bordure);">
+                        <img src="photo/accumulateur.png" alt="Accumulateur Hydraulique" style="width: 100%; max-width: 250px; height: auto; object-fit: contain;">
+                        <p style="margin: 0; font-size: 1.1rem; line-height: 1.4; color: var(--texte-principal);"><strong>Exemple de production :</strong><br><span style="font-size: 1rem; color: var(--texte-secondaire);">Accumulateur hydraulique haute précision</span></p>
                     </div>
                 </div>
             </div>
@@ -876,44 +872,33 @@
                         </li>
                         <li style="margin-bottom: 40px;">
                             <strong>Digitalisation et Traçabilité :</strong> J'ai automatisé la fiche de validation d'emboutissage sur Excel via des fonctions complexes de recherche et de tri, permettant de lier instantanément les références des plans à l'emplacement physique de leurs matrices.
-                            <div class="step-gallery" style="margin-top: 15px;">
-                                <div class="gallery-item img-xl">
-                                    <img src="photo/exelstagetriage.png" alt="Fichier Excel de traçabilité">
+                            <div class="step-gallery grid-2" style="margin-top: 15px;">
+                                <div class="gallery-item img-3x">
+                                    <img src="photo/preuve.png" alt="Fichier de traçabilité">
+                                </div>
+                                <div class="gallery-item img-3x">
+                                    <img src="photo/réaoganisationepm.png" alt="Réorganisation process">
                                 </div>
                             </div>
                         </li>
                         <li style="margin-bottom: 40px;">
                             <strong>Standardisation Qualité :</strong> J'ai rédigé des fiches de poste visuelles pour guider les opérateurs dans l'utilisation des nouveaux outillages et créé des documents de référence qualité pour garantir la conformité des pièces.
+                            <div class="step-gallery" style="margin-top: 15px;">
+                                <div class="gallery-item img-2x">
+                                    <img src="photo/pressse.png" alt="Presse">
+                                </div>
+                            </div>
                         </li>
                         <li style="margin-bottom: 40px;">
                             <strong>Analyse de Productivité :</strong> J'ai aussi réalisé des chronométrages directement sur le terrain pour identifier les pertes de temps et j'ai structuré ces données via des analyses statistiques pour définir de nouveaux temps de cycle de référence.
-                            <div class="step-gallery grid-2" style="margin-top: 15px;">
-                                <div class="gallery-item img-2x">
-                                    <img src="photo/tableautempsseat.png" alt="Tableau de temps">
-                                </div>
-                                <div class="gallery-item img-2x">
-                                    <img src="photo/emboutissageph.png" alt="Processus d'emboutissage">
+                            <div class="step-gallery" style="margin-top: 15px;">
+                                <div class="gallery-item img-xl">
+                                    <img src="photo/tempsembouuutissaage.png" alt="Analyse de temps d'emboutissage">
                                 </div>
                             </div>
                         </li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="experience-item reveal">
-                <div>
-                    <h3>Astronics PGA</h3>
-                    <p>Intégré au bureau d'études mécanique en tant que concepteur. Cette entreprise est spécialisée dans la conception d'équipements aéronautiques.</p>
-                </div>
-                <div class="exp-image img-astronics"></div>
-            </div>
-            
-            <div class="experience-item reveal">
-                <div>
-                    <h3>Linamar Light Metals</h3>
-                    <p>Stage de fin de deuxième année dans l'entreprise Linamar, spécialisée dans l'usinage de pièces automobiles.</p>
-                </div>
-                <div class="exp-image img-linamar"></div>
             </div>
             
         </section>
